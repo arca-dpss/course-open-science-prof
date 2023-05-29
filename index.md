@@ -4,7 +4,7 @@ author_name: Claudio Zandonella
 ---
 
 <p class = "my-h1">
-Open Science Tools: Make your Scientific Research Accessible and Reproducible
+Open Science Tools (Prof Edition):<br>Making our Scientific Research Accessible and Reproducible
 </p>
 
 *“Researchers are disorganized and chaotic by nature. While this may be the secret of their creativity, it can also lead to costly errors, especially when it comes to coding. In this course, we will learn some software development secrets and introduce coding good practices that may save us lots of headaches. Only by following a structured approach to coding can we ensure the reproducibility of our results and make Science an open-source knowledge development!”*
@@ -52,7 +52,7 @@ During the course, examples will be provided using the R programming language. H
     - Docker
     - Rocker
 
-### Where and When
+## Where and When
 
 
 | Giorno | Orario | Aula (CLA)|
@@ -61,7 +61,7 @@ During the course, examples will be provided using the R programming language. H
 | Friday 16 June   | 9:00 - 13:00 and 14:00 - 18:00 | CLA 5  |
 
 
-### Getting Started
+## Getting Started
 
 Please install the following software in advance.
 
@@ -72,19 +72,19 @@ Please install the following software in advance.
 
 # Materials
 
-### Slides
+## Slides
 
 - [00 Introduction](materials/slides/01-intro.html)
 
-### Exercises
+## Exercises
 
 
-### Code
+## Code
 
 - [Attachment Rproj](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-open-science-prof/tree/main/materials/code-example/attachment)
 
 
-### Books
+## Books
 
 - *“The Open Science Manual: Make Your Scientific Research Accessible and Reproducible”* by Claudio Zandonella and Davide Massidda
  ([Link](https://arca-dpss.github.io/manual-open-science/) web version and [PDF](https://arca-dpss.github.io/manual-open-science/manual-open-science.pdf) version)
