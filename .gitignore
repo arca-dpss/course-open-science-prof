@@ -6,3 +6,4 @@
 #
 
 materials/*
+!materials/images
