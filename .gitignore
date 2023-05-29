@@ -1,0 +1,8 @@
+# macOS auxiliary files
+.DS_Store
+.Rproj.user
+.Rhistory
+
+#
+
+materials/*
