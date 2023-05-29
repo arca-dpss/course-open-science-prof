@@ -3,7 +3,9 @@ course_title: "Open Science Tools"
 author_name: Claudio Zandonella 
 ---
 
+<p class = "my-h1">
 Open Science Tools: Make your Scientific Research Accessible and Reproducible
+</p>
 
 *“Researchers are disorganized and chaotic by nature. While this may be the secret of their creativity, it can also lead to costly errors, especially when it comes to coding. In this course, we will learn some software development secrets and introduce coding good practices that may save us lots of headaches. Only by following a structured approach to coding can we ensure the reproducibility of our results and make Science an open-source knowledge development!”*
 
