@@ -1,0 +1,363 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/01-introduction/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 01 - Introduction
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+
+# Why do we got into Research?
+
+--
+
+<br>
+.middle[
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "science-1.png"))
+```
+]
+---
+
+# Why do we got into Research?
+
+<br>
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "science-2.png"))
+```
+
+---
+
+# Why do we got into Research?
+
+<br>
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "science-3.png"))
+```
+
+
+---
+
+# What do we do in the end?
+
+--
+
+
+.pull-left-50[
+
+<div style = 'margin-top: -20pt;'>
+```{r, out.width="98%"}
+knitr::include_graphics(paste0(image_path, "scripting.png"))
+```
+</div>
+]
+.pull-right-50[
+
+<br>
+<br>
+
+{{content}}
+
+]
+
+--
+
+```{r, out.width="98%"}
+knitr::include_graphics(paste0(image_path, "coding.gif"))
+```
+
+---
+
+# What could be the problem?
+
+--
+
+.pull-left-50[
+.center[
+### Researchers
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path, "chaos.jpeg"))
+```
+]
+]
+.pull-right-50[
+]
+
+---
+
+# What could be the problem?
+
+.pull-left-50[
+.center[
+### Researchers
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path, "chaos.jpeg"))
+```
+]
+]
+.pull-right-50[
+
+<br>
+
+.center[
+## Open Science
+]
+
+<br>
+
+{{content}}
+
+
+]
+--
+Results should be:
+
+- Accessible
+- Reproducible
+
+---
+
+# What could be the problem?
+
+.pull-left-50[
+.center[
+### Researchers
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path, "chaos.jpeg"))
+```
+]
+]
+.pull-right-50[
+.center[
+### Software Developers
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path, "organize.jpeg"))
+```
+
+]
+]
+
+
+---
+
+# Science as Amateur Software Development
+
+--
+
+.pull-left-50[
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "richard-mcelreath.jpeg"))
+```
+]
+
+--
+.pull-right-50[
+
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path, "statistical-rethinking.jpeg"))
+```
+]
+
+---
+
+# Science as Amateur Software Development
+
+.pull-left-50[
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "richard-mcelreath.jpeg"))
+```
+]
+
+.pull-right-50[
+
+<br>
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "statistical-rethinking.gif"))
+```
+
+.center[
+https://youtu.be/cclUd_HoRlo
+]
+]
+
+---
+
+# Science as Amateur Software Development
+
+.center[
+
+<iframe width="672" height="378" src="https://www.youtube.com/embed/zwRdO9_GGhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen data-external="1"></iframe>
+
+https://youtu.be/zwRdO9_GGhY
+
+]
+
+---
+# Science as Amateur Software Development
+
+--
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-1.png"))
+```
+
+---
+# Science as Amateur Software Development
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-2.png"))
+```
+
+---
+# Science as Amateur Software Development
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-3.png"))
+```
+
+---
+# Science as Amateur Software Development
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-4.png"))
+```
+
+---
+# Science as Amateur Software Development
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-5.png"))
+```
+
+---
+# Science as Amateur Software Development
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-6.png"))
+```
+
+---
+# Science as Amateur Software Development
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-7.png"))
+```
+
+---
+# Science as Amateur Software Development
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "icons-8.png"))
+```
+
+---
+class: inverse, center, middle
+
+# Ready to start?
+

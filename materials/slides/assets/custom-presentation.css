@@ -1,0 +1,278 @@
+
+/*----    Title Slide    ----*/
+
+.title-slide {
+  background-image: url("title-background.png");
+  background-size: contain;
+  background-color: white;
+  color: white;
+  vertical-align: bottom!important;
+  padding-bottom: 150px;
+  padding-left: 110px;
+}
+
+.title-slide h1, .title-slide h2, .title-slide h3 {
+    color: #8C3031;
+    text-align: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-shadow: none;
+}
+
+.title-slide h2 {
+  margin-bottom: 30px;
+}
+
+.title-slide .remark-slide-number{
+  display: none;
+}
+
+/* end */
+.end {
+  background-image: url('thats-all.gif');
+  background-size: cover;
+}
+
+.endstop {
+  background-image: url('thats-all-folks.png');
+  background-size: cover;
+}
+.endstop h1{
+  color: white;
+}
+
+/*----    Progress Bar    ----*/
+
+.remark-slide-number {
+  position: inherit;
+  color: transparent;
+}
+
+.remark-slide-number .progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  height: 6px;
+  display: block;
+  left: 0;
+  right: 0;
+}
+
+.remark-slide-number .progress-bar {
+  height: 100%;
+  background-color: #8C3031;
+}
+
+
+/*----    Slide Theme    ----*/
+
+h1, h2, h3 {
+    color: #8C3031;
+}
+
+a:-webkit-any-link {
+  color: #d43019;
+}
+
+p {
+  font-size: 18pt;
+  color: #403d3d;
+}
+
+/* inverse */
+.inverse {
+    background-color: #8C3031;
+    color: #e8e5e5;
+    text-shadow: 0 0 20px #333;
+}
+
+.inverse .remark-slide-number{
+  display: none;
+}
+
+
+/*----    list    ----*/
+
+li {
+  padding-bottom: 1em;
+  font-size: 18pt;
+  color: #403d3d;
+}
+
+/* li-compact */
+.li-compact li {
+  padding-bottom: 0em;
+}
+
+.li-small li {
+  padding-bottom: 0.5em;
+}
+
+.li-small li, p {
+  font-size: 18pt;
+}
+
+li, img {
+  vertical-align: middle;
+}
+
+
+/*----    code    ----*/
+
+/* code-block */
+.code-block {
+    background-color: #f7f7f7;
+    font-size: 1em;
+}
+
+.code-small code {
+  font-size:10pt;
+}
+
+.remark-code{
+  background: #f8f8f8;
+  display: block;
+  padding: .5em;
+  color: #333;
+}
+
+.remark-inline-code{
+  background-color: #f8f8f8;
+}
+
+.my-code-block .remark-code {
+  display: inline-block;
+}
+
+.bad-code{
+  border-left: 10px solid #FF6961 !important;
+  border-radius: 5px;
+}
+
+.good-code{
+  border-left: 10px solid #77DD77 !important;
+  border-radius: 5px;
+}
+
+
+/*----    blockquote    ----*/
+
+blockquote {
+  border-left: 5pt solid #8C3031;
+  border-radius: 5pt;
+  padding-left: 10pt;
+}
+
+/*----    icons    ----*/
+
+.emoji-large p {
+  font-size: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  vertical-align: middle;
+}
+
+.myicons {
+  vertical-align: middle;
+  padding-right: 10pt;
+  filter: invert(39%) sepia(0%) saturate(83%) hue-rotate(168deg) brightness(97%) contrast(83%);
+}
+
+/*----    layout    ----*/
+
+/* 50/50 */
+.pull-left-50 {
+  float: left;
+  width: 47%;
+}
+.pull-right-50 {
+  float: right;
+  width: 47%;
+}
+
+/* 30/70 */
+.pull-left-30 {
+  float: left;
+  width: 27%;
+}
+.pull-right-70 {
+  float: right;
+  width: 67%;
+}
+
+ /* margins */
+.no-border p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.move-up-30 {
+  margin-top:-30px  !important;
+}
+
+.move-up-50 {
+  margin-top:-50px  !important;
+}
+
+.move-up-70 {
+  margin-top:-70px  !important;
+}
+
+.move-up-100 {
+  margin-top:-100px  !important;
+}
+
+.move-up-150 {
+  margin-top:-150px  !important;
+}
+
+.padding-left{
+  padding-left:30pt
+}
+
+/* width */
+
+.width-70{
+  width: 70%!important;
+  display: inline-block;s
+}
+
+.width-50{
+  width: 50%!important;
+  display: inline-block;s
+}
+
+
+/*----    text style    ----*/
+
+/* font */
+.font-18 p {
+  font-size: 18pt;
+}
+
+.font-14 p {
+  font-size: 14pt !important;
+}
+
+.font-25 {
+  font-size: 25pt;
+}
+
+
+/* color */
+.alpha {
+  opacity: .5;
+}
+
+.color-red {
+  color: #8C3031;
+}
+
+.color-red-equation p {
+  color: #8C3031;
+}
+
+.color-white {
+  color: white;
+}
+
+

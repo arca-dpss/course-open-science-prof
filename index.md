@@ -7,7 +7,7 @@ author_name: Claudio Zandonella
 Open Science Tools (Prof Edition):<br>Making our Scientific Research Accessible and Reproducible
 </p>
 
-*“Researchers are disorganized and chaotic by nature. While this may be the secret of their creativity, it can also lead to costly errors, especially when it comes to coding. In this course, we will learn some software development secrets and introduce coding good practices that may save us lots of headaches. Only by following a structured approach to coding can we ensure the reproducibility of our results and make Science an open-source knowledge development!”*
+> *“Researchers are disorganized and chaotic by nature. While this may be the secret of their creativity, it can also lead to costly errors, especially when it comes to coding. In this course, we will learn some software development secrets and introduce coding good practices that may save us lots of headaches. Only by following a structured approach to coding can we ensure the reproducibility of our results and make Science an open-source knowledge development!”*
 
 # Introduction
 
@@ -74,7 +74,7 @@ Please install the following software in advance.
 
 ## Slides
 
-- [00 Introduction](materials/slides/01-intro.html)
+- <a href="materials/slides/01-introduction.html" target="_blank">01 - Introduction</a>
 
 ## Exercises
 

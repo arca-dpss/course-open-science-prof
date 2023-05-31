@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img align="right" width="150" height="150" src="materials/images/arca-logo.svg">
+<img align="right" width="150" height="150" src="assets/images/arca-logo.svg">
 
 # Open Science Tools
 
