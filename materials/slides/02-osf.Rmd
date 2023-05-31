@@ -1,0 +1,340 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/02-osf/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 02 - The Open Science Framework
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+
+# Step 1: Sharing Materials
+
+---
+
+# Step 1: Sharing Materials
+
+--
+
+<br>
+
+.center[
+*“Data and materials will be made available upon request”*
+
+<br>
+.emoji-large[
+{{content}}
+]
+]
+
+--
+👎👎
+
+---
+
+# Step 1: Sharing Materials
+
+.no-border[
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path,"osf.png"))
+```
+
+.center[
+Open Science Framework (https://osf.io/)
+]
+]
+
+---
+
+# OSF
+
+--
+
+.pull-left-50[
+### Main features
+
+- Store and share materials
+- Collaborate with colleagues
+- Cite research materials
+- Measure research impact
+]
+.pull-right-50[
+{{content}}
+]
+--
+
+### Research Features
+
+- DOI
+- Anonymized Links
+- Preprints
+- Preregistration
+- Add-ons and API
+
+---
+# OSF: Getting Started
+--
+
+
+Sing Up/Sing In 
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"osf-home.png"))
+```
+
+---
+# OSF: Getting Started
+
+Create an Account
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"osf-login.png"))
+```
+
+
+---
+# OSF: Getting Started
+
+Create a new Project
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"user-home.png"))
+```
+
+
+---
+# OSF: Getting Started
+
+Define title and store location
+
+<br>
+
+```{r, out.width="50%"}
+knitr::include_graphics(paste0(image_path,"osf-new-project.png"))
+```
+
+
+---
+# OSF: Project Homepage
+
+Summary information about the project
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"project-dashboard-1.png"))
+```
+
+---
+# OSF: Project Homepage
+
+Visibility and Fork
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"project-dashboard-2.png"))
+```
+
+
+---
+# OSF: Project Homepage
+
+Project Elements
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"project-dashboard-3.png"))
+```
+
+---
+# OSF: Project Homepage
+
+Top menu bar
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"project-dashboard-4.png"))
+```
+
+---
+# OSF: Files
+
+Add files related to the project
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"osf-add-files.png"))
+```
+
+---
+# OSF: Documentation
+
+Add a description of the project
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"osf-document.png"))
+```
+
+---
+# OSF: Research Features
+.no-border[
+### Get the DOI
+]
+.pull-left-60[
+Make the project public
+
+```{r, out.width="99%"}
+knitr::include_graphics(paste0(image_path,"project-visibility.png"))
+```
+]
+.pull-right-40[
+Create the DOI
+
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path,"osf-doi.png"))
+```
+]
+
+---
+# OSF: Research Features
+.no-border[
+### Add Contributors
+]
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"osf-contributors.png"))
+```
+
+---
+# OSF: Research Features
+.no-border[
+### Sharable Anonymized Links
+]
+.pull-left-60[
+```{r, out.width="99%"}
+knitr::include_graphics(paste0(image_path,"osf-link.png"))
+```
+]
+.pull-right-40[
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path,"anonymize-link.png"))
+```
+
+```{r, out.width="99%"}
+knitr::include_graphics(paste0(image_path,"anonymize-link-2.png"))
+```
+]
+
+---
+# OSF: Research Features
+.pull-left-50[
+.no-border[
+### Preprints
+]
+
+```{r, out.width="99%"}
+knitr::include_graphics(paste0(image_path,"preprint.png"))
+```
+
+.center[https://osf.io/preprints/]
+
+]
+.pull-right-50[
+.no-border[
+### Preregistrations
+]
+
+```{r, out.width="99%"}
+knitr::include_graphics(paste0(image_path,"preregistration.png"))
+```
+
+.center[https://osf.io/registries]
+]
+
+
+---
+class: inverse, center, middle
+
+# Sharing is Caring!
+
+## Moving to the next step...

@@ -179,6 +179,16 @@ blockquote {
 
 /*----    layout    ----*/
 
+/* 60/40 */
+.pull-left-60 {
+  float: left;
+  width: 57%;
+}
+.pull-right-40 {
+  float: right;
+  width: 37%;
+}
+
 /* 50/50 */
 .pull-left-50 {
   float: left;
@@ -187,6 +197,16 @@ blockquote {
 .pull-right-50 {
   float: right;
   width: 47%;
+}
+
+/* 40/60 */
+.pull-left-40 {
+  float: left;
+  width: 37%;
+}
+.pull-right-60 {
+  float: right;
+  width: 57%;
 }
 
 /* 30/70 */
@@ -198,9 +218,8 @@ blockquote {
   float: right;
   width: 67%;
 }
-
  /* margins */
-.no-border p {
+.no-border p, h3 {
   margin-top: 0px;
   margin-bottom: 0px;
 }
