@@ -1,0 +1,1101 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/03-projects/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 03 - Projects
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+
+class: center, middle, inverse
+
+# Step 2: Project Structure
+
+---
+
+# Project Structure
+
+--
+
+.code-small[
+.pull-left-50[
+```
+- Tesi Magistrale/
+      |- Data Analysis/
+            |- 10052018.R
+            |- 16052018.R
+            |- Analisi preliminari.docx
+            |- DataAnlysis.R
+            |- Grafici.3D.R
+            |- Limitation.R
+            |- Marginal effects m10.png
+            |- Marginal effects m2.png
+            |- ModelsAnalysis.R
+            |- Parameters m10.png
+            |- Parameters m2.png
+            |- Plots.R
+            |- Posterior Predicto Ext Int.png
+            |- PreparazioneDataset.r
+            |- Prior Probabilities 2.png
+            |- Prior Probabilities.png
+            |- Prior probabilities 3.png
+            |- Sample_analysis.R
+            |- Variables Relative Frequencies.png
+            |- Warm-up Iteractions.png
+            |- claudio.xls
+            |- d.conmeans.rda
+            |- d.correct.rda
+            |- d.finale.rda
+            |- d.girato.rda
+```
+]
+.pull-right-50[
+```
+
+
+            |- d.noNA.rda
+            |- d.selez.rda
+            |- data.CSV
+            |- ext~base.rda
+            |- ext~ssm+ssp.rda
+            |- ext~ssm.bis.rda
+            |- ext~ssm.rda
+            |- ext~ssm_ssp.rda
+            |- ext~ssp.rda
+            |- int1.png
+            |- int2.png
+            |- int~base.rda
+            |- int~ssm+ssp.rda
+            |- int~ssm.rda
+            |- int~ssm_ssp.bis.rda
+            |- int~ssm_ssp.rda
+            |- int~ssp.rda
+            |- int~ssp_ssm.rda
+            |- m1.txt
+            |- naquest0.1.pdf
+            |- naquest01.R
+            |- note_claudio.R
+            |- sample_studies.csv
+            |- studies_table.csv
+```
+]
+]
+
+---
+
+# Project Structure
+
+
+.code-small[
+.pull-left-50[
+```
+- Tesi Magistrale/
+      |- Data Analysis/
+*           |- 10052018.R
+*           |- 16052018.R
+            |- Analisi preliminari.docx
+            |- DataAnlysis.R
+            |- Grafici.3D.R
+            |- Limitation.R
+            |- Marginal effects m10.png
+            |- Marginal effects m2.png
+            |- ModelsAnalysis.R
+            |- Parameters m10.png
+            |- Parameters m2.png
+            |- Plots.R
+            |- Posterior Predicto Ext Int.png
+            |- PreparazioneDataset.r
+            |- Prior Probabilities 2.png
+            |- Prior Probabilities.png
+            |- Prior probabilities 3.png
+            |- Sample_analysis.R
+            |- Variables Relative Frequencies.png
+            |- Warm-up Iteractions.png
+            |- claudio.xls
+*           |- d.conmeans.rda
+*           |- d.correct.rda
+*           |- d.finale.rda
+*           |- d.girato.rda
+```
+]
+.pull-right-50[
+```
+
+
+*           |- d.noNA.rda
+*           |- d.selez.rda
+            |- data.CSV
+            |- ext~base.rda
+            |- ext~ssm+ssp.rda
+            |- ext~ssm.bis.rda
+            |- ext~ssm.rda
+            |- ext~ssm_ssp.rda
+            |- ext~ssp.rda
+            |- int1.png
+            |- int2.png
+            |- int~base.rda
+            |- int~ssm+ssp.rda
+            |- int~ssm.rda
+*           |- int~ssm_ssp.bis.rda
+*           |- int~ssm_ssp.rda
+            |- int~ssp.rda
+            |- int~ssp_ssm.rda
+            |- m1.txt
+            |- naquest0.1.pdf
+            |- naquest01.R
+            |- note_claudio.R
+            |- sample_studies.csv
+            |- studies_table.csv
+```
+]
+]
+
+---
+
+# Project Structure
+
+--
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+*   |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Data
+
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+*   |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Data
+
+.my-code-block[
+```
+- data/
+    |-- data-raw/
+    |-- cache/
+    |-- output/
+```
+]
+
+<br>
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Data in input are **`read-only`**
+- Share data in **machine readable format** (no `.pdf`)
+- Add data **documentation** (`data-README`) 
+- Add data **license**
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+*   |-- analysis/
+    |-- documents/
+*   |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Code
+
+<br>
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+### Functional Style
+
+{{content}}
+
+--
+
+- `analysis/` - Scripts used for running the analysis
+- `src/` - Scripts with definition of custom functions
+---
+
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+*   |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Documents
+
+]
+
+---
+
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+*   |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Documents
+
+.my-code-block[
+```
+- documents/
+    |-- paper/
+    |-- presentation/
+    |-- report/
+```
+]
+
+<br>
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Use dynamic documents<br>(e.g., Rmarkdown, Jupyter Notebook)
+- ![](`r paste0(image_path, 'logo-quarto.png')`) &nbsp;&nbsp; https://quarto.org/
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+*   |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## README
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Title and Authors
+- Description
+- Project Structure
+- Getting Started
+  - Requirements
+  - Installation/Run Analysis
+- Other
+  - Citation
+  - Acknowledgements
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+*   |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## README
+
+.li-small[
+- Title and Authors
+- Description
+- Project Structure
+- Getting Started
+  - Requirements
+  - Installation/Run Analysis
+- Other
+  - Citation
+  - Acknowledgements
+  
+https://gitlab.inf.unibz.it/URS/builthub/eu27materials
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+*   |-- LICENSE
+```
+]
+.pull-right-70[
+
+## LICENSE
+
+.center[
+{{content}}
+]
+]
+
+--
+
+*Without license all rights are reserved!*
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+*   |-- LICENSE
+```
+]
+.pull-right-70[
+
+## LICENSE
+
+.center[
+*Without license all rights are reserved!*
+]
+
+<br>
+
+.li-small[
+- Software open-source license (e.g., MIT, Apache, GNU GPL)<br>https://choosealicense.com/licenses/
+- Materials Creative Commons Licenses &nbsp;&nbsp; <img style="width:7em" src="`r paste0(image_path, 'cc-by-sa.png')`" class="inline-img"><br>https://creativecommons.org/about/cclicenses/
+- Open data license
+]
+
+{{content}}
+]
+
+--
+
+Extra - Aaron Swartz [Story](https://en.wikipedia.org/wiki/Aaron_Swartz) (
+[Documentary](https://www.youtube.com/watch?v=M85UvH0TRPc))
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+"untitled.R" # not meaningful name
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+"analysis-experiment-A.R" # clear descriptive name
+```
+]
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names<br>(`my-file.txt` &nbsp; vs &nbsp; `My-File.txt`)
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names
+- Specify files extension
+]
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names
+- Specify files extension
+- Avoid spaces
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+"I like to/mess things up.txt" # Your machine is gonna hate you 
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+"path-to/my-file.txt"
+```
+]
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names
+- Specify files extension
+- Avoid spaces
+- Avoid special characters
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+"brûlée-recipe.txt" # surely a good recipe for troubles
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+"brulee-reciepe.txt" # use only basic Latin characters
+```
+]
+]
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+.li-small[
+- Ready to share and collaborate
+- Centralize the analysis
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+.li-small[
+- Ready to share and collaborate
+- Centralize the analysis
+- Configuration files for project settings
+]
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+.li-small[
+- Ready to share and collaborate
+- Centralize the analysis
+- Configuration files for project settings
+- **Working directory** and **relative paths**
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+# absolute path
+"/Users/<username>/Desktop/my-project/data/my-data.csv"
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+# relative path
+"data/my-data.csv"
+```
+]
+]
+]
+
+---
+# Extra: The Garden of Forking Paths
+
+.pull-left-50[
+### Unix
+
+.li-small[
+- `"/"` (forward slash) to separate directories
+.code-compact[
+```{r, echo=TRUE, eval = FALSE}
+"my-project/data/my-data.csv"
+```
+]
+- `"/"` indicates root-directory
+.code-compact[
+.code-small[
+```{r, echo=TRUE, eval = FALSE}
+# Mac
+"/Users/<username>/Desktop/my-project/data/my-data.csv"
+# Linux
+"/home/<username>/Desktop/my-project/data/my-data.csv"
+```
+]]
+- `"~"` indicates home-directory  <br>`"/Users/<username>/"` - MacOS; `"/home/<username>/"` - Linux
+.code-compact[
+```{r, echo=TRUE, eval = FALSE}
+"~/Desktop/my-project/data/my-data.csv"
+```
+]
+]
+]
+.pull-right-50[
+### Windows Systems
+
+.li-small[
+- `"\"` (backslash) to separate directories
+.code-compact[
+```{r, echo=TRUE, eval = FALSE}
+"my-project\\data\\my-data.csv"
+```
+]
+- `"C:\"` indicates root-directory
+.code-compact[
+```{r, echo=TRUE, eval = FALSE}
+"C:\\Users\\<username>\\Desktop\\my-project\\data\\my-data.csv"
+```
+]
+- `"~"` indicates Documents directory
+]
+
+### Other Commands
+
+.li-small[
+- `"."` current working directory
+- `".."` parent folder
+]
+
+]
+
+---
+class: inverse, middle, center
+
+# RStudio Projects
+
+---
+# RStudio Projects: New Project
+--
+
+.pull-left-50[
+*“File > New Project”*
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"new-proj-1.png"))
+```
+]
+.pull-right-50[
+Create project options...
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"new-proj-2.png"))
+```
+]
+
+---
+# RStudio Projects: New Project
+
+.pull-left-50[
+Project templates
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"new-proj-3.png"))
+```
+]
+.pull-right-50[
+Project specifications
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"new-proj-4.png"))
+```
+]
+
+---
+# RStudio Projects: Features
+
+--
+
+.pull-left-50[
+.li-small[
+- Working Directory and File Paths
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"proj-wd.png"))
+```
+
+> Always use forward slash `"/"`
+
+- `<project-name>.Rproj`
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"rproj-file.png"))
+```
+
+]
+]
+.pull-right-50[
+.li-small[
+- Project settings
+
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path,"proj-options.png"))
+```
+]
+]
+
+---
+# RStudio Projects: Features
+
+.no-border[
+#### Suggested global settings
+]
+--
+
+.pull-left-50[
+.li-small[
+- Always start in a new empty environment
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"general-options.png"))
+```
+]
+]
+.pull-right-50[
+.li-small[
+- *“UTF-8”* encoding
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"settings-UTF8.png"))
+```
+]
+]
+---
+# RStudio Projects: Features
+
+.no-border[
+#### `.Rprofile`
+]
+
+.pull-left-50[
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"hidden-files.png"))
+```
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"rprofile.png"))
+```
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"restart-session.png"))
+```
+
+]
+.pull-right-50[
+
+My `.Rprofile`
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"my-rprofile.png"))
+```
+
+]
+---
+class: inverse, center, middle
+
+
+# Like having multiple office desks!
+
+## Moving to the next step...

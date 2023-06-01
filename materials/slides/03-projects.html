@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>03-projects.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # 03 - Projects
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+
+class: center, middle, inverse
+
+# Step 2: Project Structure
+
+---
+
+# Project Structure
+
+--
+
+.code-small[
+.pull-left-50[
+```
+- Tesi Magistrale/
+      |- Data Analysis/
+            |- 10052018.R
+            |- 16052018.R
+            |- Analisi preliminari.docx
+            |- DataAnlysis.R
+            |- Grafici.3D.R
+            |- Limitation.R
+            |- Marginal effects m10.png
+            |- Marginal effects m2.png
+            |- ModelsAnalysis.R
+            |- Parameters m10.png
+            |- Parameters m2.png
+            |- Plots.R
+            |- Posterior Predicto Ext Int.png
+            |- PreparazioneDataset.r
+            |- Prior Probabilities 2.png
+            |- Prior Probabilities.png
+            |- Prior probabilities 3.png
+            |- Sample_analysis.R
+            |- Variables Relative Frequencies.png
+            |- Warm-up Iteractions.png
+            |- claudio.xls
+            |- d.conmeans.rda
+            |- d.correct.rda
+            |- d.finale.rda
+            |- d.girato.rda
+```
+]
+.pull-right-50[
+```
+
+
+            |- d.noNA.rda
+            |- d.selez.rda
+            |- data.CSV
+            |- ext~base.rda
+            |- ext~ssm+ssp.rda
+            |- ext~ssm.bis.rda
+            |- ext~ssm.rda
+            |- ext~ssm_ssp.rda
+            |- ext~ssp.rda
+            |- int1.png
+            |- int2.png
+            |- int~base.rda
+            |- int~ssm+ssp.rda
+            |- int~ssm.rda
+            |- int~ssm_ssp.bis.rda
+            |- int~ssm_ssp.rda
+            |- int~ssp.rda
+            |- int~ssp_ssm.rda
+            |- m1.txt
+            |- naquest0.1.pdf
+            |- naquest01.R
+            |- note_claudio.R
+            |- sample_studies.csv
+            |- studies_table.csv
+```
+]
+]
+
+---
+
+# Project Structure
+
+
+.code-small[
+.pull-left-50[
+```
+- Tesi Magistrale/
+      |- Data Analysis/
+*           |- 10052018.R
+*           |- 16052018.R
+            |- Analisi preliminari.docx
+            |- DataAnlysis.R
+            |- Grafici.3D.R
+            |- Limitation.R
+            |- Marginal effects m10.png
+            |- Marginal effects m2.png
+            |- ModelsAnalysis.R
+            |- Parameters m10.png
+            |- Parameters m2.png
+            |- Plots.R
+            |- Posterior Predicto Ext Int.png
+            |- PreparazioneDataset.r
+            |- Prior Probabilities 2.png
+            |- Prior Probabilities.png
+            |- Prior probabilities 3.png
+            |- Sample_analysis.R
+            |- Variables Relative Frequencies.png
+            |- Warm-up Iteractions.png
+            |- claudio.xls
+*           |- d.conmeans.rda
+*           |- d.correct.rda
+*           |- d.finale.rda
+*           |- d.girato.rda
+```
+]
+.pull-right-50[
+```
+
+
+*           |- d.noNA.rda
+*           |- d.selez.rda
+            |- data.CSV
+            |- ext~base.rda
+            |- ext~ssm+ssp.rda
+            |- ext~ssm.bis.rda
+            |- ext~ssm.rda
+            |- ext~ssm_ssp.rda
+            |- ext~ssp.rda
+            |- int1.png
+            |- int2.png
+            |- int~base.rda
+            |- int~ssm+ssp.rda
+            |- int~ssm.rda
+*           |- int~ssm_ssp.bis.rda
+*           |- int~ssm_ssp.rda
+            |- int~ssp.rda
+            |- int~ssp_ssm.rda
+            |- m1.txt
+            |- naquest0.1.pdf
+            |- naquest01.R
+            |- note_claudio.R
+            |- sample_studies.csv
+            |- studies_table.csv
+```
+]
+]
+
+---
+
+# Project Structure
+
+--
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+*   |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Data
+
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+*   |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Data
+
+.my-code-block[
+```
+- data/
+    |-- data-raw/
+    |-- cache/
+    |-- output/
+```
+]
+
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Data in input are **`read-only`**
+- Share data in **machine readable format** (no `.pdf`)
+- Add data **documentation** (`data-README`) 
+- Add data **license**
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+*   |-- analysis/
+    |-- documents/
+*   |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Code
+
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+### Functional Style
+
+{{content}}
+
+--
+
+- `analysis/` - Scripts used for running the analysis
+- `src/` - Scripts with definition of custom functions
+---
+
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+*   |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Documents
+
+]
+
+---
+
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+*   |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Documents
+
+.my-code-block[
+```
+- documents/
+    |-- paper/
+    |-- presentation/
+    |-- report/
+```
+]
+
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Use dynamic documents&lt;br&gt;(e.g., Rmarkdown, Jupyter Notebook)
+- ![](images/03-projects/logo-quarto.png) &amp;nbsp;&amp;nbsp; https://quarto.org/
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+*   |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## README
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Title and Authors
+- Description
+- Project Structure
+- Getting Started
+  - Requirements
+  - Installation/Run Analysis
+- Other
+  - Citation
+  - Acknowledgements
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+*   |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## README
+
+.li-small[
+- Title and Authors
+- Description
+- Project Structure
+- Getting Started
+  - Requirements
+  - Installation/Run Analysis
+- Other
+  - Citation
+  - Acknowledgements
+  
+https://gitlab.inf.unibz.it/URS/builthub/eu27materials
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+*   |-- LICENSE
+```
+]
+.pull-right-70[
+
+## LICENSE
+
+.center[
+{{content}}
+]
+]
+
+--
+
+*Without license all rights are reserved!*
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+*   |-- LICENSE
+```
+]
+.pull-right-70[
+
+## LICENSE
+
+.center[
+*Without license all rights are reserved!*
+]
+
+&lt;br&gt;
+
+.li-small[
+- Software open-source license (e.g., MIT, Apache, GNU GPL)&lt;br&gt;https://choosealicense.com/licenses/
+- Materials Creative Commons Licenses &amp;nbsp;&amp;nbsp; &lt;img style="width:7em" src="images/03-projects/cc-by-sa.png" class="inline-img"&gt;&lt;br&gt;https://creativecommons.org/about/cclicenses/
+- Open data license
+]
+
+{{content}}
+]
+
+--
+
+Extra - Aaron Swartz [Story](https://en.wikipedia.org/wiki/Aaron_Swartz) (
+[Documentary](https://www.youtube.com/watch?v=M85UvH0TRPc))
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+.bad-code[
+
+```r
+"untitled.R" # not meaningful name
+```
+]
+.good-code[
+
+```r
+"analysis-experiment-A.R" # clear descriptive name
+```
+]
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names&lt;br&gt;(`my-file.txt` &amp;nbsp; vs &amp;nbsp; `My-File.txt`)
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names
+- Specify files extension
+]
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names
+- Specify files extension
+- Avoid spaces
+.bad-code[
+
+```r
+"I like to/mess things up.txt" # Your machine is gonna hate you 
+```
+]
+.good-code[
+
+```r
+"path-to/my-file.txt"
+```
+]
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Naming Conventions
+
+.li-small[
+- Use meaningful names
+- Prefer lower-case names
+- Specify files extension
+- Avoid spaces
+- Avoid special characters
+.bad-code[
+
+```r
+"brûlée-recipe.txt" # surely a good recipe for troubles
+```
+]
+.good-code[
+
+```r
+"brulee-reciepe.txt" # use only basic Latin characters
+```
+]
+]
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+.li-small[
+- Ready to share and collaborate
+- Centralize the analysis
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+.li-small[
+- Ready to share and collaborate
+- Centralize the analysis
+- Configuration files for project settings
+]
+]
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
+    |-- LICENSE
+```
+]
+.pull-right-70[
+
+## Advantages
+
+.li-small[
+- Ready to share and collaborate
+- Centralize the analysis
+- Configuration files for project settings
+- **Working directory** and **relative paths**
+.bad-code[
+
+```r
+# absolute path
+"/Users/&lt;username&gt;/Desktop/my-project/data/my-data.csv"
+```
+]
+.good-code[
+
+```r
+# relative path
+"data/my-data.csv"
+```
+]
+]
+]
+
+---
+# Extra: The Garden of Forking Paths
+
+.pull-left-50[
+### Unix
+
+.li-small[
+- `"/"` (forward slash) to separate directories
+.code-compact[
+
+```r
+"my-project/data/my-data.csv"
+```
+]
+- `"/"` indicates root-directory
+.code-compact[
+.code-small[
+
+```r
+# Mac
+"/Users/&lt;username&gt;/Desktop/my-project/data/my-data.csv"
+# Linux
+"/home/&lt;username&gt;/Desktop/my-project/data/my-data.csv"
+```
+]]
+- `"~"` indicates home-directory  &lt;br&gt;`"/Users/&lt;username&gt;/"` - MacOS; `"/home/&lt;username&gt;/"` - Linux
+.code-compact[
+
+```r
+"~/Desktop/my-project/data/my-data.csv"
+```
+]
+]
+]
+.pull-right-50[
+### Windows Systems
+
+.li-small[
+- `"\"` (backslash) to separate directories
+.code-compact[
+
+```r
+"my-project\\data\\my-data.csv"
+```
+]
+- `"C:\"` indicates root-directory
+.code-compact[
+
+```r
+"C:\\Users\\&lt;username&gt;\\Desktop\\my-project\\data\\my-data.csv"
+```
+]
+- `"~"` indicates Documents directory
+]
+
+### Other Commands
+
+.li-small[
+- `"."` current working directory
+- `".."` parent folder
+]
+
+]
+
+---
+class: inverse, middle, center
+
+# RStudio Projects
+
+---
+# RStudio Projects: New Project
+--
+
+.pull-left-50[
+*“File &gt; New Project”*
+
+&lt;img src="images/03-projects/new-proj-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+Create project options...
+
+&lt;img src="images/03-projects/new-proj-2.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# RStudio Projects: New Project
+
+.pull-left-50[
+Project templates
+
+&lt;img src="images/03-projects/new-proj-3.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+Project specifications
+
+&lt;img src="images/03-projects/new-proj-4.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# RStudio Projects: Features
+
+--
+
+.pull-left-50[
+.li-small[
+- Working Directory and File Paths
+
+&lt;img src="images/03-projects/proj-wd.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+&gt; Always use forward slash `"/"`
+
+- `&lt;project-name&gt;.Rproj`
+
+&lt;img src="images/03-projects/rproj-file.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+]
+]
+.pull-right-50[
+.li-small[
+- Project settings
+
+&lt;img src="images/03-projects/proj-options.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# RStudio Projects: Features
+
+.no-border[
+#### Suggested global settings
+]
+--
+
+.pull-left-50[
+.li-small[
+- Always start in a new empty environment
+
+&lt;img src="images/03-projects/general-options.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+]
+.pull-right-50[
+.li-small[
+- *“UTF-8”* encoding
+
+&lt;img src="images/03-projects/settings-UTF8.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+]
+---
+# RStudio Projects: Features
+
+.no-border[
+#### `.Rprofile`
+]
+
+.pull-left-50[
+
+&lt;img src="images/03-projects/hidden-files.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="images/03-projects/rprofile.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="images/03-projects/restart-session.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+
+My `.Rprofile`
+
+&lt;img src="images/03-projects/my-rprofile.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+]
+---
+class: inverse, center, middle
+
+
+# Like having multiple office desks!
+
+## Moving to the next step...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
