@@ -372,7 +372,7 @@ knitr::include_graphics(paste0(image_path,"brahe.jpg"))
 <br>
 
 ```{r, out.width="85%"}
-knitr::include_graphics(paste0(image_path,"FAiR-data.jpeg"))
+knitr::include_graphics(paste0(image_path,"FAIR-data.jpeg"))
 ```
 
 ---
