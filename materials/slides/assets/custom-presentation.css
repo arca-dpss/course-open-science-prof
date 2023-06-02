@@ -74,6 +74,7 @@ h4 {
   font-family: 'Yanone Kaffeesatz';
   font-weight: normal;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 h4 code {
@@ -116,10 +117,13 @@ li {
 
 .li-small li {
   padding-bottom: 0.5em;
+  font-size: 16pt;
 }
 
-.li-small li, .li-small p {
+.li-small p {
   font-size: 16pt;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 li, img {
@@ -139,6 +143,13 @@ li, img {
   font-size:10pt;
 }
 
+.code-size-12 code, .code-size-12 remark-code-line {
+  font-size:12pt;
+}
+
+.code-size-16 code, .code-size-16 remark-code, .code-size-16 remark-code-line {
+  font-size:16pt;
+}
 .code-compact pre {
   margin: 0.25em 0px;
 }
@@ -158,13 +169,18 @@ li, img {
   display: inline-block;
 }
 
-.bad-code{
+.bad-code {
   border-left: 10px solid #FF6961 !important;
   border-radius: 5px;
 }
 
-.good-code{
+.good-code {
   border-left: 10px solid #77DD77 !important;
+  border-radius: 5px;
+}
+
+.warn-code {
+  border-left: 10px solid #FFC55C !important;
   border-radius: 5px;
 }
 

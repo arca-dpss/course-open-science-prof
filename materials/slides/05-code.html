@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>05-code.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # 05 - Coding
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+
+# Step 5: Coding [with] Style
+
+---
+
+# Coding Style
+
+--
+## The ideal code
+
+--
+- It works
+--
+
+.font-18[
+&gt;*“Any fool can write code that a computer can understand.&lt;br&gt;Good programmers write code that humans can understand.”* – Martin Fowler
+
+]
+--
+
+- It is readable
+- It is easy to maintain
+
+---
+# Coding Style
+
+--
+.move-up-30[
+.bad-code[
+
+```r
+y&lt;-c(1,0,1,1,0,1,1);p&lt;-sum(y)/length(y);if(p&gt;=.6){"Passed"}else{"Failed"}
+## [1] "Passed"
+```
+]
+]
+--
+
+.good-code[
+
+```r
+# Load subj test answers
+exam_answers &lt;- c(1,0,1,1,0,1,1) # 0 = wrong; 1 = correct
+
+# Get exam score as proportion of correct answers
+exam_score &lt;- sum(exam_answers) / length(exam_answers)
+
+# Set exam pass threshold [0,1]
+threshold &lt;- .6
+
+# Check if subj passed the exam
+if (exam_score &gt;= threshold) {
+  "Passed"
+} else {
+  "Failed"
+}
+## [1] "Passed"
+```
+]
+
+--
+
+&gt;*“Good coding style is like using correct punctuation. You can manage without it,&lt;br&gt; but it sure makes things easier to read.”* – Hadley Wickham
+
+---
+# Coding Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+.pull-right-70[
+
+]
+--
+
+- Naming variables
+- Spacing and indentation
+- Comments
+
+---
+# Coding Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+{{content}}
+]
+
+--
+&gt; *“There are only two hard things in Computer Science: cache invalidation and naming things.”* – Phil Karlton
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Auto-descriptive
+.bad-code[
+
+```r
+y # generic name without useful information
+```
+]
+.good-code[
+
+```r
+exam_answers # clear descriptive name
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Auto-descriptive
+- Right Length
+.bad-code[
+
+```r
+average_outcome_score_of_the_control_gorup # too long
+
+  avg_scr_ctr # difficult to guess the abbreviation meaning
+```
+]
+.good-code[
+
+```r
+avg_score_control # clear descriptive name
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+.good-code[
+
+```r
+myObjectName    # camelCase
+
+  MyObjectName    # PascalCase
+
+  my_object_name  # snake_case
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+.good-code[
+
+```r
+myObjectName    # camelCase
+
+  MyObjectName    # PascalCase
+
+  my_object_name  # snake_case
+```
+]
+.warn-code[
+
+```r
+my.object.name  # snake.case (deprecated)
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+- Avoid special characters (e.g., è, ü, ñ, etc.)
+
+&lt;img src="images/05-code/unicode.jpg" width="60%" style="display: block; margin: auto;" /&gt;
+
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+- Avoid special characters (e.g., è, ü, ñ, etc.)
+- Avoid naming objects with function names&lt;br&gt;(e.g., `data`, `list`, or `sum`)
+- Avoid similar names that could be easily confused
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+#### Extra: Temporary Variables
+
+.li-small[
+- Position Index: `i`, `index`, `row_i`, or `col_i`
+.good-code[
+.code-size-12[
+
+```r
+# Cities names
+  cities &lt;- c("Amsterdam", "Berlin", "Cardiff", "Dublin")
+  
+  # Loop by position index
+  for (i in seq_len(length(cities))) {
+    cat(cities[i], " ")
+  }
+  ## Amsterdam  Berlin  Cardiff  Dublin
+```
+]
+]
+
+- Element: `k`, parts (`slice` of `pizza`), or singular
+.good-code[
+.code-size-12[
+
+```r
+# Loop by element
+  for (city in cities) {
+    cat(city, " ")
+  }
+  ## Amsterdam  Berlin  Cardiff  Dublin
+```
+]
+]
+]
+]
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Line length (e.g, 80 characters)
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Line length (e.g, 80 characters)
+
+&lt;img src="images/05-code/rstudio-line.png" width="50%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+.bad-code[
+
+```r
+# too long
+my_very_long_list&lt;-list(first_argument="something-very-long",second_argument=c("many","objects"),third_argument=c(1,2,3,4,5))
+#
+```
+]
+.good-code[
+
+```r
+my_very_long_list &lt;- list(
+      first_argument = "something-very-long",
+      second_argument = c("many", "objects"),
+      third_argument = c(1, 2, 3, 4, 5)
+      )
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+.bad-code[
+
+```r
+# too long
+my_very_long_list&lt;-list(first_argument="something-very-long",second_argument=c("many","objects"),third_argument=c(1,2,3,4,5))
+#
+```
+]
+.good-code[
+
+```r
+my_very_long_list &lt;- list(
+      first_argument = "something-very-long",
+      second_argument = c("many", "objects"),
+      third_argument = c(1, 2, 3, 4, 5)
+      )
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+- Spacing and named arguments
+.bad-code[
+
+```r
+# es. 1
+x&lt;-sum(c(1:10,99),rnorm(5,mean=3,1))
+# es. 2
+if(test&gt;=5&amp;test&lt;=10)print("...")
+```
+]
+.good-code[
+
+```r
+# es. 1
+x &lt;- sum(c(1:10, 99), rnorm(n = 5, mean = 3, sd = 1))
+# es. 2
+if (test &gt;= 5 &amp; test &lt;= 10) print("...")
+```
+]
+]
+]
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+- Spacing and named arguments
+- Indentation
+]
+.move-up-30[
+.pull-left-50[
+.bad-code[
+
+```r
+for (...) {   # Outer loop
+...
+for (...) {   # Inner loop
+...
+if (...) {    # Conditional 
+...
+}}}
+```
+]
+]
+.pull-right-50[
+.good-code[
+
+```r
+for (...) {   # Outer loop
+  ...
+
+  for (...) {   # Inner loop
+    ...
+
+    if (...) {    # Conditional
+
+      ...
+    }
+  }
+}
+```
+]
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+#### Extra: Do not mix-up tabs and spaces!!
+
+{{content}}
+
+]
+
+--
+
+&lt;img src="images/05-code/rstudio-indent.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+#### Extra: Do not mix-up tabs and spaces!!
+
+&lt;br&gt;
+
+.move-up-30[
+&lt;iframe width="672" height="378" src="https://www.youtube-nocookie.com/embed/SsoOG6ZeyUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- Comments
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Describe the aim and the logic
+- Not duplicate the code
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- Comments
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Describe the aim and the logic
+- Not duplicate the code
+
+.bad-code[
+
+```r
+# Set x to 10
+x &lt;- 10 
+```
+]
+.good-code[
+
+```r
+# Define maximum answer number
+x &lt;- 10
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- Comments
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- Describe the aim and the logic
+- Not duplicate the code
+- Explain unidiomatic code
+- Provide links and references
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+- Extra
+]
+]
+.pull-right-70[
+.center[
+.move-up-30[
+{{content}}
+]
+]
+]
+
+--
+## KISS
+
+{{content}}
+
+--
+*Keep It Simple Stupid!*
+
+---
+
+# Coding Good Practices
+
+
+.pull-left-30[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+- Extra
+]
+]
+.pull-right-70[
+.center[
+.move-up-30[
+
+## KISS
+
+*Keep It Simple Stupid!*
+
+]
+]
+.pull-left-50[
+.bad-code[
+.code-small[
+
+```r
+check_value &lt;- function(x){
+
+  if (x &gt; 0) {
+    if (x &gt; 100) {
+      return("x is a positive large value")
+    } else {
+      return("x is a positive value")
+    }
+  } else {
+    if (x &lt; - 100) {
+      return("x is a negative small value")
+    } else {
+      return("x is a negative value")
+    }
+  }
+
+}
+```
+]
+]
+]
+.pull-right-50[
+.good-code[
+.code-small[
+
+```r
+check_value &lt;- function(x){
+
+  if(x &lt; - 100) return("x is a negative small value")
+  if(x &lt; 0) return("x is a negative value")
+  if(x &lt; 100) return("x is a positive value")
+
+  return("x is a positive large value")
+}
+}
+```
+]
+]
+]
+]
+
+---
+
+# R Good Practices
+--
+
+.move-up-50[
+.pull-left-50[
+### Assign
+
+`&lt;-` vs `=`
+
+.code-size-12[
+
+```r
+# both are valid
+a &lt;- 3
+b = 4
+
+# which one is more clear?
+a &lt;- b
+a = b
+```
+]
+
+]
+.pull-right-50[]
+]
+
+---
+# R Good Practices
+
+.move-up-50[
+.pull-left-50[
+### Assign
+
+`&lt;-` vs `=`
+
+.code-size-12[
+
+```r
+# both are valid
+a &lt;- 3
+b = 4
+
+# which one is more clear?
+a &lt;- b
+a = b
+```
+]
+
+]
+.pull-right-50[
+
+### Logical Values
+
+`TRUE`/`FALSE` vs `T`/`F`
+
+.code-size-12[
+
+```r
+# Check value
+TRUE == T
+## [1] TRUE
+
+# Change values
+TRUE &lt;- "Hello"
+## Error in TRUE &lt;- "Hello": 
+## invalid (do_set) left-hand side to assignment
+
+T &lt;- "World"
+T
+## [1] "World"
+
+TRUE == T
+## [1] FALSE
+
+# If you want to be evil
+T &lt;- FALSE
+FALSE == T
+## [1] TRUE
+```
+]
+]
+]
+---
+class: inverse, middle, center
+
+# Functional Style
+
+---
+# Functional Style
+
+---
+# Functional Style
+
+.pull-left-50[
+.bad-code[
+
+```r
+# Standardize variables
+x1_std &lt;- (x1 - mean(x1)) / sd(x1)
+x2_std &lt;- (x2 - mean(x2)) / sd(x2)
+x3_std &lt;- (x3 - mean(x3)) / sd(x3)
+```
+]
+
+.center[
+{{content}}
+]
+]
+.pull-right-50[
+.good-code[
+
+]
+]
+
+--
+## DRY
+
+*Don’t Repeat Yourself!*
+---
+# Functional Style
+
+.pull-left-50[
+.bad-code[
+
+```r
+# Standardize variables
+x1_std &lt;- (x1 - mean(x1)) / sd(x1)
+x2_std &lt;- (x2 - mean(x2)) / sd(x2)
+x3_std &lt;- (x3 - mean(x3)) / sd(x3)
+```
+]
+.center[
+## DRY
+
+*Don’t Repeat Yourself!*
+]
+]
+.pull-right-50[
+.good-code[
+
+```r
+#----    my-functions.R    ----#
+
+# Define custom function
+std_var &lt;- function(x){
+  
+  res &lt;- (x - mean(x)) / sd(x)
+  
+  return(res)
+}
+
+#----    my-analysis-script.R    ----#
+
+# Apply custom function
+x1_std &lt;- std_var(x1)
+x2_std &lt;- std_var(x2)
+x3_std &lt;- std_var(x3)
+```
+]
+]
+
+---
+# Functional Style
+
+.pull-left-50[
+.bad-code[
+
+```r
+# Standardize variables
+x1_std &lt;- (x1 - mean(x1)) / sd(x1)
+x2_std &lt;- (x2 - mean(x2)) / sd(x2)
+x3_std &lt;- (x3 - mean(x3)) / sd(x3)
+```
+]
+.center[
+## DRY
+
+*Don’t Repeat Yourself!*
+]
+
+.li-small[
+&lt;br&gt;
+
+- Maintainability
+- Readability
+- Reuse
+]
+]
+.pull-right-50[
+.good-code[
+
+```r
+#----    my-functions.R    ----#
+
+# Define custom function
+std_var &lt;- function(x){
+  
+  res &lt;- (x - mean(x)) / sd(x)
+  
+  return(res)
+}
+
+#----    my-analysis-script.R    ----#
+
+# Apply custom function
+x1_std &lt;- std_var(x1)
+x2_std &lt;- std_var(x2)
+x3_std &lt;- std_var(x3)
+```
+]
+]
+---
+
+# Functional Style - Wrap function
+
+--
+
+.pull-left-50[
+
+#### &amp;nbsp;
+
+
+```r
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data &lt;- read_csv("my-data.csv") %&gt;% 
+  select(...) %&gt;% 
+  mutate(...) %&gt;% 
+  gorup_by(...) %&gt;% 
+  summarize(...)
+
+```
+
+]
+.pull-right-50[
+
+]
+
+---
+# Functional Style - Wrap function
+
+.pull-left-50[
+
+#### &amp;nbsp;
+
+
+```r
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data &lt;- read_csv("my-data.csv") %&gt;% 
+  select(...) %&gt;% 
+  mutate(...) %&gt;% 
+  gorup_by(...) %&gt;% 
+  summarize(...)
+
+```
+
+]
+.pull-right-50[
+
+#### &amp;nbsp;
+
+
+```r
+#----    my-functions.R    ----#
+
+# Define data cleaning function
+clean_my_data &lt;- function(file){
+  res &lt;- read_csv(file) %&gt;% 
+    select(...) %&gt;% 
+    mutate(...) %&gt;% 
+    gorup_by(...) %&gt;% 
+    summarize(...)
+  
+  return(res)
+}
+```
+]
+
+---
+
+# Functional Style - Wrap function
+
+.pull-left-50[
+
+#### Before
+
+
+```r
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data &lt;- read_csv("my-data.csv") %&gt;% 
+  select(...) %&gt;% 
+  mutate(...) %&gt;% 
+  gorup_by(...) %&gt;% 
+  summarize(...)
+
+```
+
+
+#### After
+
+
+```r
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data &lt;- clean_my_data("my-data.csv")
+
+# other steps ...
+```
+
+]
+.pull-right-50[
+
+#### &amp;nbsp;
+
+
+```r
+#----    my-functions.R    ----#
+
+# Define data cleaning function
+clean_my_data &lt;- function(file){
+  res &lt;- read_csv(file) %&gt;% 
+    select(...) %&gt;% 
+    mutate(...) %&gt;% 
+    gorup_by(...) %&gt;% 
+    summarize(...)
+  
+  return(res)
+}
+```
+]
+
+---
+# Function Good Practices
+
+--
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- Knowing your Beast
+- Function Names
+- Handling Conditions
+- No Hard-Coded Values
+- Checking Inputs
+- Be Explicit
+- KISS
+- WET
+]
+]
+.pull-right-70[
+]
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- Knowing your Beast
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.bad-code[
+
+```r
+x &lt;- sqrt(2)
+x^2 == 2  # WTF (Why is This False?)
+## [1] FALSE
+```
+]
+
+.good-code[
+
+```r
+all.equal(x^2, 2)
+## [1] TRUE
+```
+]
+
+.warn-code[
+{{content}}
+]
+]
+--
+
+
+```r
+# Not intuitive behaviour
+round(1.5)
+## [1] 2
+
+round(2.5)
+## [1] 2
+```
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- Function Names
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.bad-code[
+
+```r
+f()
+my_data()
+```
+]
+
+.good-code[
+
+```r
+get_my_data()
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- Handling Conditions
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.bad-code[
+.code-size-12[
+
+```r
+solve_condition &lt;- function(x){
+  ...
+
+  if (is_condition_A){
+    ...
+  } else {
+    ...
+  }
+
+  ...
+
+  if (is_condition_B){
+    ...
+  } else {
+    ...
+  }
+
+  ...
+
+  return(res)
+}
+```
+]
+]
+]
+.pull-right-50[
+.good-code[
+.code-size-12[
+
+```r
+solve_A &lt;- function(x){
+
+  # All code related to 
+  # condition A
+  ...
+
+  return(res)
+}
+
+solve_B &lt;- function(x){
+
+  # All code related to 
+  # condition B
+  ...
+
+  return(res)
+}
+```
+]
+]
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- No Hard-Coded Values
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.bad-code[
+
+```r
+format_perc &lt;- function(x){
+
+  perc_values &lt;- round(x * 100, digits = 2)
+  res &lt;- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+
+.good-code[
+
+```r
+format_perc &lt;- function(x, digits = 2){
+
+  perc_values &lt;- round(x * 100, digits = digits)
+  res &lt;- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- Checking Inputs
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+.bad-code[
+
+```r
+safe_division &lt;- function(x, y){
+  res &lt;- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## [1] Inf
+```
+]
+
+.good-code[
+
+```r
+safe_division &lt;- function(x, y){
+  if(y == 0) stop("you can not divide by zero")
+  
+  res &lt;- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## Error in safe_division(x = 1, y = 0): 
+## you can not divide by zero
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- Be Explicit
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.bad-code[
+
+```r
+get_mean &lt;- function(x){
+  sum(x) / length(x)
+}
+```
+]
+
+.good-code[
+
+```r
+get_mean &lt;- function(x){
+
+  res &lt;- sum(x) / length(x)
+
+  return(res)
+}
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- KISS
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+
+&lt;br&gt;
+
+.center[*Keep It Simple Stupid!*]
+
+
+&lt;br&gt;
+
+{{content}}
+]
+
+--
+
+- Single Responsibility Principle
+- From Small to Big
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- WET
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+.center[*Write Everything Twice*]
+
+]
+
+---
+# Documentation
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+.pull-right-70[
+
+]
+
+--
+
+- Title
+- Description 
+- Arguments
+- Outputs
+- Examples
+
+---
+# Documentation
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- Title
+- Description 
+- Arguments
+- Outputs
+- Examples
+]
+]
+.pull-right-70[
+.move-up-50[
+.code-size-12[
+
+```r
+#----    format_perc    ----
+
+# Format Values as Percentages
+#
+# Given a numeric vector, return a string vector with the values 
+# formatted as percentage (e.g., "12.5%"). The argument `digits` 
+# allows specifying the rounding number of decimal places.
+#
+# Arguments:
+# - x : Numeric vector of values to format.
+# - digits: Integer indicating the rounding number of decimal places 
+#           (default 2)
+#
+# Output:
+# A string vector with values formatted as percentages (e.g., "12.5%").
+#
+# Examples:
+# format_perc(c(.749, .251))
+# format_perc(c(.749, .251), digits = 0)
+
+format_perc &lt;- function(x, digits = 2){
+      
+  perc_values &lt;- round(x * 100, digits = digits)
+  res &lt;- paste0(perc_values, "%")
+  
+  return(res)
+}
+```
+]
+]
+]
+
+---
+# Unit Tests
+
+--
+
+.pull-left-40[
+
+```r
+#----    get_mean    ----
+get_mean &lt;- function(x){
+  
+  res &lt;- sum(x) / length(x)
+  
+  return(res)
+}
+```
+]
+.pull-right-60[
+
+]
+
+---
+# Unit Tests
+
+.pull-left-40[
+
+```r
+#----    get_mean    ----
+get_mean &lt;- function(x){
+  
+  res &lt;- sum(x) / length(x)
+  
+  return(res)
+}
+```
+]
+.pull-right-60[
+
+```r
+#----    Unit Tests    ----
+
+# Test 1
+stopifnot(
+  format_perc(.10) == '10%'
+  )
+
+# Test 2
+stopifnot(
+  format_perc(.101234, digits = 3) == '10.123%'
+  )
+```
+]
+
+---
+# Unit Tests
+
+.pull-left-40[
+
+```r
+#----    get_mean    ----
+get_mean &lt;- function(x){
+  
+  res &lt;- sum(x) / length(x)
+  
+  return(res)
+}
+```
+
+&lt;img src="images/05-code/no-errors.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-60[
+
+```r
+#----    Unit Tests    ----
+
+# Test 1
+stopifnot(
+  format_perc(.10) == '10%'
+  )
+
+# Test 2
+stopifnot(
+  format_perc(.101234, digits = 3) == '10.123%'
+  )
+```
+]
+
+---
+# Unit Tests
+
+.pull-left-40[
+
+```r
+#----    get_mean    ----
+get_mean &lt;- function(x){
+  
+  res &lt;- sum(x) / length(x)
+  
+  return(res)
+}
+```
+
+&lt;img src="images/05-code/no-errors.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-60[
+
+```r
+#----    Unit Tests    ----
+
+# Test 1
+stopifnot(
+  format_perc(.10) == '10%'
+  )
+
+# Test 2
+stopifnot(
+  format_perc(.101234, digits = 3) == '10.123%'
+  )
+```
+
+&lt;br&gt;
+
+.li-small[
+- Organizing tests `tests/`
+- Testing applications and packages
+- Testing analysis
+]
+]
+
+---
+
+# Extra
+
+### Environments
+
+.pull-left-50[
+
+&lt;img src="images/05-code/fun-env.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+.code-size-12[
+
+&lt;br&gt;
+
+
+```r
+global_var &lt;- "I am Global!"
+
+my_fun &lt;- function(){
+  global_var &lt;- "I am local"
+
+  return(global_var)
+}
+
+my_fun()
+## [1] "I am local"
+global_var
+## [1] "I am Global!"
+```
+]
+]
+---
+
+# Extra
+
+### Aliasing
+
+.pull-left-40[
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/glob-env.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-60[
+.pull-left-50[
+.code-size-12[
+
+```r
+#----    R Code    ----
+
+# Create objects
+x = c(1, 2, 3)
+y = c(1, 2, 3)
+w = y
+
+w[3] &lt;- 999 # change a value
+
+# Check values
+x
+## [1] 1 2 3
+y
+## [1] 1 2 3
+w
+## [1]   1   2 999
+```
+]
+]
+.pull-right-50[
+.code-size-12[
+
+```r
+#----    Python Code    ----
+
+# Create objects
+x = [1,2,3]
+y = [1,2,3]
+w = y
+
+w[2] = 999 # change a value
+
+# Check values
+x
+## [1, 2, 3]
+y
+## [1, 2, 999]
+w
+## [1, 2, 999]
+```
+]
+]
+]
+
+---
+
+# Extra
+
+### Classes and Methods
+
+.pull-left-50[
+
+.li-small[
+- **Object-Oriented Programming**&lt;br&gt;Object classes include the methods. Different objects have different methods.
+
+&lt;br&gt;
+
+- **Functional Programming**&lt;br&gt;Methods are not characteristics of the object itself but are functions defined separately for each object class.
+]
+]
+.pull-right-50[
+
+
+```r
+# Object Oriented Programming
+todo_list.whats_next()
+  
+## Write the paper
+```
+
+&lt;br&gt;
+
+
+```r
+# Functional Programming
+whats_next(todo_list)
+  
+## Have a break
+```
+]
+
+---
+# Advantages
+
+--
+
+.pull-left-30[
+&amp;nbsp;
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+- Maintainability
+- Readability
+- Reuse
+
+{{content}}
+]
+
+--
+
+*From users to developers!*
+
+---
+class: inverse, center, middle
+
+# R Package Project
+
+---
+# R Package Project
+
+--
+
+.pull-left-50[
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/create-pkg.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+
+&lt;br&gt;
+
+{{content}}
+
+]
+
+--
+```
+- &lt;pkg-name&gt;/
+    |-- .Rbuildignore
+    |-- DESCRIPTION
+    |-- NAMESPACE
+    |-- &lt;pkg-name&gt;.Rproj
+    |-- man/
+    |-- R/
+    |-- tests/
+```
+---
+# R Package Project
+
+#### DESCRIPTION
+
+.code-size-12[
+```
+#-----    DESCRIPTION    ----#
+
+Package: &lt;pkg-name&gt;
+Title: One line description of the package
+Version: the package version number
+Authors@R:  # authors list
+    c(person(given = "name",
+             family = "surname",
+             role = "aut",  # cre = creator and maintainer; aut = other authors;
+             email = "name@email.com"),
+      ...)
+Description: A detailed description of the package
+Depends: R (&gt;= 3.5) # Specify required R version
+License: GPL-3      # Our  prefered license
+Encoding: UTF-8
+Imports: # list of required packages
+Suggests: # list of suggested packages
+Config/testthat/edition: 3
+RoxygenNote: 7.1.2
+VignetteBuilder: knitr
+URL:     # add useful links to online resources or documentation 
+```
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Development
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/devtools.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-70[
+.pull-left-50[
+
+&lt;br&gt;
+
+{{content}}
+]
+.pull-right-50[
+
+]
+]
+--
+Commands
+
+- `devtools::load_all()`&lt;br&gt;load all functions
+- `devtools::document()`&lt;br&gt;generate documentation
+- `devtools::test()`&lt;br&gt;run all unit tests
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Development
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/devtools.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-70[
+.pull-left-50[
+
+&lt;br&gt;
+
+Commands
+
+- `devtools::load_all()`&lt;br&gt;load all functions
+- `devtools::document()`&lt;br&gt;generate documentation
+- `devtools::test()`&lt;br&gt;run all unit tests
+
+]
+.pull-right-50[
+
+&lt;br&gt;
+
+Shortcuts
+
+- `Ctrl+Shift+L`&lt;br&gt;(macOS `Cmd+Shift+L`)
+- `Ctrl+Shift+D`&lt;br&gt;(macOS `Cmd+Shift+D`)
+- `Ctrl+Shift+T`&lt;br&gt;(macOS `Cmd+Shift+T`)
+
+]
+
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Documentation
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/roxygen2.png" width="55%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-70[
+
+To activate Roxygen
+
+&lt;img src="images/05-code/settings-doc.png" width="65%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Documentation
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/roxygen2.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+.li-small[
+- Insert Roxygen skeleton&lt;br&gt;`Ctrl+Alt+Shift+R`&lt;br&gt;macOS `Cmd+Option+Shift+R`
+]
+]
+.pull-right-70[
+.move-up-50[
+.code-size-12[
+
+```r
+#----    format_perc    ----
+
+#' Format Values as Percentages
+#' 
+#' Given a numeric vector, return a string vector with the values 
+#' formatted as percentage (e.g.,"12.5%"). The argument `digits` allows 
+#' to specify the rounding number of decimal places.
+#'
+#' @param x Numeric vector of values to format.
+#' @param digits Integer indicating the rounding number o
+#'               f decimal places (default 2)
+#'
+#' @return A string vector with values formatted as percentages 
+#'  (e.g.,"12.5%").
+#'
+#' @examples
+#' format_perc(c(.749, .251))
+#' format_perc(c(.749, .251), digits = 0)
+#' 
+
+format_perc &lt;- function(x, digits = 2){
+      
+  perc_values &lt;- round(x * 100, digits = digits)
+  res &lt;- paste0(perc_values, "%")
+  
+  return(res)
+}
+```
+]
+]
+]
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Documentation
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/roxygen2.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+&lt;br&gt;
+
+`devtools::document()`
+]
+.pull-right-70[
+.move-up-50[
+&lt;img src="images/05-code/document-created.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Unit Tests
+
+&lt;br&gt;
+
+&lt;img src="images/05-code/test-that.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+&lt;br&gt;
+
+`devtools::test()`
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+
+```r
+#----    testing format_perc    ----
+
+test_that("check format_perc returns the correct values", {
+  
+  # numbers
+  expect_match(format_perc(.12), "12%")
+  expect_match(format_perc(.1234, digits = 1), "12.3%")
+
+  # string
+  expect_error(format_perc("hello"))
+  
+})
+```
+]
+---
+class: inverse, center, middle
+
+# From users to developers!
+
+## Moving to the next step...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

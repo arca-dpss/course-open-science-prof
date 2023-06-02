@@ -1,0 +1,2337 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/05-code/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 05 - Coding
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+
+# Step 5: Coding [with] Style
+
+---
+
+# Coding Style
+
+--
+## The ideal code
+
+--
+- It works
+--
+
+.font-18[
+>*“Any fool can write code that a computer can understand.<br>Good programmers write code that humans can understand.”* – Martin Fowler
+
+]
+--
+
+- It is readable
+- It is easy to maintain
+
+---
+# Coding Style
+
+--
+.move-up-30[
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+y<-c(1,0,1,1,0,1,1);p<-sum(y)/length(y);if(p>=.6){"Passed"}else{"Failed"}
+## [1] "Passed"
+```
+]
+]
+--
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+# Load subj test answers
+exam_answers <- c(1,0,1,1,0,1,1) # 0 = wrong; 1 = correct
+
+# Get exam score as proportion of correct answers
+exam_score <- sum(exam_answers) / length(exam_answers)
+
+# Set exam pass threshold [0,1]
+threshold <- .6
+
+# Check if subj passed the exam
+if (exam_score >= threshold) {
+  "Passed"
+} else {
+  "Failed"
+}
+## [1] "Passed"
+```
+]
+
+--
+
+>*“Good coding style is like using correct punctuation. You can manage without it,<br> but it sure makes things easier to read.”* – Hadley Wickham
+
+---
+# Coding Good Practices
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+{{content}}
+]
+]
+.pull-right-70[
+
+]
+--
+
+- Naming variables
+- Spacing and indentation
+- Comments
+
+---
+# Coding Good Practices
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+{{content}}
+]
+
+--
+> *“There are only two hard things in Computer Science: cache invalidation and naming things.”* – Phil Karlton
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Auto-descriptive
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+y # generic name without useful information
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+exam_answers # clear descriptive name
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Auto-descriptive
+- Right Length
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+average_outcome_score_of_the_control_gorup # too long
+
+  avg_scr_ctr # difficult to guess the abbreviation meaning
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+avg_score_control # clear descriptive name
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+myObjectName    # camelCase
+
+  MyObjectName    # PascalCase
+
+  my_object_name  # snake_case
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+myObjectName    # camelCase
+
+  MyObjectName    # PascalCase
+
+  my_object_name  # snake_case
+```
+]
+.warn-code[
+```{r, echo=TRUE, eval = FALSE}
+my.object.name  # snake.case (deprecated)
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+- Avoid special characters (e.g., è, ü, ñ, etc.)
+
+```{r, out.width='60%'}
+knitr::include_graphics(paste0(image_path, 'unicode.jpg'))
+```
+
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Auto-descriptive
+- Right Length
+- Consistent naming style
+- Avoid special characters (e.g., è, ü, ñ, etc.)
+- Avoid naming objects with function names<br>(e.g., `data`, `list`, or `sum`)
+- Avoid similar names that could be easily confused
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- Naming variables
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+#### Extra: Temporary Variables
+
+.li-small[
+- Position Index: `i`, `index`, `row_i`, or `col_i`
+.good-code[
+.code-size-12[
+```{r, echo=TRUE, eval = FALSE}
+# Cities names
+  cities <- c("Amsterdam", "Berlin", "Cardiff", "Dublin")
+  
+  # Loop by position index
+  for (i in seq_len(length(cities))) {
+    cat(cities[i], " ")
+  }
+  ## Amsterdam  Berlin  Cardiff  Dublin
+```
+]
+]
+
+- Element: `k`, parts (`slice` of `pizza`), or singular
+.good-code[
+.code-size-12[
+```{r, echo=TRUE, eval = FALSE}
+# Loop by element
+  for (city in cities) {
+    cat(city, " ")
+  }
+  ## Amsterdam  Berlin  Cardiff  Dublin
+```
+]
+]
+]
+]
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Line length (e.g, 80 characters)
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Line length (e.g, 80 characters)
+
+```{r, out.width="50%"}
+knitr::include_graphics(paste0(image_path,"rstudio-line.png"))
+```
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+# too long
+my_very_long_list<-list(first_argument="something-very-long",second_argument=c("many","objects"),third_argument=c(1,2,3,4,5))
+#
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE, tidy=FALSE}
+my_very_long_list <- list(
+      first_argument = "something-very-long",
+      second_argument = c("many", "objects"),
+      third_argument = c(1, 2, 3, 4, 5)
+      )
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+# too long
+my_very_long_list<-list(first_argument="something-very-long",second_argument=c("many","objects"),third_argument=c(1,2,3,4,5))
+#
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE, tidy=FALSE}
+my_very_long_list <- list(
+      first_argument = "something-very-long",
+      second_argument = c("many", "objects"),
+      third_argument = c(1, 2, 3, 4, 5)
+      )
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+- Spacing and named arguments
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+# es. 1
+x<-sum(c(1:10,99),rnorm(5,mean=3,1))
+# es. 2
+if(test>=5&test<=10)print("...")
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+# es. 1
+x <- sum(c(1:10, 99), rnorm(n = 5, mean = 3, sd = 1))
+# es. 2
+if (test >= 5 & test <= 10) print("...")
+```
+]
+]
+]
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+<br>
+
+.li-small[
+- Line length (e.g, 80 characters)
+- Alignment
+- Spacing and named arguments
+- Indentation
+]
+.move-up-30[
+.pull-left-50[
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+for (...) {   # Outer loop
+...
+for (...) {   # Inner loop
+...
+if (...) {    # Conditional 
+...
+}}}
+```
+]
+]
+.pull-right-50[
+.good-code[
+```{r, echo=TRUE, eval = FALSE, tidy=FALSE}
+for (...) {   # Outer loop
+  ...
+
+  for (...) {   # Inner loop
+    ...
+
+    if (...) {    # Conditional
+
+      ...
+    }
+  }
+}
+```
+]
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+#### Extra: Do not mix-up tabs and spaces!!
+
+{{content}}
+
+]
+
+--
+
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path,"rstudio-indent.png"))
+```
+
+---
+
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- Spacing and indentation
+- .alpha[Comments]
+]
+]
+.pull-right-70[
+
+#### Extra: Do not mix-up tabs and spaces!!
+
+<br>
+
+.move-up-30[
+<iframe width="672" height="378" src="https://www.youtube-nocookie.com/embed/SsoOG6ZeyUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- Comments
+]
+]
+.pull-right-70[
+
+<br>
+
+<br>
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Describe the aim and the logic
+- Not duplicate the code
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- Comments
+]
+]
+.pull-right-70[
+
+<br>
+
+<br>
+
+.li-small[
+- Describe the aim and the logic
+- Not duplicate the code
+
+.bad-code[
+```{r, echo=TRUE, eval = FALSE}
+# Set x to 10
+x <- 10 
+```
+]
+.good-code[
+```{r, echo=TRUE, eval = FALSE}
+# Define maximum answer number
+x <- 10
+```
+]
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- Comments
+]
+]
+.pull-right-70[
+
+<br>
+
+<br>
+
+.li-small[
+- Describe the aim and the logic
+- Not duplicate the code
+- Explain unidiomatic code
+- Provide links and references
+]
+]
+
+---
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+- Extra
+]
+]
+.pull-right-70[
+.center[
+.move-up-30[
+{{content}}
+]
+]
+]
+
+--
+## KISS
+
+{{content}}
+
+--
+*Keep It Simple Stupid!*
+
+---
+
+# Coding Good Practices
+
+
+.pull-left-30[
+
+<br>
+
+<br>
+
+.li-small[
+- .alpha[Naming variables]
+- .alpha[Spacing and indentation]
+- .alpha[Comments]
+- Extra
+]
+]
+.pull-right-70[
+.center[
+.move-up-30[
+
+## KISS
+
+*Keep It Simple Stupid!*
+
+]
+]
+.pull-left-50[
+.bad-code[
+.code-small[
+```{r, eval=FALSE, echo=TRUE}
+check_value <- function(x){
+
+  if (x > 0) {
+    if (x > 100) {
+      return("x is a positive large value")
+    } else {
+      return("x is a positive value")
+    }
+  } else {
+    if (x < - 100) {
+      return("x is a negative small value")
+    } else {
+      return("x is a negative value")
+    }
+  }
+
+}
+```
+]
+]
+]
+.pull-right-50[
+.good-code[
+.code-small[
+```{r, eval=FALSE, echo=TRUE}
+check_value <- function(x){
+
+  if(x < - 100) return("x is a negative small value")
+  if(x < 0) return("x is a negative value")
+  if(x < 100) return("x is a positive value")
+
+  return("x is a positive large value")
+}
+}
+```
+]
+]
+]
+]
+
+---
+
+# R Good Practices
+--
+
+.move-up-50[
+.pull-left-50[
+### Assign
+
+`<-` vs `=`
+
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+# both are valid
+a <- 3
+b = 4
+
+# which one is more clear?
+a <- b
+a = b
+```
+]
+
+]
+.pull-right-50[]
+]
+
+---
+# R Good Practices
+
+.move-up-50[
+.pull-left-50[
+### Assign
+
+`<-` vs `=`
+
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+# both are valid
+a <- 3
+b = 4
+
+# which one is more clear?
+a <- b
+a = b
+```
+]
+
+]
+.pull-right-50[
+
+### Logical Values
+
+`TRUE`/`FALSE` vs `T`/`F`
+
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+# Check value
+TRUE == T
+## [1] TRUE
+
+# Change values
+TRUE <- "Hello"
+## Error in TRUE <- "Hello": 
+## invalid (do_set) left-hand side to assignment
+
+T <- "World"
+T
+## [1] "World"
+
+TRUE == T
+## [1] FALSE
+
+# If you want to be evil
+T <- FALSE
+FALSE == T
+## [1] TRUE
+```
+]
+]
+]
+---
+class: inverse, middle, center
+
+# Functional Style
+
+---
+# Functional Style
+
+---
+# Functional Style
+
+.pull-left-50[
+.bad-code[
+```{r, echo = TRUE, eval=FALSE}
+# Standardize variables
+x1_std <- (x1 - mean(x1)) / sd(x1)
+x2_std <- (x2 - mean(x2)) / sd(x2)
+x3_std <- (x3 - mean(x3)) / sd(x3)
+```
+]
+
+.center[
+{{content}}
+]
+]
+.pull-right-50[
+.good-code[
+
+]
+]
+
+--
+## DRY
+
+*Don’t Repeat Yourself!*
+---
+# Functional Style
+
+.pull-left-50[
+.bad-code[
+```{r, echo = TRUE, eval=FALSE}
+# Standardize variables
+x1_std <- (x1 - mean(x1)) / sd(x1)
+x2_std <- (x2 - mean(x2)) / sd(x2)
+x3_std <- (x3 - mean(x3)) / sd(x3)
+```
+]
+.center[
+## DRY
+
+*Don’t Repeat Yourself!*
+]
+]
+.pull-right-50[
+.good-code[
+```{r, echo = TRUE, eval=FALSE}
+#----    my-functions.R    ----#
+
+# Define custom function
+std_var <- function(x){
+  
+  res <- (x - mean(x)) / sd(x)
+  
+  return(res)
+}
+
+#----    my-analysis-script.R    ----#
+
+# Apply custom function
+x1_std <- std_var(x1)
+x2_std <- std_var(x2)
+x3_std <- std_var(x3)
+```
+]
+]
+
+---
+# Functional Style
+
+.pull-left-50[
+.bad-code[
+```{r, echo = TRUE, eval=FALSE}
+# Standardize variables
+x1_std <- (x1 - mean(x1)) / sd(x1)
+x2_std <- (x2 - mean(x2)) / sd(x2)
+x3_std <- (x3 - mean(x3)) / sd(x3)
+```
+]
+.center[
+## DRY
+
+*Don’t Repeat Yourself!*
+]
+
+.li-small[
+<br>
+
+- Maintainability
+- Readability
+- Reuse
+]
+]
+.pull-right-50[
+.good-code[
+```{r, echo = TRUE, eval=FALSE}
+#----    my-functions.R    ----#
+
+# Define custom function
+std_var <- function(x){
+  
+  res <- (x - mean(x)) / sd(x)
+  
+  return(res)
+}
+
+#----    my-analysis-script.R    ----#
+
+# Apply custom function
+x1_std <- std_var(x1)
+x2_std <- std_var(x2)
+x3_std <- std_var(x3)
+```
+]
+]
+---
+
+# Functional Style - Wrap function
+
+--
+
+.pull-left-50[
+
+#### &nbsp;
+
+```{r, echo = TRUE, eval=FALSE}
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data <- read_csv("my-data.csv") %>% 
+  select(...) %>% 
+  mutate(...) %>% 
+  gorup_by(...) %>% 
+  summarize(...)
+
+```
+
+]
+.pull-right-50[
+
+]
+
+---
+# Functional Style - Wrap function
+
+.pull-left-50[
+
+#### &nbsp;
+
+```{r, echo = TRUE, eval=FALSE}
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data <- read_csv("my-data.csv") %>% 
+  select(...) %>% 
+  mutate(...) %>% 
+  gorup_by(...) %>% 
+  summarize(...)
+
+```
+
+]
+.pull-right-50[
+
+#### &nbsp;
+
+```{r, echo = TRUE, eval=FALSE}
+#----    my-functions.R    ----#
+
+# Define data cleaning function
+clean_my_data <- function(file){
+  res <- read_csv(file) %>% 
+    select(...) %>% 
+    mutate(...) %>% 
+    gorup_by(...) %>% 
+    summarize(...)
+  
+  return(res)
+}
+```
+]
+
+---
+
+# Functional Style - Wrap function
+
+.pull-left-50[
+
+#### Before
+
+```{r, echo = TRUE, eval=FALSE}
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data <- read_csv("my-data.csv") %>% 
+  select(...) %>% 
+  mutate(...) %>% 
+  gorup_by(...) %>% 
+  summarize(...)
+
+```
+
+
+#### After
+
+```{r, echo = TRUE, eval=FALSE}
+#----    my-analysis-script.R    ----#
+
+# Data cleaning
+my_data <- clean_my_data("my-data.csv")
+
+# other steps ...
+```
+
+]
+.pull-right-50[
+
+#### &nbsp;
+
+```{r, echo = TRUE, eval=FALSE}
+#----    my-functions.R    ----#
+
+# Define data cleaning function
+clean_my_data <- function(file){
+  res <- read_csv(file) %>% 
+    select(...) %>% 
+    mutate(...) %>% 
+    gorup_by(...) %>% 
+    summarize(...)
+  
+  return(res)
+}
+```
+]
+
+---
+# Function Good Practices
+
+--
+.pull-left-30[
+
+<br>
+
+.li-small[
+- Knowing your Beast
+- Function Names
+- Handling Conditions
+- No Hard-Coded Values
+- Checking Inputs
+- Be Explicit
+- KISS
+- WET
+]
+]
+.pull-right-70[
+]
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- Knowing your Beast
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+<br>
+
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+x <- sqrt(2)
+x^2 == 2  # WTF (Why is This False?)
+## [1] FALSE
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+all.equal(x^2, 2)
+## [1] TRUE
+```
+]
+
+.warn-code[
+{{content}}
+]
+]
+--
+
+```{r, echo=TRUE, eval=FALSE}
+# Not intuitive behaviour
+round(1.5)
+## [1] 2
+
+round(2.5)
+## [1] 2
+```
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- Function Names
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+<br>
+
+<br>
+
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+f()
+my_data()
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+get_my_data()
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- Handling Conditions
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.bad-code[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+solve_condition <- function(x){
+  ...
+
+  if (is_condition_A){
+    ...
+  } else {
+    ...
+  }
+
+  ...
+
+  if (is_condition_B){
+    ...
+  } else {
+    ...
+  }
+
+  ...
+
+  return(res)
+}
+```
+]
+]
+]
+.pull-right-50[
+.good-code[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+solve_A <- function(x){
+
+  # All code related to 
+  # condition A
+  ...
+
+  return(res)
+}
+
+solve_B <- function(x){
+
+  # All code related to 
+  # condition B
+  ...
+
+  return(res)
+}
+```
+]
+]
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- No Hard-Coded Values
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+<br>
+
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+format_perc <- function(x){
+
+  perc_values <- round(x * 100, digits = 2)
+  res <- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+format_perc <- function(x, digits = 2){
+
+  perc_values <- round(x * 100, digits = digits)
+  res <- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- Checking Inputs
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+safe_division <- function(x, y){
+  res <- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## [1] Inf
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+safe_division <- function(x, y){
+  if(y == 0) stop("you can not divide by zero")
+  
+  res <- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## Error in safe_division(x = 1, y = 0): 
+## you can not divide by zero
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- Be Explicit
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+<br>
+
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+get_mean <- function(x){
+  sum(x) / length(x)
+}
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+get_mean <- function(x){
+
+  res <- sum(x) / length(x)
+
+  return(res)
+}
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- KISS
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+<br>
+
+
+<br>
+
+.center[*Keep It Simple Stupid!*]
+
+
+<br>
+
+{{content}}
+]
+
+--
+
+- Single Responsibility Principle
+- From Small to Big
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- WET
+]
+]
+.pull-right-70[
+
+<br>
+
+<br>
+
+.center[*Write Everything Twice*]
+
+]
+
+---
+# Documentation
+
+.pull-left-30[
+<br>
+
+.li-small[
+{{content}}
+]
+]
+.pull-right-70[
+
+]
+
+--
+
+- Title
+- Description 
+- Arguments
+- Outputs
+- Examples
+
+---
+# Documentation
+
+.pull-left-30[
+<br>
+
+.li-small[
+- Title
+- Description 
+- Arguments
+- Outputs
+- Examples
+]
+]
+.pull-right-70[
+.move-up-50[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+#----    format_perc    ----
+
+# Format Values as Percentages
+#
+# Given a numeric vector, return a string vector with the values 
+# formatted as percentage (e.g., "12.5%"). The argument `digits` 
+# allows specifying the rounding number of decimal places.
+#
+# Arguments:
+# - x : Numeric vector of values to format.
+# - digits: Integer indicating the rounding number of decimal places 
+#           (default 2)
+#
+# Output:
+# A string vector with values formatted as percentages (e.g., "12.5%").
+#
+# Examples:
+# format_perc(c(.749, .251))
+# format_perc(c(.749, .251), digits = 0)
+
+format_perc <- function(x, digits = 2){
+      
+  perc_values <- round(x * 100, digits = digits)
+  res <- paste0(perc_values, "%")
+  
+  return(res)
+}
+```
+]
+]
+]
+
+---
+# Unit Tests
+
+--
+
+.pull-left-40[
+```{r, echo=TRUE, eval=FALSE}
+#----    get_mean    ----
+get_mean <- function(x){
+  
+  res <- sum(x) / length(x)
+  
+  return(res)
+}
+```
+]
+.pull-right-60[
+
+]
+
+---
+# Unit Tests
+
+.pull-left-40[
+```{r, echo=TRUE, eval=FALSE}
+#----    get_mean    ----
+get_mean <- function(x){
+  
+  res <- sum(x) / length(x)
+  
+  return(res)
+}
+```
+]
+.pull-right-60[
+```{r, echo=TRUE, eval=FALSE}
+#----    Unit Tests    ----
+
+# Test 1
+stopifnot(
+  format_perc(.10) == '10%'
+  )
+
+# Test 2
+stopifnot(
+  format_perc(.101234, digits = 3) == '10.123%'
+  )
+```
+]
+
+---
+# Unit Tests
+
+.pull-left-40[
+```{r, echo=TRUE, eval=FALSE}
+#----    get_mean    ----
+get_mean <- function(x){
+  
+  res <- sum(x) / length(x)
+  
+  return(res)
+}
+```
+
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'no-errors.jpg'))
+```
+]
+.pull-right-60[
+```{r, echo=TRUE, eval=FALSE}
+#----    Unit Tests    ----
+
+# Test 1
+stopifnot(
+  format_perc(.10) == '10%'
+  )
+
+# Test 2
+stopifnot(
+  format_perc(.101234, digits = 3) == '10.123%'
+  )
+```
+]
+
+---
+# Unit Tests
+
+.pull-left-40[
+```{r, echo=TRUE, eval=FALSE}
+#----    get_mean    ----
+get_mean <- function(x){
+  
+  res <- sum(x) / length(x)
+  
+  return(res)
+}
+```
+
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'no-errors.jpg'))
+```
+]
+.pull-right-60[
+```{r, echo=TRUE, eval=FALSE}
+#----    Unit Tests    ----
+
+# Test 1
+stopifnot(
+  format_perc(.10) == '10%'
+  )
+
+# Test 2
+stopifnot(
+  format_perc(.101234, digits = 3) == '10.123%'
+  )
+```
+
+<br>
+
+.li-small[
+- Organizing tests `tests/`
+- Testing applications and packages
+- Testing analysis
+]
+]
+
+---
+
+# Extra
+
+### Environments
+
+.pull-left-50[
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path,"fun-env.png"))
+```
+
+]
+.pull-right-50[
+.code-size-12[
+
+<br>
+
+```{r, echo=TRUE, eval=FALSE}
+global_var <- "I am Global!"
+
+my_fun <- function(){
+  global_var <- "I am local"
+
+  return(global_var)
+}
+
+my_fun()
+## [1] "I am local"
+global_var
+## [1] "I am Global!"
+```
+]
+]
+---
+
+# Extra
+
+### Aliasing
+
+.pull-left-40[
+
+<br>
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path,"glob-env.png"))
+```
+
+]
+.pull-right-60[
+.pull-left-50[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+#----    R Code    ----
+
+# Create objects
+x = c(1, 2, 3)
+y = c(1, 2, 3)
+w = y
+
+w[3] <- 999 # change a value
+
+# Check values
+x
+## [1] 1 2 3
+y
+## [1] 1 2 3
+w
+## [1]   1   2 999
+```
+]
+]
+.pull-right-50[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+#----    Python Code    ----
+
+# Create objects
+x = [1,2,3]
+y = [1,2,3]
+w = y
+
+w[2] = 999 # change a value
+
+# Check values
+x
+## [1, 2, 3]
+y
+## [1, 2, 999]
+w
+## [1, 2, 999]
+```
+]
+]
+]
+
+---
+
+# Extra
+
+### Classes and Methods
+
+.pull-left-50[
+
+.li-small[
+- **Object-Oriented Programming**<br>Object classes include the methods. Different objects have different methods.
+
+<br>
+
+- **Functional Programming**<br>Methods are not characteristics of the object itself but are functions defined separately for each object class.
+]
+]
+.pull-right-50[
+
+```{r, echo=TRUE, eval=FALSE}
+# Object Oriented Programming
+todo_list.whats_next()
+  
+## Write the paper
+```
+
+<br>
+
+```{r, echo=TRUE, eval=FALSE}
+# Functional Programming
+whats_next(todo_list)
+  
+## Have a break
+```
+]
+
+---
+# Advantages
+
+--
+
+.pull-left-30[
+&nbsp;
+]
+.pull-right-70[
+
+<br>
+
+- Maintainability
+- Readability
+- Reuse
+
+{{content}}
+]
+
+--
+
+*From users to developers!*
+
+---
+class: inverse, center, middle
+
+# R Package Project
+
+---
+# R Package Project
+
+--
+
+.pull-left-50[
+
+<br>
+
+```{r, out.width="85%"}
+knitr::include_graphics(paste0(image_path,"create-pkg.png"))
+```
+
+]
+.pull-right-50[
+
+<br>
+
+{{content}}
+
+]
+
+--
+```
+- <pkg-name>/
+    |-- .Rbuildignore
+    |-- DESCRIPTION
+    |-- NAMESPACE
+    |-- <pkg-name>.Rproj
+    |-- man/
+    |-- R/
+    |-- tests/
+```
+---
+# R Package Project
+
+#### DESCRIPTION
+
+.code-size-12[
+```
+#-----    DESCRIPTION    ----#
+
+Package: <pkg-name>
+Title: One line description of the package
+Version: the package version number
+Authors@R:  # authors list
+    c(person(given = "name",
+             family = "surname",
+             role = "aut",  # cre = creator and maintainer; aut = other authors;
+             email = "name@email.com"),
+      ...)
+Description: A detailed description of the package
+Depends: R (>= 3.5) # Specify required R version
+License: GPL-3      # Our  prefered license
+Encoding: UTF-8
+Imports: # list of required packages
+Suggests: # list of suggested packages
+Config/testthat/edition: 3
+RoxygenNote: 7.1.2
+VignetteBuilder: knitr
+URL:     # add useful links to online resources or documentation 
+```
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Development
+
+<br>
+
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"devtools.png"))
+```
+]
+.pull-right-70[
+.pull-left-50[
+
+<br>
+
+{{content}}
+]
+.pull-right-50[
+
+]
+]
+--
+Commands
+
+- `devtools::load_all()`<br>load all functions
+- `devtools::document()`<br>generate documentation
+- `devtools::test()`<br>run all unit tests
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Development
+
+<br>
+
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"devtools.png"))
+```
+]
+.pull-right-70[
+.pull-left-50[
+
+<br>
+
+Commands
+
+- `devtools::load_all()`<br>load all functions
+- `devtools::document()`<br>generate documentation
+- `devtools::test()`<br>run all unit tests
+
+]
+.pull-right-50[
+
+<br>
+
+Shortcuts
+
+- `Ctrl+Shift+L`<br>(macOS `Cmd+Shift+L`)
+- `Ctrl+Shift+D`<br>(macOS `Cmd+Shift+D`)
+- `Ctrl+Shift+T`<br>(macOS `Cmd+Shift+T`)
+
+]
+
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Documentation
+
+<br>
+
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"roxygen2.png"))
+```
+]
+.pull-right-70[
+
+To activate Roxygen
+
+```{r, out.width="65%"}
+knitr::include_graphics(paste0(image_path,"settings-doc.png"))
+```
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Documentation
+
+<br>
+
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"roxygen2.png"))
+```
+
+.li-small[
+- Insert Roxygen skeleton<br>`Ctrl+Alt+Shift+R`<br>macOS `Cmd+Option+Shift+R`
+]
+]
+.pull-right-70[
+.move-up-50[
+.code-size-12[
+```{r, eval=FALSE, echo=TRUE}
+#----    format_perc    ----
+
+#' Format Values as Percentages
+#' 
+#' Given a numeric vector, return a string vector with the values 
+#' formatted as percentage (e.g.,"12.5%"). The argument `digits` allows 
+#' to specify the rounding number of decimal places.
+#'
+#' @param x Numeric vector of values to format.
+#' @param digits Integer indicating the rounding number o
+#'               f decimal places (default 2)
+#'
+#' @return A string vector with values formatted as percentages 
+#'  (e.g.,"12.5%").
+#'
+#' @examples
+#' format_perc(c(.749, .251))
+#' format_perc(c(.749, .251), digits = 0)
+#' 
+
+format_perc <- function(x, digits = 2){
+      
+  perc_values <- round(x * 100, digits = digits)
+  res <- paste0(perc_values, "%")
+  
+  return(res)
+}
+```
+]
+]
+]
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Documentation
+
+<br>
+
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"roxygen2.png"))
+```
+
+<br>
+
+`devtools::document()`
+]
+.pull-right-70[
+.move-up-50[
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path,"document-created.png"))
+```
+]
+]
+
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Unit Tests
+
+<br>
+
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"test-that.png"))
+```
+
+<br>
+
+`devtools::test()`
+]
+.pull-right-70[
+
+<br>
+
+```{r, eval=FALSE, echo=TRUE}
+#----    testing format_perc    ----
+
+test_that("check format_perc returns the correct values", {
+  
+  # numbers
+  expect_match(format_perc(.12), "12%")
+  expect_match(format_perc(.1234, digits = 1), "12.3%")
+
+  # string
+  expect_error(format_perc("hello"))
+  
+})
+```
+]
+---
+class: inverse, center, middle
+
+# From users to developers!
+
+## Moving to the next step...
