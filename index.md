@@ -77,6 +77,7 @@ Please install the following software in advance.
 - <a href="materials/slides/01-introduction.html" target="_blank">01 - Introduction</a>
 - <a href="materials/slides/02-osf.html" target="_blank">02 - The Open Science Framework</a>
 - <a href="materials/slides/03-projects.html" target="_blank">03 - Projects</a>
+- <a href="materials/slides/04-data.html" target="_blank">04 - Data</a>
 
 ## Exercises
 

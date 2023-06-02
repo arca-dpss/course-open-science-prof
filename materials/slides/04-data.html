@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>04-data.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # 04 - Data
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+
+# Step 3: Sharing Data
+---
+# Data Structures
+
+--
+.pull-left-50[
+- **Wide Format**
+
+&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Age &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Pre &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Post &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Alice &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Carl &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+.pull-right-50[
+- **Long Format.**
+
+&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Age &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Time &lt;/th&gt;
+   &lt;th style="text-align:center;"&gt; Value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Alice &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pre &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Alice &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Post &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pre &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Post &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Carl &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pre &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Carl &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; 23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Post &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
+---
+# Data Structures
+
+- **Relational Model**
+
+.pull-left-50[
+
+    &lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+    &lt;caption&gt;Subjects&lt;/caption&gt;
+     &lt;thead&gt;
+      &lt;tr&gt;
+       &lt;th style="text-align:right;"&gt; ID &lt;/th&gt;
+       &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+       &lt;th style="text-align:left;"&gt; Sex &lt;/th&gt;
+       &lt;th style="text-align:right;"&gt; Age &lt;/th&gt;
+      &lt;/tr&gt;
+     &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Alice &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; F &lt;/td&gt;
+       &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Bob &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+       &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Carl &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; M &lt;/td&gt;
+       &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/table&gt;
+    
+
+]
+.pull-right-50[
+
+    &lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+    &lt;caption&gt;Study&lt;/caption&gt;
+     &lt;thead&gt;
+      &lt;tr&gt;
+       &lt;th style="text-align:center;"&gt; ID &lt;/th&gt;
+       &lt;th style="text-align:center;"&gt; Subject_ID &lt;/th&gt;
+       &lt;th style="text-align:left;"&gt; Time &lt;/th&gt;
+       &lt;th style="text-align:center;"&gt; Value &lt;/th&gt;
+      &lt;/tr&gt;
+     &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:center;"&gt; 1 &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; 1 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Pre &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:center;"&gt; 2 &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; 1 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Post &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:center;"&gt; 3 &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; 2 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Pre &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:center;"&gt; 4 &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; 2 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Post &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:center;"&gt; 5 &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; 3 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Pre &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+       &lt;td style="text-align:center;"&gt; 6 &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; 3 &lt;/td&gt;
+       &lt;td style="text-align:left;"&gt; Post &lt;/td&gt;
+       &lt;td style="text-align:center;"&gt; ... &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;/table&gt;
+    
+
+]
+
+---
+# Data Structures
+
+- **Relational Model**
+
+&lt;img src="images/04-data/sql-schema.svg" width="80%" style="display: block; margin: auto;" /&gt;
+
+--
+
+&lt;img src="images/04-data/sql-logo.png" width="20%" style="display: block; margin: auto;" /&gt;
+
+---
+# Data Documentation
+
+--
+
+.pull-left-50[
+.no-border[
+#### `README-data.md`
+]
+
+General info:
+
+.li-small[
+- Study/Project reference
+- Authors (citation/contact information)
+- License
+- Data collection process
+]
+
+]
+.pull-right-50[
+]
+
+---
+# Data Documentation
+
+.pull-left-50[
+.no-border[
+#### `README-data.md`
+]
+
+General info:
+
+.li-small[
+- Study/Project reference
+- Authors (citation/contact information)
+- License
+- Data collection process
+]
+
+Data info:
+
+.li-small[
+- Variable name
+- Variable type
+- Unit of measure
+- Values range or levels
+- Missing/special values
+]
+]
+.pull-right-50[
+]
+---
+# Data Documentation
+
+.pull-left-50[
+.no-border[
+#### `README-data.md`
+]
+
+General info:
+
+.li-small[
+- Study/Project reference
+- Authors (citation/contact information)
+- License
+- Data collection process
+]
+
+Data info:
+
+.li-small[
+- Variable name
+- Variable type
+- Unit of measure
+- Values range or levels
+- Missing/special values
+]
+]
+.pull-right-50[
+.code-small[
+
+```r
+#-----     README-data.md    ----#
+
+# Data README
+
+## General Info 
+
+Details about the study/project, authors, License, 
+or other relevant information.
+
+Description of the data collection process or links 
+to the paper/external documentation for further details.
+
+## Details
+
+The dataset `my-study.csv` is formed by n rows and k columns:
+
+- `Name`. Character variable indicating the subject name
+- `Sex`. Factor variable indicating the subject gender 
+         (levels are `"F"` for females and `"M"` for males)
+- `Age`. Numeric variable indicating subject age (in years)
+- `Time`. Factor variable indicating measure time 
+         (levels are `"Pre"` and `"Post"`)
+- `Value`. Numeric variable indicating the outcome measure 
+         [unit of measure]
+- ...
+```
+]
+]
+
+---
+# Data Good Practices
+
+--
+
+- File format - proprietary vs open
+
+--
+
+- Machine readable - no `.pdf`
+
+--
+
+- Indicate encoding - prefer `UTF-8`
+
+--
+
+- The rawer the better
+
+--
+
+.emoji-xl[
+.center[
+❤️ `.csv` ❤️
+]
+]
+
+---
+# Data Sharing
+
+--
+
+.pull-left-50[
+&lt;img src="images/04-data/kepler.jpeg" width="55%" style="display: block; margin: auto;" /&gt;
+
+.center[Johannes Kepler (1571 - 1630)]
+]
+.pull-right-50[
+
+]
+
+---
+# Data Sharing
+
+.pull-left-50[
+&lt;img src="images/04-data/kepler.jpeg" width="55%" style="display: block; margin: auto;" /&gt;
+
+.center[Johannes Kepler (1571 - 1630)]
+]
+.pull-right-50[
+&lt;img src="images/04-data/brahe.jpg" width="55%" style="display: block; margin: auto;" /&gt;
+
+.center[Tycho Brahe (1546 - 1601)]
+]
+
+---
+# Data Sharing
+
+&lt;br&gt;
+
+&lt;img src="images/04-data/FAiR-data.jpeg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+# Data Sharing
+
+--
+.pull-left-50[
+Legal Aspects:
+
+.li-small[
+- GDPR (😭)
+- Personal data and anonymization
+- Geographical restrictions
+]
+
+]
+.pull-right-50[
+
+]
+---
+# Data Sharing
+
+.pull-left-50[
+Legal Aspects:
+
+.li-small[
+- GDPR (😭)
+- Personal data and anonymization
+- Geographical restrictions
+]
+
+LICENSE - Open Data Commons:
+
+.li-small[
+- **ODC-BY.** Attribution License
+- **ODbL.** Open Database License  (BY-SA)
+- **PDDL.** Public Domain (all rights waived)
+- **DbCL.** Database Content License (BY-SA)
+]
+
+.center[https://opendatacommons.org/]
+]
+.pull-right-50[
+
+]
+
+---
+# Data Sharing
+
+.pull-left-50[
+Legal Aspects:
+
+.li-small[
+- GDPR (😭)
+- Personal data and anonymization
+- Geographical restrictions
+]
+
+LICENSE - Open Data Commons:
+
+.li-small[
+- **ODC-BY.** Attribution License
+- **ODbL.** Open Database License  (BY-SA)
+- **PDDL.** Public Domain (all rights waived)
+- **DbCL.** Database Content License (BY-SA)
+]
+
+.center[https://opendatacommons.org/]
+]
+.pull-right-50[
+Where?
+
+.li-small[
+- &lt;img style="height:2em" src="images/04-data/osf.png" class="inline-img"&gt; (https://osf.io)
+- &lt;img style="height:2em" src="images/04-data/github.png" class="inline-img"&gt;(https://github.com)
+- &lt;img style="height:2em" src="images/04-data/gitlab.png" class="inline-img"&gt;(https://gitlab.com)
+- &lt;img style="height:2em" src="images/04-data/dataverse.png" class="inline-img"&gt;(https://dataverse.org)
+- &lt;img style="height:2em" src="images/04-data/databrary.png" class="inline-img"&gt;(https://nyu.databrary.org)
+- &lt;img style="height:2em" src="images/04-data/icpsr.png" class="inline-img"&gt;(https://www.icpsr.umich.edu)
+]
+]
+
+---
+# Metadata
+
+--
+
+.pull-left-50[
+`CITATION.cff`
+
+.code-small[
+```
+cff-version: 1.2.0
+message: "For attribution, please cite it as below."
+authors:
+  - family-names: "Zandonella Callegher"
+    given-names: "Claudio"
+    orcid: "https://orcid.org/0000-0001-7721-6318"
+  - family-names: "Massidda"
+    given-names: "Davide"
+title: "The Open Science Manual: Make Your Scientific
+        Research Accessible and Reproducible"
+version: 1.0.1
+doi: 10.5281/zenodo.6521850
+date-released: 2023-01-02
+url: "https://github.com/arca-dpss/manual-open-science"
+```
+]
+]
+.pull-right-50[
+
+.move-up-50[
+{{content}}
+]
+]
+
+--
+&lt;img src="images/04-data/citation.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# Metadata
+
+.pull-left-50[
+`CITATION.cff`
+
+.code-small[
+```
+cff-version: 1.2.0
+message: "For attribution, please cite it as below."
+authors:
+  - family-names: "Zandonella Callegher"
+    given-names: "Claudio"
+    orcid: "https://orcid.org/0000-0001-7721-6318"
+  - family-names: "Massidda"
+    given-names: "Davide"
+title: "The Open Science Manual: Make Your Scientific
+        Research Accessible and Reproducible"
+version: 1.0.1
+doi: 10.5281/zenodo.6521850
+date-released: 2023-01-02
+url: "https://github.com/arca-dpss/manual-open-science"
+```
+]
+]
+.pull-right-50[
+
+.move-up-50[
+&lt;img src="images/04-data/citation.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+Documentation:
+
+.li-small[
+- https://citation-file-format.github.io/
+- [About CITATION files](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files)
+]
+
+]
+
+---
+# Metadata
+
+#### Schema.org
+
+--
+
+&lt;br&gt;
+
+.center[
+*“Schema.org is a collaborative, community activity with a mission to create,&lt;br&gt;maintain, and promote schemas for structured data on the Internet, on web pages,&lt;br&gt;in email messages, and beyond.”*
+]
+
+--
+
+&lt;br&gt;
+
+Documentation:
+
+.li-small[
+- https://schema.org/
+- https://www.software.ac.uk/resources/guides/adding-schema-dot-org
+]
+---
+class: inverse, center, middle
+
+# Sharing is Caring!
+
+## Moving to the next step...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

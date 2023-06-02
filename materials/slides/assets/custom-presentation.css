@@ -70,11 +70,14 @@ h1, h2, h3, h4 {
 }
 
 h4 {
-  font-size: 24pt;
+  font-size: 26pt;
   font-family: 'Yanone Kaffeesatz';
   font-weight: normal;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+  margin-bottom: 0px;
+}
+
+h4 code {
+  font-size: 22pt;
 }
 
 a:-webkit-any-link {
@@ -176,7 +179,21 @@ blockquote {
 
 /*----    icons    ----*/
 
-.emoji-large p {
+.emoji-l, .emoji-l p {
+  font-size: 35px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  vertical-align: middle;
+}
+
+.emoji-xl, .emoji-xl p {
+  font-size: 40px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  vertical-align: middle;
+}
+
+.emoji-xxl, .emoji-xxl p {
   font-size: 50px;
   margin-top: 0px;
   margin-bottom: 0px;

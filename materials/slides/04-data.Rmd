@@ -1,0 +1,567 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/04-data/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 04 - Data
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+
+# Step 3: Sharing Data
+---
+# Data Structures
+
+--
+.pull-left-50[
+- **Wide Format**
+
+```{r}
+data_wide <- tibble(
+  Name = c("Alice", "Bob", "Carl"),
+  Sex = c("F", "M", "M"),
+  Age = c(24, 21, 23),
+  Pre = "...",
+  Post = "...",
+)
+
+kable(data_wide,
+      booktabs = TRUE,
+      align = c("l", "l", "c", "c", "c")) %>%
+  kable_styling(c("striped"),
+                full_width = FALSE,
+                latex_options = c("hold_position"))
+
+```
+]
+.pull-right-50[
+- **Long Format.**
+
+```{r}
+data_long <- data_wide %>%
+  pivot_longer(c(Pre, Post), names_to = "Time", values_to = "Value") %>%
+  mutate(Time = str_replace(Time, "Time_", ""))
+
+kable(data_long,
+      booktabs = TRUE,
+      align = c("l", "l", "c", "l", "c")) %>%
+  kable_styling(c("striped"),
+                full_width = FALSE,
+                latex_options = c("hold_position"))
+```
+]
+
+---
+# Data Structures
+
+- **Relational Model**
+
+.pull-left-50[
+
+    ```{r}
+    subjects <-  data_wide %>%
+      bind_cols(ID = 1:3, .) %>%
+      dplyr::select(-c(Pre, Post))
+    
+    study <- data_long %>%
+      bind_cols(ID = 1:6, Subject_ID = rep(1:3, each = 2), .) %>%
+      dplyr::select(ID, Subject_ID, Time, Value)
+    
+    kable(
+      subjects,
+      booktabs = TRUE,
+      caption = "Subjects",
+      valign = "t"
+    ) %>%
+      kable_styling(c("striped"),
+                    full_width = FALSE,
+                    latex_options = c("hold_position"))
+    
+    ```
+]
+.pull-right-50[
+
+    ```{r}
+    kable(
+      study,
+      booktabs = TRUE,
+      caption = "Study",
+      valign = "t",
+      align = c("c", "c", "l", "c")
+    ) %>%
+      kable_styling(c("striped"),
+                    full_width = FALSE,
+                    latex_options = c("hold_position"))
+    ```
+]
+
+---
+# Data Structures
+
+- **Relational Model**
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"sql-schema.svg"))
+```
+
+--
+
+```{r, out.width="20%"}
+knitr::include_graphics(paste0(image_path,"sql-logo.png"))
+```
+
+---
+# Data Documentation
+
+--
+
+.pull-left-50[
+.no-border[
+#### `README-data.md`
+]
+
+General info:
+
+.li-small[
+- Study/Project reference
+- Authors (citation/contact information)
+- License
+- Data collection process
+]
+
+]
+.pull-right-50[
+]
+
+---
+# Data Documentation
+
+.pull-left-50[
+.no-border[
+#### `README-data.md`
+]
+
+General info:
+
+.li-small[
+- Study/Project reference
+- Authors (citation/contact information)
+- License
+- Data collection process
+]
+
+Data info:
+
+.li-small[
+- Variable name
+- Variable type
+- Unit of measure
+- Values range or levels
+- Missing/special values
+]
+]
+.pull-right-50[
+]
+---
+# Data Documentation
+
+.pull-left-50[
+.no-border[
+#### `README-data.md`
+]
+
+General info:
+
+.li-small[
+- Study/Project reference
+- Authors (citation/contact information)
+- License
+- Data collection process
+]
+
+Data info:
+
+.li-small[
+- Variable name
+- Variable type
+- Unit of measure
+- Values range or levels
+- Missing/special values
+]
+]
+.pull-right-50[
+.code-small[
+```{r, echo=TRUE, eval=FALSE}
+#-----     README-data.md    ----#
+
+# Data README
+
+## General Info 
+
+Details about the study/project, authors, License, 
+or other relevant information.
+
+Description of the data collection process or links 
+to the paper/external documentation for further details.
+
+## Details
+
+The dataset `my-study.csv` is formed by n rows and k columns:
+
+- `Name`. Character variable indicating the subject name
+- `Sex`. Factor variable indicating the subject gender 
+         (levels are `"F"` for females and `"M"` for males)
+- `Age`. Numeric variable indicating subject age (in years)
+- `Time`. Factor variable indicating measure time 
+         (levels are `"Pre"` and `"Post"`)
+- `Value`. Numeric variable indicating the outcome measure 
+         [unit of measure]
+- ...
+```
+]
+]
+
+---
+# Data Good Practices
+
+--
+
+- File format - proprietary vs open
+
+--
+
+- Machine readable - no `.pdf`
+
+--
+
+- Indicate encoding - prefer `UTF-8`
+
+--
+
+- The rawer the better
+
+--
+
+.emoji-xl[
+.center[
+❤️ `.csv` ❤️
+]
+]
+
+---
+# Data Sharing
+
+--
+
+.pull-left-50[
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"kepler.jpeg"))
+```
+
+.center[Johannes Kepler (1571 - 1630)]
+]
+.pull-right-50[
+
+]
+
+---
+# Data Sharing
+
+.pull-left-50[
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"kepler.jpeg"))
+```
+
+.center[Johannes Kepler (1571 - 1630)]
+]
+.pull-right-50[
+```{r, out.width="55%"}
+knitr::include_graphics(paste0(image_path,"brahe.jpg"))
+```
+
+.center[Tycho Brahe (1546 - 1601)]
+]
+
+---
+# Data Sharing
+
+<br>
+
+```{r, out.width="85%"}
+knitr::include_graphics(paste0(image_path,"FAiR-data.jpeg"))
+```
+
+---
+# Data Sharing
+
+--
+.pull-left-50[
+Legal Aspects:
+
+.li-small[
+- GDPR (😭)
+- Personal data and anonymization
+- Geographical restrictions
+]
+
+]
+.pull-right-50[
+
+]
+---
+# Data Sharing
+
+.pull-left-50[
+Legal Aspects:
+
+.li-small[
+- GDPR (😭)
+- Personal data and anonymization
+- Geographical restrictions
+]
+
+LICENSE - Open Data Commons:
+
+.li-small[
+- **ODC-BY.** Attribution License
+- **ODbL.** Open Database License  (BY-SA)
+- **PDDL.** Public Domain (all rights waived)
+- **DbCL.** Database Content License (BY-SA)
+]
+
+.center[https://opendatacommons.org/]
+]
+.pull-right-50[
+
+]
+
+---
+# Data Sharing
+
+.pull-left-50[
+Legal Aspects:
+
+.li-small[
+- GDPR (😭)
+- Personal data and anonymization
+- Geographical restrictions
+]
+
+LICENSE - Open Data Commons:
+
+.li-small[
+- **ODC-BY.** Attribution License
+- **ODbL.** Open Database License  (BY-SA)
+- **PDDL.** Public Domain (all rights waived)
+- **DbCL.** Database Content License (BY-SA)
+]
+
+.center[https://opendatacommons.org/]
+]
+.pull-right-50[
+Where?
+
+.li-small[
+- <img style="height:2em" src="`r paste0(image_path,"osf.png")`" class="inline-img"> (https://osf.io)
+- <img style="height:2em" src="`r paste0(image_path,"github.png")`" class="inline-img">(https://github.com)
+- <img style="height:2em" src="`r paste0(image_path,"gitlab.png")`" class="inline-img">(https://gitlab.com)
+- <img style="height:2em" src="`r paste0(image_path,"dataverse.png")`" class="inline-img">(https://dataverse.org)
+- <img style="height:2em" src="`r paste0(image_path,"databrary.png")`" class="inline-img">(https://nyu.databrary.org)
+- <img style="height:2em" src="`r paste0(image_path,"icpsr.png")`" class="inline-img">(https://www.icpsr.umich.edu)
+]
+]
+
+---
+# Metadata
+
+--
+
+.pull-left-50[
+`CITATION.cff`
+
+.code-small[
+```
+cff-version: 1.2.0
+message: "For attribution, please cite it as below."
+authors:
+  - family-names: "Zandonella Callegher"
+    given-names: "Claudio"
+    orcid: "https://orcid.org/0000-0001-7721-6318"
+  - family-names: "Massidda"
+    given-names: "Davide"
+title: "The Open Science Manual: Make Your Scientific
+        Research Accessible and Reproducible"
+version: 1.0.1
+doi: 10.5281/zenodo.6521850
+date-released: 2023-01-02
+url: "https://github.com/arca-dpss/manual-open-science"
+```
+]
+]
+.pull-right-50[
+
+.move-up-50[
+{{content}}
+]
+]
+
+--
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path,"citation.png"))
+```
+
+---
+# Metadata
+
+.pull-left-50[
+`CITATION.cff`
+
+.code-small[
+```
+cff-version: 1.2.0
+message: "For attribution, please cite it as below."
+authors:
+  - family-names: "Zandonella Callegher"
+    given-names: "Claudio"
+    orcid: "https://orcid.org/0000-0001-7721-6318"
+  - family-names: "Massidda"
+    given-names: "Davide"
+title: "The Open Science Manual: Make Your Scientific
+        Research Accessible and Reproducible"
+version: 1.0.1
+doi: 10.5281/zenodo.6521850
+date-released: 2023-01-02
+url: "https://github.com/arca-dpss/manual-open-science"
+```
+]
+]
+.pull-right-50[
+
+.move-up-50[
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path,"citation.png"))
+```
+]
+
+Documentation:
+
+.li-small[
+- https://citation-file-format.github.io/
+- [About CITATION files](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files)
+]
+
+]
+
+---
+# Metadata
+
+#### Schema.org
+
+--
+
+<br>
+
+.center[
+*“Schema.org is a collaborative, community activity with a mission to create,<br>maintain, and promote schemas for structured data on the Internet, on web pages,<br>in email messages, and beyond.”*
+]
+
+--
+
+<br>
+
+Documentation:
+
+.li-small[
+- https://schema.org/
+- https://www.software.ac.uk/resources/guides/adding-schema-dot-org
+]
+---
+class: inverse, center, middle
+
+# Sharing is Caring!
+
+## Moving to the next step...
