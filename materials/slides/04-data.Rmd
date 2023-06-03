@@ -92,7 +92,7 @@ count: false
 ---
 class: center, middle, inverse
 
-# Step 3: Sharing Data
+# Step III: Sharing Data
 ---
 # Data Structures
 

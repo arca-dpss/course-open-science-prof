@@ -92,11 +92,11 @@ count: false
 ---
 class: center, middle, inverse
 
-# Step 1: Sharing Materials
+# Step I: Sharing Materials
 
 ---
 
-# Step 1: Sharing Materials
+# Step I: Sharing Materials
 
 --
 
@@ -116,7 +116,7 @@ class: center, middle, inverse
 
 ---
 
-# Step 1: Sharing Materials
+# Step I: Sharing Materials
 
 .no-border[
 ```{r, out.width="70%"}
