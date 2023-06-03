@@ -1,0 +1,789 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/06-terminal/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 05 - Terminal
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step V: Terminal
+
+---
+# Terminal
+--
+
+```{r, out.width='45%'}
+knitr::include_graphics(paste0(image_path, 'terminal-meme.jpeg'))
+```
+
+---
+# Terminal
+
+```{r, out.width='60%'}
+knitr::include_graphics(paste0(image_path, 'terminal.png'))
+```
+
+--
+.center[*“When the going gets tough the terminal gets opening”*]
+---
+
+# Terminal
+
+
+.pull-left-60[
+#### Definitions
+
+.li-small[
+{{content}}
+]
+]
+.pull-right-40[
+
+]
+
+--
+
+- **Command Line Interface (CLI)**<br>The text-based interface,<br>opposite of Graphical User Interface (GUI)
+<br>
+
+{{content}}
+--
+
+- **Terminal (or Console)**<br>The graphical window with a command-line interface<br>that allows us to interact with the shell
+<br>
+
+{{content}}
+--
+
+- **Shell**<br>The interpreter that processes the commands<br>and communicates with the Operating System
+
+
+---
+
+# Terminal
+
+
+.pull-left-60[
+#### Definitions
+
+.li-small[
+- **Command Line Interface (CLI)**<br>The text-based interface,<br>opposite of Graphical User Interface (GUI)
+
+<!-- -->
+
+- **Terminal (or Console)**<br>The graphical window with a command-line interface<br>that allows us to interact with the shell
+
+<!-- -->
+
+- **Shell**<br>The interpreter that processes the commands<br>and communicates with the Operating System
+
+<br>
+
+.center[*Programming Language vs Command Language*]
+]
+]
+.pull-right-40[
+
+{{content}}
+]
+
+--
+#### Different Shells
+
+---
+
+# Terminal
+
+
+.pull-left-60[
+#### Definitions
+
+.li-small[
+- **Command Line Interface (CLI)**<br>The text-based interface,<br>opposite of Graphical User Interface (GUI)
+
+<!-- -->
+
+- **Terminal (or Console)**<br>The graphical window with a command-line interface<br>that allows us to interact with the shell
+
+<!-- -->
+
+- **Shell**<br>The interpreter that processes the commands<br>and communicates with the Operating System
+
+<br>
+
+.center[*Programming Language vs Command Language*]
+]
+]
+.pull-right-40[
+
+#### Different Shells
+
+.move-down-30[
+```{r table-shell}
+data_table <- tibble(Shell = c("Command Prompt (CMD)", "PowerShell", "$\\ldots$",
+                               "sh (Bourne shell)", "Bash (Bourne again shell)","Zsh (Z shell)", "$\\ldots$"))
+
+kable(data_table, booktabs = TRUE,
+      col.names = "Shell Interpreter", escape = FALSE) %>%
+  kable_styling(full_width = FALSE, 
+                latex_options = c("hold_position")) %>%
+  pack_rows(start_row = 1, end_row = 3, "Windows") %>%
+  pack_rows(start_row = 4, end_row = 7, "Unix System (macOS and Linux)")
+
+```
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+
+#### Prompt
+
+```{r, out.width='99%'}
+knitr::include_graphics(paste0(image_path, 'terminal.png'))
+```
+
+```
+HOST_NAME:CURRENT_DIRECTORY USER_NAME$
+```
+]
+.pull-right-60[
+
+]
+---
+# Get Started
+
+.pull-left-40[
+
+#### Prompt
+
+```{r, out.width='99%'}
+knitr::include_graphics(paste0(image_path, 'terminal.png'))
+```
+
+```
+HOST_NAME:CURRENT_DIRECTORY USER_NAME$
+```
+]
+.pull-right-60[
+#### Commands
+
+.code-size-12[
+```
+Command [Options] Argument1 Argument2 ...
+
+# Examples
+ls -la ~/Desktop/my-project
+cp -r ~/Desktop/my-project/ ~/Document/my-project/
+```
+]
+
+.li-size-14[
+.font-14[
+- `Command` function name
+- `Options` obtain command specific behaviour
+  - square brackets `[...]` indicate optional elements
+  - single letters `-<letter/s>` (e.g., `-l`, `-a`, `-la`) 
+  - Full word `--<option-name>` (e.g., `--all`)
+- `Argument*`, separated by space (need to wrap words!)
+]
+]
+]
+---
+# Get Started
+
+.pull-left-40[
+
+#### Prompt
+
+```{r, out.width='99%'}
+knitr::include_graphics(paste0(image_path, 'terminal.png'))
+```
+
+```
+HOST_NAME:CURRENT_DIRECTORY USER_NAME$
+```
+]
+.pull-right-60[
+#### Commands
+
+.code-size-12[
+```
+Command [Options] Argument1 Argument2 ...
+
+# Examples
+ls -la ~/Desktop/my-project
+cp -r ~/Desktop/my-project/ ~/Document/my-project/
+```
+]
+
+.li-size-14[
+.font-14[
+- `Command` function name
+- `Options` obtain command specific behaviour
+  - square brackets `[...]` indicate optional elements
+  - single letters `-<letter/s>` (e.g., `-l`, `-a`, `-la`) 
+  - Full word `--<option-name>` (e.g., `--all`)
+- `Argument*`, separated by space (need to wrap words!)
+]
+]
+
+.code-size-12[
+```
+Software Command [Options] Argument1 Argument2 ...
+
+# Example
+git push -u origin main
+docker build -t my-image:1.0.0 Desktop/my-project
+```
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+#### Navigating Directories
+
+.li-small[
+- `pwd` print working directory
+]
+
+]
+.pull-right-60[
+#### &nbsp;
+
+.code-size-12[
+```
+$ pwd
+/Users/myname
+```
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+#### Navigating Directories
+
+.li-small[
+- `pwd` print working directory
+- `ls` list directory contents
+  - `-l` long listing format
+  - `-a` list all files (also hidden)
+]
+]
+.pull-right-60[
+
+#### &nbsp;
+
+.move-down-60[
+.code-size-12[
+```
+$ ls
+Applications               Documents                 Library
+Desktop                    Downloads  
+```
+
+```
+$ ls -l Desktop/
+drwxr-xr-x@ 17 claudio  staff    23544 Dec 17 17:09 Courses
+drwxr-xr-x@ 17 claudio  staff    14590 Dec 17 17:09 Presentations
+-rw-r--r--   1 claudio  staff     5928 Feb  3 14:41 Repot.pdf
+-rw-r--r--@  1 claudio  staff      160 Jan 18 11:10 TODO-list.txt
+```
+]
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+#### Navigating Directories
+
+.li-small[
+- `pwd` print working directory
+- `ls` list directory contents
+  - `-l` long listing format
+  - `-a` list all files (also hidden)
+- `cd <directory>`<br>change directory
+]
+]
+.pull-right-60[
+#### &nbsp;
+
+.move-down-170[
+.code-size-12[
+```
+$ cd Desktop/Courses/Open-Science
+$ pwd 
+/Users/myname/Desktop/Courses/Open-Science
+```
+
+```
+$ cd ../../
+$ pwd 
+/Users/myname/Desktop
+```
+]
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+#### Navigating Directories
+
+.li-small[
+- `pwd` print working directory
+- `ls` list directory contents
+  - `-l` long listing format
+  - `-a` list all files (also hidden)
+- `cd <directory>`<br>change directory
+]
+
+#### Extra
+
+.li-small[
+- `Tab` autocomplete / list options
+- `up/down keys` navigate history
+]
+]
+.pull-right-60[]
+
+---
+
+# Get Started
+
+.pull-left-40[
+#### Modifying Files
+]
+.pull-right-60[]
+
+---
+# Get Started
+
+.pull-left-40[
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+]
+]
+.pull-right-60[
+#### &nbsp;
+
+.code-size-12[
+```
+$ mkdir my-project
+$ cd my-project 
+$ pwd
+/Users/myname/my-project
+```
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.move-down-80[
+.code-size-12[
+```
+$ touch README
+$ ls
+README
+```
+]
+]
+]
+---
+# Get Started
+
+.pull-left-40[
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+- `cat <file>`<br>Print content on screen
+- `less <file>`<br>Visualize content on screen
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.move-down-140[
+.code-size-12[
+```
+$ cat README
+$
+```
+]
+]
+]
+---
+# Get Started
+
+.pull-left-40[
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+- `cat <file>`<br>Print content on screen
+- `less <file>`<br>Visualize content on screen
+- `echo <text>`<br>Print text on screen
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.move-down-270[
+.code-size-12[
+```
+$ echo "Hello World!"
+Hello World!
+```
+]
+]
+]
+---
+# Get Started
+
+.pull-left-40[
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+- `cat <file>`<br>Print content on screen
+- `less <file>`<br>Visualize content on screen
+- `echo <text>`<br>Print text on screen
+]
+
+#### Extra
+
+.li-small[
+- `>` overwrites a file
+- `>>` appends to a file 
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.move-down-270[
+.code-size-12[
+```
+$ echo "Hello World!"
+Hello World!
+$ echo "Hello World!" >> README
+```
+
+```
+$ cat README
+Hello World!
+```
+]
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+- `cat <file>`<br>Print content on screen
+- `less <file>`<br>Visualize content on screen
+- `echo <text>`<br>Print text on screen
+]
+
+#### Extra
+
+.li-small[
+- `>` overwrites a file
+- `>>` appends to a file 
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.li-small[
+- `mv <file> <to>`<br>Move file
+]
+
+.code-size-12[
+```
+$ mv ../Report.pdf .
+$ ls
+README                Report.pdf
+```
+]
+]
+
+---
+# Get Started
+
+.pull-left-40[
+
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+- `cat <file>`<br>Print content on screen
+- `less <file>`<br>Visualize content on screen
+- `echo <text>`<br>Print text on screen
+]
+
+#### Extra
+
+.li-small[
+- `>` overwrites a file
+- `>>` appends to a file 
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.li-small[
+- `mv <file> <to>`<br>Move file
+- `cp <file> <to>`<br>Copy file
+  - `-r` recursive for directories
+]
+
+.code-size-12[
+```
+$ cp Report.pdf Report-copy.pdf
+$ ls
+README                Report-copy.pdf          Report.pdf
+```
+]
+]
+---
+# Get Started
+
+.pull-left-40[
+
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+- `cat <file>`<br>Print content on screen
+- `less <file>`<br>Visualize content on screen
+- `echo <text>`<br>Print text on screen
+]
+
+#### Extra
+
+.li-small[
+- `>` overwrites a file
+- `>>` appends to a file 
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.li-small[
+- `mv <file> <to>`<br>Move file
+- `cp <file> <to>`<br>Copy file
+  - `-r` recursive for directories
+- `rm <file>`<br>Remove file
+  - `-r` recursive for directories
+]
+
+.code-size-12[
+```
+$ rm Report-copy.pdf
+$ ls
+README                Report.pdf
+```
+]
+]
+---
+# Get Started
+
+.pull-left-40[
+
+#### Modifying Files
+
+.li-small[
+- `mkdir <dir-name>`<br>Make directory
+- `touch <file-name>`<br>Create a blank file
+- `cat <file>`<br>Print content on screen
+- `less <file>`<br>Visualize content on screen
+- `echo <text>`<br>Print text on screen
+]
+
+#### Extra
+
+.li-small[
+- `>` overwrites a file
+- `>>` appends to a file 
+]
+]
+
+.pull-right-60[
+#### &nbsp;
+
+.li-small[
+- `mv <file> <to>`<br>Move file
+- `cp <file> <to>`<br>Copy file
+  - `-r` recursive for directories
+- `rm <file>`<br>Remove file
+  - `-r` recursive for directories
+]
+
+.move-down-120[
+.li-small[
+- `Ctrl + Shift + C` (or `Control + C` on macOS) interrupt the command
+]
+]
+]
+---
+# Terminal in RStudio
+
+.pull-left-50[
+.move-up-30[
+Open a new Terminal window
+]
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'new-terminal.png'))
+```
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'terminal-panel.png'))
+```
+
+]
+.pull-right-50[
+.move-up-30[
+Select the default shell
+]
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'terminal-settings.png'))
+```
+
+]
+
+---
+class: inverse, center, middle
+
+# With great power comes great responsibility!!
+
+## Moving to the next step...

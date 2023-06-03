@@ -115,6 +115,11 @@ li {
   padding-bottom: 0em;
 }
 
+.li-size-14 li {
+  padding-bottom: 0.5em;
+  font-size: 14pt;
+}
+
 .li-small li {
   padding-bottom: 0.5em;
   font-size: 16pt;
@@ -269,6 +274,36 @@ blockquote {
   margin-bottom: 0px;
 }
 
+/* down */
+.move-down-30 {
+  margin-top:30px  !important;
+}
+
+.move-down-60 {
+  margin-top:60px  !important;
+}
+
+.move-down-80 {
+  margin-top:80px  !important;
+}
+
+.move-down-120 {
+  margin-top:120px  !important;
+}
+
+.move-down-140 {
+  margin-top:140px  !important;
+}
+
+.move-down-170 {
+  margin-top:170px  !important;
+}
+
+.move-down-270 {
+  margin-top:270px  !important;
+}
+
+/* up */
 .move-up-30 {
   margin-top:-30px  !important;
 }
