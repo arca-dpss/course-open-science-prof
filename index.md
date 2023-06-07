@@ -80,6 +80,7 @@ Please install the following software in advance.
 - <a href="materials/slides/04-data.html" target="_blank">04 - Data</a>
 - <a href="materials/slides/05-code.html" target="_blank">05 - Coding</a>
 - <a href="materials/slides/06-terminal.html" target="_blank">06 - Terminal</a>
+- <a href="materials/slides/06-git.html" target="_blank">07 - Git</a>
 
 ## Exercises
 
@@ -94,7 +95,7 @@ Please install the following software in advance.
 - *“The Open Science Manual: Make Your Scientific Research Accessible and Reproducible”* by Claudio Zandonella and Davide Massidda
  ([Link](https://arca-dpss.github.io/manual-open-science/) web version and [PDF](https://arca-dpss.github.io/manual-open-science/manual-open-science.pdf) version)
 
-<!-- - Questionario valutazione [link](https://forms.gle/6ycuFMdDnyemD4AR6) -->
+<!-- - Questionario valutazione [link](https://forms.gle/YKESLW64jWTtA7vi7) -->
 
 
 

@@ -1,0 +1,2950 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>07-git.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # 07 - Git
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step VI: Versioning
+
+---
+# Versioning
+
+--
+.pull-left-50[
+
+&lt;br&gt;
+- Keep everything in order
+- Collaborating
+]
+.pull-right-50[
+.move-up-70[
+{{content}}
+]
+]
+--
+&lt;img src="images/07-git/final-doc.jpeg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+# Versioning
+
+.pull-left-50[
+
+&lt;br&gt;
+- Keep everything in order
+- Collaborating
+
+&lt;br&gt;
+.center[
+### No problem, there is a solution
+]
+
+&lt;img src="images/07-git/git-logo.png" width="30%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+.move-up-70[
+&lt;img src="images/07-git/final-doc.jpeg" width="85%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# Git Nice Fact 🐧
+
+--
+
+.pull-left-50[
+&lt;div style = 'margin-top: -10pt;'&gt;
+&lt;img src="images/07-git/linus.jpeg" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;/div&gt;
+]
+.pull-right-50[
+
+{{content}}
+
+]
+
+---
+# Git Nice Fact 🐧
+
+.pull-left-50[
+
+
+&lt;img src="images/07-git/linus.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+
+{{content}}
+
+]
+--
+
+&lt;img src="images/07-git/linux-logo.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+&lt;br&gt;
+
+&lt;img src="images/07-git/git-logo.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Git Concepts
+
+--
+.pull-left-30[
+
+&lt;br&gt;
+
+- Tracking files
+- Managing collaboration
+- Branching
+
+]
+.pull-right-70[
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+
+.move-down-80[
+.li-small[
+- Track all changes to files
+- Detailed history and traceability 
+- Check earlier versions 
+- Restore previous version
+]
+]
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+&lt;img src="images/07-git/local-work-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.width-30[
+{{content}}
+]
+]
+
+--
+```
+- my-project/
+   |-.git/
+   |- data/
+   |- analysis/
+   |- code/
+   |- README
+```
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+&lt;img src="images/07-git/local-work-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.width-30[
+```
+- my-project/
+*  |-.git/
+   |- data/
+   |- analysis/
+   |- code/
+   |- README
+```
+]
+]
+
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+.move-up-70[
+&lt;img src="images/07-git/history.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+- Commits are identified by unique `SHA-1 hash ID`
+- `master` (or `main`) default branch 
+  - It is a *pointer* (reference) to a commit
+- `HEAD` the current commit we are viewing
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+.move-up-70[
+&lt;img src="images/07-git/history.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.center[`checkout`]
+
+&lt;img src="images/07-git/checkout.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+&lt;br&gt;
+
+.center[
+{{content}}
+]
+]
+--
+
+### We have a time machine!
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+&lt;img src="images/07-git/local-work-2.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- Managing collaboration
+- .alpha[Branching]
+
+]
+.pull-right-70[
+&lt;br&gt;
+.move-down-80[
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+
+- Multiple colleagues
+- Work independently 
+- Avoiding conflicts
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- Managing collaboration
+- .alpha[Branching]
+
+]
+.pull-right-70[
+.move-up-70[
+&lt;img src="images/07-git/collaborate.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+&lt;br&gt;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Always pull first
+- Solve conflicts
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- Managing collaboration
+- .alpha[Branching]
+
+]
+.pull-right-70[
+&lt;img src="images/07-git/workflow.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+.move-down-170[
+.li-small[
+{{content}}
+]
+]
+]
+--
+
+&lt;br&gt;
+
+- Create different branches 
+- Allow us to make changes independently
+- Integrate all changes
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+&lt;img src="images/07-git/branch.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+
+
+.move-down-30[
+#### Branching
+
+&lt;img src="images/07-git/merge-extra-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+
+.move-down-30[
+#### Merging
+
+&lt;img src="images/07-git/merge-extra-2.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.move-down-60[
+.li-small[
+{{content}}
+]
+]
+]
+]
+
+--
+
+#### Extra: Merging Mechanism
+
+- Obtain a *“merge commit”*
+- Branches still exist and are independent
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+&lt;br&gt;
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+&lt;img src="images/07-git/workflow-adv-2.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+---
+class: inverse, center, middle
+
+# Getting Started
+
+---
+
+# Getting Started: Configure Settings
+
+--
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "&lt;My Name&gt;"
+$ git config --global user.email "&lt;user@email.com&gt;"
+```
+]
+
+Configuration file
+
+.code-size-12[
+```
+#----    ~/.gitconfig    ----#
+[user]
+    name = My Name
+    email = user@email.com
+```
+]
+]
+.pull-right-50[]
+
+---
+
+# Getting Started: Configure Settings
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "&lt;My Name&gt;"
+$ git config --global user.email "&lt;user@email.com&gt;"
+```
+]
+
+Configuration file
+
+.code-size-12[
+```
+#----    ~/.gitconfig    ----#
+[user]
+    name = My Name
+    email = user@email.com
+```
+]
+]
+.pull-right-50[
+Current settings
+
+.code-size-12[
+```
+$ git config --list
+```
+]
+
+.move-down-40[
+Settings levels
+]
+
+.li-small[
+- `--system` system level&lt;br&gt;Stored in `/etc/gitconfig`
+- `--global` user level&lt;br&gt;Stored in `~/.gitconfig`
+- No flag, project level&lt;br&gt;Stored in `.git/config`
+]
+]
+
+---
+
+# Getting Started: Initialize Repository
+
+--
+
+.pull-left-50[
+- Already existing directory
+.code-size-12[
+```
+$ cd &lt;path-to/project-directory&gt;
+$ git init
+```
+]
+&gt; Create an hidden folder `.git/`
+
+]
+
+.pull-right-50[]
+
+---
+
+# Getting Started: Initialize Repository
+
+.pull-left-50[
+- Already existing directory
+.code-size-12[
+```
+$ cd &lt;path-to/project-directory&gt;
+$ git init
+```
+]
+&gt; Create an hidden folder `.git/`
+
+
+- Get remote repository
+.code-size-12[
+```
+$ git clone &lt;repository-URL&gt;
+```
+]
+]
+.pull-right-50[
+
+]
+
+---
+
+# Getting Started: Tracking Files
+
+--
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[]
+]
+.pull-right-60[
+
+.move-up-30[
+.code-size-12[
+{{content}}
+]
+]
+]
+
+--
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+    code/
+    data/
+    README
+
+nothing added to commit but untracked files present 
+(use "git add" to track)
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+*   |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+*   code/
+*   data/
+*   README
+
+nothing added to commit but untracked files present 
+(use "git add" to track)
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+*   |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+]
+]
+
+&lt;br&gt;
+
+#### Extra: `.git-track` 
+
+Git do not track empty directories&lt;br&gt;Create and hidden empty file to track them
+
+.code-size-12[
+```
+$ touch &lt;path-to-empty-dir&gt;/.git-track
+```
+]
+]
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+- `git add &lt;file&gt;`&lt;br&gt;Add file to stage area
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git add README &lt;other-files&gt;
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+- `git add &lt;file&gt;`&lt;br&gt;Add file to stage area
+  - `--all` add files
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git add README &lt;other-files&gt;
+```
+
+```
+$ git add --all
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+    new file:   code/my-functions-1
+    new file:   code/my-functions-2
+    new file:   data/raw-data.csv
+    new file:   README
+```
+]
+]
+]
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+- `git add &lt;file&gt;`&lt;br&gt;Add file to stage area
+  - `--all` add files
+- `git rm --cached &lt;file&gt;`&lt;br&gt;Remove file from staging area
+- `git reset`&lt;br&gt;Remove all files from staging area
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git rm --cached data/raw-data.csv
+```
+
+{{content}}
+]
+]
+]
+
+--
+
+```
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+    new file:   code/my-functions-1
+    new file:   code/my-functions-2
+    new file:   README
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+    data/
+```
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+- `git add &lt;file&gt;`&lt;br&gt;Add file to stage area
+  - `--all` add files
+- `git rm --cached &lt;file&gt;`&lt;br&gt;Remove file from staging area
+- `git reset`&lt;br&gt;Remove all files from staging area
+]
+]
+.pull-right-60[
+.move-down-30[
+#### Extra: `.gitignore`
+]
+]
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`&lt;br&gt;Check the project state
+- `git add &lt;file&gt;`&lt;br&gt;Add file to stage area
+  - `--all` add files
+- `git rm --cached &lt;file&gt;`&lt;br&gt;Remove file from staging area
+- `git reset`&lt;br&gt;Remove all files from staging area
+]
+]
+.pull-right-60[
+.move-down-30[
+#### Extra: `.gitignore`
+]
+
+Matching patterns rules:
+
+.li-small[
+- `note.txt` file name (in any directory)
+- `folder-A/note.txt` path specification
+- `folder-A/` directory name (in any directory)
+- `*.log` file extension
+- `folder-A/*.log` path specification
+- `!important.log` create exceptions
+]
+
+{{content}}
+
+]
+
+--
+Patterns according to `.gitignore` position
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`&lt;br&gt;Create a commit
+
+]
+]
+.pull-right-60[
+.code-size-12[
+
+.move-down-80[
+{{content}}
+]
+]
+]
+
+--
+
+```
+$ git commit
+```
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`&lt;br&gt;Create a commit
+
+]
+]
+.pull-right-60[
+.move-down-80[
+.code-size-12[
+```
+$ git commit
+```
+
+```
+#---- commit messagge -----
+Init Repo
+    
+- add code scripts
+- add README
+```
+]
+]
+
+.move-down-30[
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+
+Commit Messages:
+
+- Brief title (&lt; 50 characters)
+- List of main changes
+- Explain **why**
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`&lt;br&gt;Create a commit
+  - `-a` all changes to tracked files 
+  - `-m &lt;text&gt;` commit message
+
+]
+]
+.pull-right-60[
+
+.move-down-80[
+.code-size-12[
+```
+$ git commit
+```
+
+```
+#---- commit messagge -----
+Init Repo
+    
+- add code scripts
+- add README
+```
+
+```
+$ git commit -am "Update README"  
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`&lt;br&gt;Create a commit
+  - `-a` all changes to tracked files 
+  - `-m &lt;text&gt;` commit message
+- `git log` See history
+  - `--oneline` compact version
+
+]
+]
+.pull-right-60[
+.move-down-80[
+.code-size-12[
+```
+$ git log
+commit ec15cb085c2e5aa463778bbef3239b06b9ac4010 (HEAD -&gt; master)
+Author: username &lt;user@email.com&gt;
+Date:   Tue Feb 15 10:06:27 2022 +0100
+
+    Update README
+
+commit 93398d18e686d4698af3e52a0677585afe467a19
+Author: username &lt;user@email.com&gt;
+Date:   Tue Feb 15 09:26:13 2022 +0100
+
+    Init Repo
+    
+    - add code scripts
+    - add README
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`&lt;br&gt;Create a commit
+  - `-a` all changes to tracked files 
+  - `-m &lt;text&gt;` commit message
+- `git log` See history
+  - `--oneline` compact version
+- `git diff`&lt;br&gt;See changes since last commit
+
+]
+]
+.pull-right-60[
+.code-size-12[
+.move-down-80[
+```
+$ git diff
+diff --git a/README b/README
+index 64772c2..e994379 100644
+--- a/README
++++ b/README
+@@ -1 +1,2 @@
+ This is my first project using Git!
++New information
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`&lt;br&gt;Create a commit
+  - `-a` all changes to tracked files 
+  - `-m &lt;text&gt;` commit message
+- `git log` See history
+  - `--oneline` compact version
+- `git diff`&lt;br&gt;See changes since last commit
+  - `&lt;commit-ID&gt;`&lt;br&gt;Since specified commit
+  - `&lt;commit-A&gt; &lt;commit-B&gt;`&lt;br&gt;From commit-A to commit-B
+
+]
+]
+.pull-right-60[
+.code-size-12[
+.move-down-80[
+```
+$ git diff
+diff --git a/README b/README
+index 64772c2..e994379 100644
+--- a/README
++++ b/README
+@@ -1 +1,2 @@
+ This is my first project using Git!
++New information
+```
+]
+]
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[]
+]
+.pull-right-60[
+{{content}}
+]
+
+--
+
+&lt;img src="images/07-git/history.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+]
+]
+.pull-right-60[
+&lt;img src="images/07-git/history.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.code-size-12[
+```
+$ git checkout 60e117d7
+```
+]
+
+{{content}}
+]
+
+--
+
+&lt;img src="images/07-git/checkout.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+]
+]
+.pull-right-60[
+&lt;img src="images/07-git/history.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.code-size-12[
+```
+$ git checkout 60e117d7
+```
+]
+
+&lt;img src="images/07-git/checkout.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.center[*Warning! Detached* `HEAD`]
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+]
+]
+.pull-right-60[
+.move-up-30[
+In detached `HEAD`, changes will be lost!
+]
+
+&lt;img src="images/07-git/checkout.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+]
+]
+.pull-right-60[
+.move-up-30[
+In detached `HEAD`, changes will be lost!
+]
+
+&lt;img src="images/07-git/checkout.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.code-size-12[
+```
+$ git checkout -b &lt;branch-name&gt;
+```
+]
+
+{{content}}
+]
+
+--
+&lt;img src="images/07-git/checkout-diverge.png" width="90%" style="display: block; margin: auto;" /&gt;
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+]
+]
+.pull-right-60[
+&lt;img src="images/07-git/history.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+- `git revert &lt;commit-ID&gt;`&lt;br&gt;Undo commits (keep track)
+
+]
+]
+.pull-right-60[
+&lt;img src="images/07-git/history.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.code-size-12[
+```
+$ git revert 7bf97593
+$ git revert 9d109cfe
+```
+]
+
+{{content}}
+]
+
+--
+&lt;img src="images/07-git/revert.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+- `git revert &lt;commit-ID&gt;`&lt;br&gt;Undo commits (keep track)
+- `git reset &lt;commit-ID&gt;`&lt;br&gt;Undo commits (delete)
+
+]
+]
+.pull-right-60[
+&lt;img src="images/07-git/history.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.code-size-12[
+```
+$ git revert 7bf97593
+$ git revert 9d109cfe
+```
+]
+
+{{content}}
+]
+
+--
+&lt;img src="images/07-git/reset.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout &lt;commit-ID&gt;`&lt;br&gt;Point `HEAD` to commit
+- `git revert &lt;commit-ID&gt;`&lt;br&gt;Undo commits (keep track)
+- `git reset &lt;commit-ID&gt;`&lt;br&gt;Undo commits (delete)
+  {{content}}
+
+]
+]
+.pull-right-60[
+&lt;img src="images/07-git/history.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.code-size-12[
+```
+$ git revert 7bf97593
+$ git revert 9d109cfe
+```
+]
+
+&lt;img src="images/07-git/reset.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.center[All changes are maintained in the files]
+]
+
+--
+
+  - `--hard` to discard changes&lt;br&gt;(or `git restore &lt;file&gt;`)
+
+---
+# Getting Started: Collaboration
+
+--
+
+.pull-left-40[
+
+.move-down-40[
+#### &amp;nbsp;
+]
+
+.li-small[
+- `git remote add &lt;name&gt; &lt;url&gt;`&lt;br&gt;Add remote repository
+
+
+]
+]
+.pull-right-60[
+
+.move-down-90[
+.code-size-12[
+```
+$ git remote add origin https://github.com/username/my-project.git
+```
+]
+]
+
+{{content}}
+]
+
+--
+
+&gt; `origin` no special meaning per se!
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &amp;nbsp;
+]
+
+.li-small[
+- `git remote add &lt;name&gt; &lt;url&gt;`&lt;br&gt;Add remote repository
+- `git remote -v`&lt;br&gt;List remote repository
+]
+]
+.pull-right-60[
+
+.move-down-90[
+.code-size-12[
+```
+$ git remote add origin https://github.com/username/my-project.git
+```
+]
+]
+
+&gt; `origin` no special meaning per se!
+
+.code-size-12[
+```
+$ git remote -v
+origin  https://github.com/username/my-project.git (fetch)
+origin  https://github.com/username/my-project.git (push)
+```
+]
+
+]
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &amp;nbsp;
+]
+
+.li-small[
+- `git remote add &lt;name&gt; &lt;url&gt;`&lt;br&gt;Add remote repository
+- `git remote -v`&lt;br&gt;List remote repository
+- `git pull &lt;remote&gt; &lt;branch&gt;`&lt;br&gt;Download commits from remote
+]
+]
+.pull-right-60[
+
+.move-up-30[
+.code-size-12[
+```
+$ git pull origin master
+```
+]
+]
+
+{{content}}
+]
+
+--
+&lt;img src="images/07-git/pull.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+
+--
+
+&gt; `pull` = `fetch` + `merge`
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &amp;nbsp;
+]
+
+.li-small[
+- `git remote add &lt;name&gt; &lt;url&gt;`&lt;br&gt;Add remote repository
+- `git remote -v`&lt;br&gt;List remote repository
+- `git pull &lt;remote&gt; &lt;branch&gt;`&lt;br&gt;Download commits from remote
+- `git push &lt;remote&gt; &lt;branch&gt;`&lt;br&gt;Upload commits to remote
+]
+]
+.pull-right-60[
+
+.move-up-30[
+.code-size-12[
+```
+$ git push origin master
+```
+]
+]
+
+{{content}}
+]
+
+--
+&lt;img src="images/07-git/push.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &amp;nbsp;
+]
+
+.li-small[
+- `git remote add &lt;name&gt; &lt;url&gt;`&lt;br&gt;Add remote repository
+- `git remote -v`&lt;br&gt;List remote repository
+- `git pull &lt;remote&gt; &lt;branch&gt;`&lt;br&gt;Download commits from remote
+- `git push &lt;remote&gt; &lt;branch&gt;`&lt;br&gt;Upload commits to remote
+]
+]
+.pull-right-60[
+
+#### 🌵 Warning: Always `pull` First
+
+.code-small[
+```
+$ git push
+To https://github.com/username/my-project.git
+ ! [rejected]        master -&gt; master (fetch first)
+error: failed to push some refs to 'https://github.com/username/my-project.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+]
+]
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &amp;nbsp;
+]
+
+.li-small[
+- `git remote add &lt;name&gt; &lt;url&gt;`&lt;br&gt;Add remote repository
+- `git remote -v`&lt;br&gt;List remote repository
+- `git pull &lt;remote&gt; &lt;branch&gt;`&lt;br&gt;Download commits from remote
+- `git push &lt;remote&gt; &lt;branch&gt;`&lt;br&gt;Upload commits to remote
+  - `-u` set upstream
+]
+]
+.pull-right-60[
+
+#### 🌵 Warning: Always `pull` First
+
+.code-small[
+```
+$ git push
+To https://github.com/username/my-project.git
+ ! [rejected]        master -&gt; master (fetch first)
+error: failed to push some refs to 'https://github.com/username/my-project.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+]
+
+.move-down-30[
+#### Setting Upstream
+]
+
+.code-size-12[
+```
+$ git push -u origin master
+
+# or 
+$ git branch --set-upstream-to="&lt;remote/branch&gt;"
+```
+]
+]
+
+
+---
+# Getting Started: Branching
+
+--
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.li-small[
+- `git branch &lt;name&gt;`&lt;br&gt;Create local branch
+]
+]
+.pull-right-60[
+
+.move-down-50[
+.code-size-12[
+```
+$ git branch my-branch
+```
+]
+]
+
+.move-down-50[
+{{content}}
+]
+]
+
+--
+&lt;img src="images/07-git/branch-extra-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.li-small[
+- `git branch &lt;name&gt;`&lt;br&gt;Create local branch
+]
+]
+.pull-right-60[
+.move-down-50[
+.code-size-12[
+```
+$ git branch my-branch
+```
+]
+]
+
+.move-down-50[
+&lt;img src="images/07-git/branch-extra-2.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+Remote branch created on `push`
+
+```
+$ git push -u origin my-branch
+```
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.li-small[
+- `git branch &lt;name&gt;`&lt;br&gt;Create local branch
+- `git checkout &lt;name&gt;`&lt;br&gt;Switch to another branch
+]
+]
+.pull-right-60[
+
+.move-down-110[
+.code-size-12[
+```
+$ git checkout my-branch
+```
+]
+]
+]
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.li-small[
+- `git branch &lt;name&gt;`&lt;br&gt;Create local branch
+- `git checkout &lt;name&gt;`&lt;br&gt;Switch to another branch
+  - `-b` create and move
+]
+]
+.pull-right-60[
+
+.code-size-12[
+.move-down-110[
+```
+$ git checkout my-branch
+```
+]
+
+```
+$ git checkout -b my-branch
+```
+
+]
+]
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.li-small[
+- `git branch &lt;name&gt;`&lt;br&gt;Create local branch
+- `git checkout &lt;name&gt;`&lt;br&gt;Switch to another branch
+  - `-b` create and move
+- `git branch` list branches
+]
+]
+.pull-right-60[
+
+.code-size-12[
+.move-down-210[
+```
+$ git branch 
+ * master
+   my-branch
+```
+]
+
+
+]
+]
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.li-small[
+- `git branch &lt;name&gt;`&lt;br&gt;Create local branch
+- `git checkout &lt;name&gt;`&lt;br&gt;Switch to another branch
+  - `-b` create and move
+- `git branch` list branches
+  - `-vv` verbose
+  - `-r` list remote branches
+]
+]
+.pull-right-60[
+
+.move-down-210[
+.code-size-12[
+```
+$ git branch 
+ * master
+   my-branch
+```
+
+```
+$ git branch -vv
+ * master    00ab7a8 [origin/master] Update master
+   my-branch 702b800 [origin/my-branch] Create my-branch
+    
+$ git branch -vvr
+origin/master    00ab7a8 Update master
+origin/my-branch 702b800 Create my-branch
+```
+
+]
+]
+]
+
+---
+# Getting Started: Merging
+
+--
+.pull-left-40[
+
+#### &amp;nbsp;
+
+]
+.pull-right-60[
+
+.code-size-12[
+```
+$ git checkout master
+```
+]
+
+.move-down-44[
+&lt;img src="images/07-git/merge-extra-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+]
+---
+# Getting Started: Merging
+
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.move-down-50[
+.li-small[
+- `git merge &lt;name&gt;`&lt;br&gt;Merge branch
+]
+]
+]
+.pull-right-60[
+
+.code-size-12[
+```
+$ git checkout master
+$ git merge my-branch
+```
+]
+
+&lt;img src="images/07-git/merge-extra-2.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+]
+
+--
+
+&gt;  *“Merge commit”* joining the two branches
+
+---
+# Getting Started: Merging
+
+.pull-left-40[
+
+#### &amp;nbsp;
+
+.move-down-50[
+.li-small[
+- `git merge &lt;name&gt;`&lt;br&gt;Merge branch
+- `git branch -d &lt;branch-name&gt;`&lt;br&gt;Remove local branch
+- `git push &lt;remote-name&gt; --delete &lt;branch-name&gt;`&lt;br&gt;Remove remote branch
+]
+]
+]
+.pull-right-60[
+
+.code-size-12[
+```
+$ git checkout master
+$ git merge my-branch
+```
+]
+
+.move-down-44[
+.code-size-12[
+```
+# Remove local branch
+$ git branch -d my-branch
+
+# Remove remote branch
+$ git push origin --delete my-branch
+```
+]
+]
+]
+
+
+---
+# Getting Started: Conflicts
+
+--
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+Second text line
+Third text line
+```
+]
+]
+]
+]
+.pull-right-50[
+
+]
+
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+]
+
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+```
+]
+
+]
+
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+Auto-merging my-file.txt
+CONFLICT (content): Merge conflict in my-file.txt
+Automatic merge failed; fix conflicts and then 
+commit the result.
+```
+]
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```
+#----    my-file.txt
+  
+First text line
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+Branch-A text line
+
+=======
+
+Branch-B text line
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-B
+Third text line
+```
+
+---
+
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+Auto-merging my-file.txt
+CONFLICT (content): Merge conflict in my-file.txt
+Automatic merge failed; fix conflicts and then 
+commit the result.
+```
+]
+
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+*Branch-A text line
+
+=======
+
+*Branch-B text line
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-B
+Third text line
+```
+]
+]
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+Auto-merging my-file.txt
+CONFLICT (content): Merge conflict in my-file.txt
+Automatic merge failed; fix conflicts and then 
+commit the result.
+```
+]
+
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+Branch-B text line
+Third text line
+```
+]
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```
+$ git commit -m "Solve conflict"
+```
+{{content}}
+
+--
+```
+$ git merge --abort
+```
+
+---
+
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+#### Conflict Style Diff3
+
+.code-size-12[
+{{content}}
+]
+]
+--
+
+```
+$ git config --global merge.conflictstyle diff3
+```
+{{content}}
+
+--
+
+```
+#----    my-file.txt
+  
+First text line
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+Branch-A text line
+
+||||||| common ancestor commit
+
+Second text line
+
+=======
+
+Branch-B text line
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; merging-branch
+Third text line
+```
+
+---
+
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+#### Conflict Style Diff3
+
+.code-size-12[
+```
+$ git config --global merge.conflictstyle diff3
+```
+
+```
+#----    my-file.txt
+  
+First text line
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+*Branch-A text line
+
+||||||| common ancestor commit
+
+*Second text line
+
+=======
+
+*Branch-B text line
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; merging-branch
+Third text line
+```
+]
+]
+
+---
+
+# Git Workflow
+
+--
+#### Two Branches approach
+
+&lt;img src="images/07-git/workflow-adv-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Git Workflow
+
+#### Multiple Branches Approach
+
+&lt;img src="images/07-git/workflow-adv-2.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, center, middle
+
+# RStudio Git GUI
+
+---
+# RStudio: Configure Git
+
+--
+*“Tools -&gt; Global Options”*
+
+&lt;img src="images/07-git/git-settings-1.png" width="35%" style="display: block; margin: auto;" /&gt;
+
+--
+
+&lt;img src="images/07-git/rstudio-git.png" width="35%" style="display: block; margin: auto;" /&gt;
+
+---
+# RStudio: Create Git Repository
+
+--
+
+.pull-left-50[
+#### Create a New Project
+
+&lt;img src="images/07-git/rstudio-new-proj.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+{{content}}
+]
+
+--
+#### Clone a Remote Repository
+
+&lt;img src="images/07-git/rstudio-clone-1.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+# RStudio: Create Git Repository
+
+.pull-left-50[
+#### Create a New Project
+
+&lt;img src="images/07-git/rstudio-new-proj.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+#### Clone a Remote Repository
+
+&lt;img src="images/07-git/rstudio-clone-2.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# RStudio: Create Git Repository
+
+.pull-left-50[
+#### Create a New Project
+
+&lt;img src="images/07-git/rstudio-new-proj.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+#### Clone a Remote Repository
+
+&lt;img src="images/07-git/rstudio-clone-3.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# RStudio: Git Panel
+
+.pull-left-50[
+#### &amp;nbsp;
+
+&lt;img src="images/07-git/panel-base-1.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+]
+
+---
+# RStudio: Tracking Changes
+
+--
+
+.pull-left-50[
+#### &amp;nbsp;
+
+&lt;img src="images/07-git/panel-files.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+#### &amp;nbsp;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- &lt;img src="images/07-git/icon-untraked.png" height="40"&gt; Untracked
+- &lt;img src="images/07-git/icon-added.png" height="40"&gt; Added
+- &lt;img src="images/07-git/icon-modified.png" height="40"&gt; Modified
+- &lt;img src="images/07-git/icon-deleted.png" height="40"&gt; Deleted
+- &lt;img src="images/07-git/icon-renamed.png" height="40"&gt; Renamed
+- &lt;img src="images/07-git/icon-conflict.png" height="40"&gt; Conflict
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### &amp;nbsp;
+
+&lt;img src="images/07-git/panel-stage.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+#### &amp;nbsp;
+
+.li-small[
+- &lt;img src="images/07-git/icon-untraked.png" height="40"&gt; Untracked
+- &lt;img src="images/07-git/icon-added.png" height="40"&gt; Added
+- &lt;img src="images/07-git/icon-modified.png" height="40"&gt; Modified
+- &lt;img src="images/07-git/icon-deleted.png" height="40"&gt; Deleted
+- &lt;img src="images/07-git/icon-renamed.png" height="40"&gt; Renamed
+- &lt;img src="images/07-git/icon-conflict.png" height="40"&gt; Conflict
+
+]
+]
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### Staging and Commiting
+
+&lt;img src="images/07-git/panel-commit.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+{{content}}
+]
+
+--
+&lt;img src="images/07-git/rstudio-diff-2.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+
+--
+
+&lt;img src="images/07-git/panel-commit-2.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+
+--
+
+&lt;img src="images/07-git/panel-revert.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### History
+
+&lt;img src="images/07-git/panel-base-2.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+#### &amp;nbsp;
+
+{{content}}
+]
+
+
+--
+
+&lt;img src="images/07-git/panel-history.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### History
+
+&lt;img src="images/07-git/panel-base-2.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="images/07-git/panel-history-2.png" width="65%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+#### &amp;nbsp;
+
+&lt;img src="images/07-git/panel-history.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# RStudio: Managing Collaboration
+
+--
+
+.pull-left-50[
+#### &amp;nbsp;
+
+.code-small-12[
+```
+$ git remote add &lt;remote-name&gt; &lt;remote-URL&gt;
+```
+]
+
+{{content}}
+]
+.pull-right-50[
+
+]
+
+--
+
+&lt;img src="images/07-git/panel-base-3.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+# RStudio: Branching and Merging
+
+--
+
+.pull-left-50[
+#### Change Branch
+
+&lt;img src="images/07-git/panel-base-4.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+
+{{content}}
+
+]
+
+--
+
+#### New branch
+
+&lt;img src="images/07-git/panel-base-5.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+
+--
+
+&lt;img src="images/07-git/panel-new-branch.png" width="65%" style="display: block; margin: auto;" /&gt;
+---
+class: inverse, center, middle
+
+# Git: your only real friend when programming!
+
+## Moving to the next step...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,2995 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/07-git/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 07 - Git
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step VI: Versioning
+
+---
+# Versioning
+
+--
+.pull-left-50[
+
+<br>
+- Keep everything in order
+- Collaborating
+]
+.pull-right-50[
+.move-up-70[
+{{content}}
+]
+]
+--
+```{r, out.width="85%"}
+knitr::include_graphics(paste0(image_path, "final-doc.jpeg"))
+```
+
+---
+# Versioning
+
+.pull-left-50[
+
+<br>
+- Keep everything in order
+- Collaborating
+
+<br>
+.center[
+### No problem, there is a solution
+]
+
+```{r, out.width="30%"}
+knitr::include_graphics(paste0(image_path, "git-logo.png"))
+```
+
+]
+.pull-right-50[
+.move-up-70[
+```{r, out.width="85%"}
+knitr::include_graphics(paste0(image_path, "final-doc.jpeg"))
+```
+]
+]
+
+---
+# Git Nice Fact 🐧
+
+--
+
+.pull-left-50[
+<div style = 'margin-top: -10pt;'>
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path, "linus.jpeg"))
+```
+</div>
+]
+.pull-right-50[
+
+{{content}}
+
+]
+
+---
+# Git Nice Fact 🐧
+
+.pull-left-50[
+
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path, "linus.png"))
+```
+
+]
+.pull-right-50[
+
+{{content}}
+
+]
+--
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "linux-logo.png"))
+```
+
+<br>
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "git-logo.png"))
+```
+
+
+---
+# Git Concepts
+
+--
+.pull-left-30[
+
+<br>
+
+- Tracking files
+- Managing collaboration
+- Branching
+
+]
+.pull-right-70[
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+
+.move-down-80[
+.li-small[
+- Track all changes to files
+- Detailed history and traceability 
+- Check earlier versions 
+- Restore previous version
+]
+]
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "local-work-1.png"))
+```
+
+.width-30[
+{{content}}
+]
+]
+
+--
+```
+- my-project/
+   |-.git/
+   |- data/
+   |- analysis/
+   |- code/
+   |- README
+```
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "local-work-1.png"))
+```
+
+.width-30[
+```
+- my-project/
+*  |-.git/
+   |- data/
+   |- analysis/
+   |- code/
+   |- README
+```
+]
+]
+
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+.move-up-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "history.png"))
+```
+]
+
+<br>
+
+.li-small[
+{{content}}
+]
+]
+
+--
+- Commits are identified by unique `SHA-1 hash ID`
+- `master` (or `main`) default branch 
+  - It is a *pointer* (reference) to a commit
+- `HEAD` the current commit we are viewing
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+.move-up-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "history.png"))
+```
+
+.center[`checkout`]
+
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "checkout.png"))
+```
+]
+
+<br>
+
+.center[
+{{content}}
+]
+]
+--
+
+### We have a time machine!
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- Tracking files
+- .alpha[Managing collaboration]
+- .alpha[Branching]
+
+]
+.pull-right-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "local-work-2.png"))
+```
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- Managing collaboration
+- .alpha[Branching]
+
+]
+.pull-right-70[
+<br>
+.move-down-80[
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+
+- Multiple colleagues
+- Work independently 
+- Avoiding conflicts
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- Managing collaboration
+- .alpha[Branching]
+
+]
+.pull-right-70[
+.move-up-70[
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "collaborate.png"))
+```
+]
+
+<br>
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- Always pull first
+- Solve conflicts
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- Managing collaboration
+- .alpha[Branching]
+
+]
+.pull-right-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "workflow.png"))
+```
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+.move-down-170[
+.li-small[
+{{content}}
+]
+]
+]
+--
+
+<br>
+
+- Create different branches 
+- Allow us to make changes independently
+- Integrate all changes
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "branch.png"))
+```
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+
+
+.move-down-30[
+#### Branching
+
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "merge-extra-1.png"))
+```
+]
+]
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+
+.move-down-30[
+#### Merging
+
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "merge-extra-2.png"))
+```
+
+.move-down-60[
+.li-small[
+{{content}}
+]
+]
+]
+]
+
+--
+
+#### Extra: Merging Mechanism
+
+- Obtain a *“merge commit”*
+- Branches still exist and are independent
+
+---
+# Git Concepts
+
+.pull-left-30[
+
+<br>
+
+- .alpha[Tracking files]
+- .alpha[Managing collaboration]
+- Branching
+
+]
+.pull-right-70[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "workflow-adv-2.png"))
+```
+
+]
+---
+class: inverse, center, middle
+
+# Getting Started
+
+---
+
+# Getting Started: Configure Settings
+
+--
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "<My Name>"
+$ git config --global user.email "<user@email.com>"
+```
+]
+
+Configuration file
+
+.code-size-12[
+```
+#----    ~/.gitconfig    ----#
+[user]
+    name = My Name
+    email = user@email.com
+```
+]
+]
+.pull-right-50[]
+
+---
+
+# Getting Started: Configure Settings
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "<My Name>"
+$ git config --global user.email "<user@email.com>"
+```
+]
+
+Configuration file
+
+.code-size-12[
+```
+#----    ~/.gitconfig    ----#
+[user]
+    name = My Name
+    email = user@email.com
+```
+]
+]
+.pull-right-50[
+Current settings
+
+.code-size-12[
+```
+$ git config --list
+```
+]
+
+.move-down-40[
+Settings levels
+]
+
+.li-small[
+- `--system` system level<br>Stored in `/etc/gitconfig`
+- `--global` user level<br>Stored in `~/.gitconfig`
+- No flag, project level<br>Stored in `.git/config`
+]
+]
+
+---
+
+# Getting Started: Initialize Repository
+
+--
+
+.pull-left-50[
+- Already existing directory
+.code-size-12[
+```
+$ cd <path-to/project-directory>
+$ git init
+```
+]
+> Create an hidden folder `.git/`
+
+]
+
+.pull-right-50[]
+
+---
+
+# Getting Started: Initialize Repository
+
+.pull-left-50[
+- Already existing directory
+.code-size-12[
+```
+$ cd <path-to/project-directory>
+$ git init
+```
+]
+> Create an hidden folder `.git/`
+
+
+- Get remote repository
+.code-size-12[
+```
+$ git clone <repository-URL>
+```
+]
+]
+.pull-right-50[
+
+]
+
+---
+
+# Getting Started: Tracking Files
+
+--
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[]
+]
+.pull-right-60[
+
+.move-up-30[
+.code-size-12[
+{{content}}
+]
+]
+]
+
+--
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+    code/
+    data/
+    README
+
+nothing added to commit but untracked files present 
+(use "git add" to track)
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+*   |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+*   code/
+*   data/
+*   README
+
+nothing added to commit but untracked files present 
+(use "git add" to track)
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+*   |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+]
+]
+
+<br>
+
+#### Extra: `.git-track` 
+
+Git do not track empty directories<br>Create and hidden empty file to track them
+
+.code-size-12[
+```
+$ touch <path-to-empty-dir>/.git-track
+```
+]
+]
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+- `git add <file>`<br>Add file to stage area
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git add README <other-files>
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+- `git add <file>`<br>Add file to stage area
+  - `--all` add files
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git add README <other-files>
+```
+
+```
+$ git add --all
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+    new file:   code/my-functions-1
+    new file:   code/my-functions-2
+    new file:   data/raw-data.csv
+    new file:   README
+```
+]
+]
+]
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+- `git add <file>`<br>Add file to stage area
+  - `--all` add files
+- `git rm --cached <file>`<br>Remove file from staging area
+- `git reset`<br>Remove all files from staging area
+]
+]
+.pull-right-60[
+.move-up-30[
+.code-size-12[
+```
+my-project/
+    |-- README
+    |-- data/
+    |     |-- raw-data.csv
+    |-- documents/
+    |-- code/
+    |     |-- my-functions-1
+    |     |-- my-functions-2
+```
+
+```
+$ git rm --cached data/raw-data.csv
+```
+
+{{content}}
+]
+]
+]
+
+--
+
+```
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+    new file:   code/my-functions-1
+    new file:   code/my-functions-2
+    new file:   README
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+    data/
+```
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+- `git add <file>`<br>Add file to stage area
+  - `--all` add files
+- `git rm --cached <file>`<br>Remove file from staging area
+- `git reset`<br>Remove all files from staging area
+]
+]
+.pull-right-60[
+.move-down-30[
+#### Extra: `.gitignore`
+]
+]
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Adding Files
+]
+
+.li-small[
+- `git status`<br>Check the project state
+- `git add <file>`<br>Add file to stage area
+  - `--all` add files
+- `git rm --cached <file>`<br>Remove file from staging area
+- `git reset`<br>Remove all files from staging area
+]
+]
+.pull-right-60[
+.move-down-30[
+#### Extra: `.gitignore`
+]
+
+Matching patterns rules:
+
+.li-small[
+- `note.txt` file name (in any directory)
+- `folder-A/note.txt` path specification
+- `folder-A/` directory name (in any directory)
+- `*.log` file extension
+- `folder-A/*.log` path specification
+- `!important.log` create exceptions
+]
+
+{{content}}
+
+]
+
+--
+Patterns according to `.gitignore` position
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`<br>Create a commit
+
+]
+]
+.pull-right-60[
+.code-size-12[
+
+.move-down-80[
+{{content}}
+]
+]
+]
+
+--
+
+```
+$ git commit
+```
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`<br>Create a commit
+
+]
+]
+.pull-right-60[
+.move-down-80[
+.code-size-12[
+```
+$ git commit
+```
+
+```
+#---- commit messagge -----
+Init Repo
+    
+- add code scripts
+- add README
+```
+]
+]
+
+.move-down-30[
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+
+Commit Messages:
+
+- Brief title (< 50 characters)
+- List of main changes
+- Explain **why**
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`<br>Create a commit
+  - `-a` all changes to tracked files 
+  - `-m <text>` commit message
+
+]
+]
+.pull-right-60[
+
+.move-down-80[
+.code-size-12[
+```
+$ git commit
+```
+
+```
+#---- commit messagge -----
+Init Repo
+    
+- add code scripts
+- add README
+```
+
+```
+$ git commit -am "Update README"  
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`<br>Create a commit
+  - `-a` all changes to tracked files 
+  - `-m <text>` commit message
+- `git log` See history
+  - `--oneline` compact version
+
+]
+]
+.pull-right-60[
+.move-down-80[
+.code-size-12[
+```
+$ git log
+commit ec15cb085c2e5aa463778bbef3239b06b9ac4010 (HEAD -> master)
+Author: username <user@email.com>
+Date:   Tue Feb 15 10:06:27 2022 +0100
+
+    Update README
+
+commit 93398d18e686d4698af3e52a0677585afe467a19
+Author: username <user@email.com>
+Date:   Tue Feb 15 09:26:13 2022 +0100
+
+    Init Repo
+    
+    - add code scripts
+    - add README
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`<br>Create a commit
+  - `-a` all changes to tracked files 
+  - `-m <text>` commit message
+- `git log` See history
+  - `--oneline` compact version
+- `git diff`<br>See changes since last commit
+
+]
+]
+.pull-right-60[
+.code-size-12[
+.move-down-80[
+```
+$ git diff
+diff --git a/README b/README
+index 64772c2..e994379 100644
+--- a/README
++++ b/README
+@@ -1 +1,2 @@
+ This is my first project using Git!
++New information
+```
+]
+]
+]
+
+---
+
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-30[
+#### Committing Changes
+]
+
+.li-small[
+- `git commit`<br>Create a commit
+  - `-a` all changes to tracked files 
+  - `-m <text>` commit message
+- `git log` See history
+  - `--oneline` compact version
+- `git diff`<br>See changes since last commit
+  - `<commit-ID>`<br>Since specified commit
+  - `<commit-A> <commit-B>`<br>From commit-A to commit-B
+
+]
+]
+.pull-right-60[
+.code-size-12[
+.move-down-80[
+```
+$ git diff
+diff --git a/README b/README
+index 64772c2..e994379 100644
+--- a/README
++++ b/README
+@@ -1 +1,2 @@
+ This is my first project using Git!
++New information
+```
+]
+]
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[]
+]
+.pull-right-60[
+{{content}}
+]
+
+--
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'history.png'))
+```
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+]
+]
+.pull-right-60[
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'history.png'))
+```
+
+.code-size-12[
+```
+$ git checkout 60e117d7
+```
+]
+
+{{content}}
+]
+
+--
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'checkout.png'))
+```
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+]
+]
+.pull-right-60[
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'history.png'))
+```
+
+.code-size-12[
+```
+$ git checkout 60e117d7
+```
+]
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'checkout.png'))
+```
+
+.center[*Warning! Detached* `HEAD`]
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+]
+]
+.pull-right-60[
+.move-up-30[
+In detached `HEAD`, changes will be lost!
+]
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'checkout.png'))
+```
+
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+]
+]
+.pull-right-60[
+.move-up-30[
+In detached `HEAD`, changes will be lost!
+]
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'checkout.png'))
+```
+
+.code-size-12[
+```
+$ git checkout -b <branch-name>
+```
+]
+
+{{content}}
+]
+
+--
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'checkout-diverge.png'))
+```
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+]
+]
+.pull-right-60[
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'history.png'))
+```
+]
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+- `git revert <commit-ID>`<br>Undo commits (keep track)
+
+]
+]
+.pull-right-60[
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'history.png'))
+```
+
+.code-size-12[
+```
+$ git revert 7bf97593
+$ git revert 9d109cfe
+```
+]
+
+{{content}}
+]
+
+--
+```{r, out.width='95%'}
+knitr::include_graphics(paste0(image_path, 'revert.png'))
+```
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+- `git revert <commit-ID>`<br>Undo commits (keep track)
+- `git reset <commit-ID>`<br>Undo commits (delete)
+
+]
+]
+.pull-right-60[
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'history.png'))
+```
+
+.code-size-12[
+```
+$ git revert 7bf97593
+$ git revert 9d109cfe
+```
+]
+
+{{content}}
+]
+
+--
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'reset.png'))
+```
+
+---
+# Getting Started: Tracking Files
+
+.pull-left-40[
+
+.move-down-80[
+#### Undoing Commits
+]
+
+.li-small[
+- `git checkout <commit-ID>`<br>Point `HEAD` to commit
+- `git revert <commit-ID>`<br>Undo commits (keep track)
+- `git reset <commit-ID>`<br>Undo commits (delete)
+  {{content}}
+
+]
+]
+.pull-right-60[
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'history.png'))
+```
+
+.code-size-12[
+```
+$ git revert 7bf97593
+$ git revert 9d109cfe
+```
+]
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'reset.png'))
+```
+
+.center[All changes are maintained in the files]
+]
+
+--
+
+  - `--hard` to discard changes<br>(or `git restore <file>`)
+
+---
+# Getting Started: Collaboration
+
+--
+
+.pull-left-40[
+
+.move-down-40[
+#### &nbsp;
+]
+
+.li-small[
+- `git remote add <name> <url>`<br>Add remote repository
+
+
+]
+]
+.pull-right-60[
+
+.move-down-90[
+.code-size-12[
+```
+$ git remote add origin https://github.com/username/my-project.git
+```
+]
+]
+
+{{content}}
+]
+
+--
+
+> `origin` no special meaning per se!
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &nbsp;
+]
+
+.li-small[
+- `git remote add <name> <url>`<br>Add remote repository
+- `git remote -v`<br>List remote repository
+]
+]
+.pull-right-60[
+
+.move-down-90[
+.code-size-12[
+```
+$ git remote add origin https://github.com/username/my-project.git
+```
+]
+]
+
+> `origin` no special meaning per se!
+
+.code-size-12[
+```
+$ git remote -v
+origin  https://github.com/username/my-project.git (fetch)
+origin  https://github.com/username/my-project.git (push)
+```
+]
+
+]
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &nbsp;
+]
+
+.li-small[
+- `git remote add <name> <url>`<br>Add remote repository
+- `git remote -v`<br>List remote repository
+- `git pull <remote> <branch>`<br>Download commits from remote
+]
+]
+.pull-right-60[
+
+.move-up-30[
+.code-size-12[
+```
+$ git pull origin master
+```
+]
+]
+
+{{content}}
+]
+
+--
+```{r, out.width='75%'}
+knitr::include_graphics(paste0(image_path, 'pull.png'))
+```
+
+{{content}}
+
+--
+
+> `pull` = `fetch` + `merge`
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &nbsp;
+]
+
+.li-small[
+- `git remote add <name> <url>`<br>Add remote repository
+- `git remote -v`<br>List remote repository
+- `git pull <remote> <branch>`<br>Download commits from remote
+- `git push <remote> <branch>`<br>Upload commits to remote
+]
+]
+.pull-right-60[
+
+.move-up-30[
+.code-size-12[
+```
+$ git push origin master
+```
+]
+]
+
+{{content}}
+]
+
+--
+```{r, out.width='75%'}
+knitr::include_graphics(paste0(image_path, 'push.png'))
+```
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &nbsp;
+]
+
+.li-small[
+- `git remote add <name> <url>`<br>Add remote repository
+- `git remote -v`<br>List remote repository
+- `git pull <remote> <branch>`<br>Download commits from remote
+- `git push <remote> <branch>`<br>Upload commits to remote
+]
+]
+.pull-right-60[
+
+#### 🌵 Warning: Always `pull` First
+
+.code-small[
+```
+$ git push
+To https://github.com/username/my-project.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/username/my-project.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+]
+]
+
+---
+# Getting Started: Collaboration
+
+.pull-left-40[
+
+.move-down-40[
+#### &nbsp;
+]
+
+.li-small[
+- `git remote add <name> <url>`<br>Add remote repository
+- `git remote -v`<br>List remote repository
+- `git pull <remote> <branch>`<br>Download commits from remote
+- `git push <remote> <branch>`<br>Upload commits to remote
+  - `-u` set upstream
+]
+]
+.pull-right-60[
+
+#### 🌵 Warning: Always `pull` First
+
+.code-small[
+```
+$ git push
+To https://github.com/username/my-project.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/username/my-project.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+]
+
+.move-down-30[
+#### Setting Upstream
+]
+
+.code-size-12[
+```
+$ git push -u origin master
+
+# or 
+$ git branch --set-upstream-to="<remote/branch>"
+```
+]
+]
+
+
+---
+# Getting Started: Branching
+
+--
+.pull-left-40[
+
+#### &nbsp;
+
+.li-small[
+- `git branch <name>`<br>Create local branch
+]
+]
+.pull-right-60[
+
+.move-down-50[
+.code-size-12[
+```
+$ git branch my-branch
+```
+]
+]
+
+.move-down-50[
+{{content}}
+]
+]
+
+--
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'branch-extra-1.png'))
+```
+
+---
+
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &nbsp;
+
+.li-small[
+- `git branch <name>`<br>Create local branch
+]
+]
+.pull-right-60[
+.move-down-50[
+.code-size-12[
+```
+$ git branch my-branch
+```
+]
+]
+
+.move-down-50[
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'branch-extra-2.png'))
+```
+]
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+Remote branch created on `push`
+
+```
+$ git push -u origin my-branch
+```
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &nbsp;
+
+.li-small[
+- `git branch <name>`<br>Create local branch
+- `git checkout <name>`<br>Switch to another branch
+]
+]
+.pull-right-60[
+
+.move-down-110[
+.code-size-12[
+```
+$ git checkout my-branch
+```
+]
+]
+]
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &nbsp;
+
+.li-small[
+- `git branch <name>`<br>Create local branch
+- `git checkout <name>`<br>Switch to another branch
+  - `-b` create and move
+]
+]
+.pull-right-60[
+
+.code-size-12[
+.move-down-110[
+```
+$ git checkout my-branch
+```
+]
+
+```
+$ git checkout -b my-branch
+```
+
+]
+]
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &nbsp;
+
+.li-small[
+- `git branch <name>`<br>Create local branch
+- `git checkout <name>`<br>Switch to another branch
+  - `-b` create and move
+- `git branch` list branches
+]
+]
+.pull-right-60[
+
+.code-size-12[
+.move-down-210[
+```
+$ git branch 
+ * master
+   my-branch
+```
+]
+
+
+]
+]
+
+---
+# Getting Started: Branching
+
+.pull-left-40[
+
+#### &nbsp;
+
+.li-small[
+- `git branch <name>`<br>Create local branch
+- `git checkout <name>`<br>Switch to another branch
+  - `-b` create and move
+- `git branch` list branches
+  - `-vv` verbose
+  - `-r` list remote branches
+]
+]
+.pull-right-60[
+
+.move-down-210[
+.code-size-12[
+```
+$ git branch 
+ * master
+   my-branch
+```
+
+```
+$ git branch -vv
+ * master    00ab7a8 [origin/master] Update master
+   my-branch 702b800 [origin/my-branch] Create my-branch
+    
+$ git branch -vvr
+origin/master    00ab7a8 Update master
+origin/my-branch 702b800 Create my-branch
+```
+
+]
+]
+]
+
+---
+# Getting Started: Merging
+
+--
+.pull-left-40[
+
+#### &nbsp;
+
+]
+.pull-right-60[
+
+.code-size-12[
+```
+$ git checkout master
+```
+]
+
+.move-down-44[
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'merge-extra-1.png'))
+```
+]
+]
+---
+# Getting Started: Merging
+
+.pull-left-40[
+
+#### &nbsp;
+
+.move-down-50[
+.li-small[
+- `git merge <name>`<br>Merge branch
+]
+]
+]
+.pull-right-60[
+
+.code-size-12[
+```
+$ git checkout master
+$ git merge my-branch
+```
+]
+
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'merge-extra-2.png'))
+```
+
+{{content}}
+]
+
+--
+
+>  *“Merge commit”* joining the two branches
+
+---
+# Getting Started: Merging
+
+.pull-left-40[
+
+#### &nbsp;
+
+.move-down-50[
+.li-small[
+- `git merge <name>`<br>Merge branch
+- `git branch -d <branch-name>`<br>Remove local branch
+- `git push <remote-name> --delete <branch-name>`<br>Remove remote branch
+]
+]
+]
+.pull-right-60[
+
+.code-size-12[
+```
+$ git checkout master
+$ git merge my-branch
+```
+]
+
+.move-down-44[
+.code-size-12[
+```
+# Remove local branch
+$ git branch -d my-branch
+
+# Remove remote branch
+$ git push origin --delete my-branch
+```
+]
+]
+]
+
+
+---
+# Getting Started: Conflicts
+
+--
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+Second text line
+Third text line
+```
+]
+]
+]
+]
+.pull-right-50[
+
+]
+
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+]
+
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+```
+]
+
+]
+
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+Auto-merging my-file.txt
+CONFLICT (content): Merge conflict in my-file.txt
+Automatic merge failed; fix conflicts and then 
+commit the result.
+```
+]
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```
+#----    my-file.txt
+  
+First text line
+<<<<<<< HEAD
+
+Branch-A text line
+
+=======
+
+Branch-B text line
+
+>>>>>>> branch-B
+Third text line
+```
+
+---
+
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+Auto-merging my-file.txt
+CONFLICT (content): Merge conflict in my-file.txt
+Automatic merge failed; fix conflicts and then 
+commit the result.
+```
+]
+
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+<<<<<<< HEAD
+
+*Branch-A text line
+
+=======
+
+*Branch-B text line
+
+>>>>>>> branch-B
+Third text line
+```
+]
+]
+
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+.code-size-12[
+```
+$ git checkout branch-A
+$ git merge branch-B
+Auto-merging my-file.txt
+CONFLICT (content): Merge conflict in my-file.txt
+Automatic merge failed; fix conflicts and then 
+commit the result.
+```
+]
+
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+Branch-B text line
+Third text line
+```
+]
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```
+$ git commit -m "Solve conflict"
+```
+{{content}}
+
+--
+```
+$ git merge --abort
+```
+
+---
+
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+#### Conflict Style Diff3
+
+.code-size-12[
+{{content}}
+]
+]
+--
+
+```
+$ git config --global merge.conflictstyle diff3
+```
+{{content}}
+
+--
+
+```
+#----    my-file.txt
+  
+First text line
+<<<<<<< HEAD
+
+Branch-A text line
+
+||||||| common ancestor commit
+
+Second text line
+
+=======
+
+Branch-B text line
+
+>>>>>>> merging-branch
+Third text line
+```
+
+---
+
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+*Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+*Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+#### Conflict Style Diff3
+
+.code-size-12[
+```
+$ git config --global merge.conflictstyle diff3
+```
+
+```
+#----    my-file.txt
+  
+First text line
+<<<<<<< HEAD
+
+*Branch-A text line
+
+||||||| common ancestor commit
+
+*Second text line
+
+=======
+
+*Branch-B text line
+
+>>>>>>> merging-branch
+Third text line
+```
+]
+]
+
+---
+
+# Git Workflow
+
+--
+#### Two Branches approach
+
+```{r, out.width='95%'}
+knitr::include_graphics(paste0(image_path, 'workflow-adv-1.png'))
+```
+
+---
+
+# Git Workflow
+
+#### Multiple Branches Approach
+
+```{r, out.width='95%'}
+knitr::include_graphics(paste0(image_path, 'workflow-adv-2.png'))
+```
+
+---
+class: inverse, center, middle
+
+# RStudio Git GUI
+
+---
+# RStudio: Configure Git
+
+--
+*“Tools -> Global Options”*
+
+```{r, out.width='35%'}
+knitr::include_graphics(paste0(image_path, 'git-settings-1.png'))
+```
+
+--
+
+```{r, out.width='35%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-git.png'))
+```
+
+---
+# RStudio: Create Git Repository
+
+--
+
+.pull-left-50[
+#### Create a New Project
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-new-proj.png'))
+```
+]
+.pull-right-50[
+{{content}}
+]
+
+--
+#### Clone a Remote Repository
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-clone-1.png'))
+```
+
+---
+# RStudio: Create Git Repository
+
+.pull-left-50[
+#### Create a New Project
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-new-proj.png'))
+```
+]
+.pull-right-50[
+#### Clone a Remote Repository
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-clone-2.png'))
+```
+]
+
+---
+# RStudio: Create Git Repository
+
+.pull-left-50[
+#### Create a New Project
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-new-proj.png'))
+```
+]
+.pull-right-50[
+#### Clone a Remote Repository
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-clone-3.png'))
+```
+]
+
+---
+# RStudio: Git Panel
+
+.pull-left-50[
+#### &nbsp;
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-base-1.png'))
+```
+]
+.pull-right-50[
+
+]
+
+---
+# RStudio: Tracking Changes
+
+--
+
+.pull-left-50[
+#### &nbsp;
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-files.png'))
+```
+]
+.pull-right-50[
+
+#### &nbsp;
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- <img src="`r paste0(image_path, 'icon-untraked.png')`" height="40"> Untracked
+- <img src="`r paste0(image_path, 'icon-added.png')`" height="40"> Added
+- <img src="`r paste0(image_path, 'icon-modified.png')`" height="40"> Modified
+- <img src="`r paste0(image_path, 'icon-deleted.png')`" height="40"> Deleted
+- <img src="`r paste0(image_path, 'icon-renamed.png')`" height="40"> Renamed
+- <img src="`r paste0(image_path, 'icon-conflict.png')`" height="40"> Conflict
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### &nbsp;
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-stage.png'))
+```
+]
+.pull-right-50[
+
+#### &nbsp;
+
+.li-small[
+- <img src="`r paste0(image_path, 'icon-untraked.png')`" height="40"> Untracked
+- <img src="`r paste0(image_path, 'icon-added.png')`" height="40"> Added
+- <img src="`r paste0(image_path, 'icon-modified.png')`" height="40"> Modified
+- <img src="`r paste0(image_path, 'icon-deleted.png')`" height="40"> Deleted
+- <img src="`r paste0(image_path, 'icon-renamed.png')`" height="40"> Renamed
+- <img src="`r paste0(image_path, 'icon-conflict.png')`" height="40"> Conflict
+
+]
+]
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### Staging and Commiting
+
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'panel-commit.png'))
+```
+]
+.pull-right-50[
+{{content}}
+]
+
+--
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'rstudio-diff-2.png'))
+```
+
+{{content}}
+
+--
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-commit-2.png'))
+```
+
+{{content}}
+
+--
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-revert.png'))
+```
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### History
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-base-2.png'))
+```
+]
+.pull-right-50[
+
+#### &nbsp;
+
+{{content}}
+]
+
+
+--
+
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'panel-history.png'))
+```
+
+---
+# RStudio: Tracking Changes
+
+.pull-left-50[
+#### History
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-base-2.png'))
+```
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'panel-history-2.png'))
+```
+]
+.pull-right-50[
+
+#### &nbsp;
+
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'panel-history.png'))
+```
+
+]
+
+---
+
+# RStudio: Managing Collaboration
+
+--
+
+.pull-left-50[
+#### &nbsp;
+
+.code-small-12[
+```
+$ git remote add <remote-name> <remote-URL>
+```
+]
+
+{{content}}
+]
+.pull-right-50[
+
+]
+
+--
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-base-3.png'))
+```
+
+---
+# RStudio: Branching and Merging
+
+--
+
+.pull-left-50[
+#### Change Branch
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-base-4.png'))
+```
+
+]
+.pull-right-50[
+
+{{content}}
+
+]
+
+--
+
+#### New branch
+
+```{r, out.width='85%'}
+knitr::include_graphics(paste0(image_path, 'panel-base-5.png'))
+```
+
+{{content}}
+
+--
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'panel-new-branch.png'))
+```
+---
+class: inverse, center, middle
+
+# Git: your only real friend when programming!
+
+## Moving to the next step...
