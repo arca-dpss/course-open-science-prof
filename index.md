@@ -80,7 +80,7 @@ Please install the following software in advance.
 - <a href="materials/slides/04-data.html" target="_blank">04 - Data</a>
 - <a href="materials/slides/05-code.html" target="_blank">05 - Coding</a>
 - <a href="materials/slides/06-terminal.html" target="_blank">06 - Terminal</a>
-- <a href="materials/slides/06-git.html" target="_blank">07 - Git</a>
+- <a href="materials/slides/07-git.html" target="_blank">07 - Git</a>
 
 ## Exercises
 
