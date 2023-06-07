@@ -205,8 +205,8 @@ knitr::include_graphics(paste0(image_path, 'terminal.png'))
 
 .move-down-30[
 ```{r table-shell}
-data_table <- tibble(Shell = c("Command Prompt (CMD)", "PowerShell", "$\\ldots$",
-                               "sh (Bourne shell)", "Bash (Bourne again shell)","Zsh (Z shell)", "$\\ldots$"))
+data_table <- tibble(Shell = c("Command Prompt (CMD)", "PowerShell", "...",
+                               "sh (Bourne shell)", "Bash (Bourne again shell)","Zsh (Z shell)", "..."))
 
 kable(data_table, booktabs = TRUE,
       col.names = "Shell Interpreter", escape = FALSE) %>%
