@@ -1,0 +1,831 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/08-github/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 08 - Github
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step VII: GitHub
+
+---
+# Git hosting services
+
+## &nbsp;
+
+.pull-left-50[
+{{content}}
+]
+.pull-right-50[
+&nbsp;
+]
+
+--
+
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path, "GitHub-logo.png"))
+```
+
+---
+# Git hosting services
+
+## &nbsp;
+
+.pull-left-50[
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path, "GitHub-logo.png"))
+```
+
+]
+.pull-right-50[
+.move-up-50[
+### Other services
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "GitLab_logo.png"))
+```
+
+<br>
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path, "Bitbucket-Logo-blue.png"))
+```
+]
+]
+
+---
+# Git hosting services
+
+## &nbsp;
+
+.pull-left-50[
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path, "GitHub-logo.png"))
+```
+
+]
+.pull-right-50[
+
+<br>
+
+- Open-source projects
+
+- Online portfolio for developers
+
+.center[
+{{content}}
+]
+]
+
+--
+
+*GitHub vs OSF?*
+
+---
+# Git hosting services
+
+## &nbsp;
+
+.pull-left-50[
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path, "GitHub-logo.png"))
+```
+
+]
+.pull-right-50[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "github-meme.jpeg"))
+```
+]
+
+---
+# GitHub: Initial Set Up
+
+--
+#### Create a GitHub Account
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "github-sign-in.png"))
+```
+
+.center[https://github.com/]
+
+---
+# GitHub: Initial Set Up
+
+#### Edit Profile
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "github-profile-settings-2.png"))
+```
+
+---
+# GitHub: Authentication
+
+--
+
+#### &nbsp;
+
+<br>
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "ssh-0.svg"))
+
+```
+
+
+---
+# GitHub: Authentication
+
+#### SSH (Secure Shell) Protocol
+
+<br>
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "ssh-1.svg"))
+
+```
+
+---
+# GitHub: Authentication
+
+#### SSH (Secure Shell) Protocol
+
+<br>
+
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "ssh-2.svg"))
+
+```
+---
+# GitHub: Authentication
+
+#### SSH (Secure Shell) Protocol
+
+<br>
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "ssh-3.svg"))
+```
+
+.move-left-130[
+.li-small[
+{{content}}
+]
+]
+--
+
+- **Private Key** (`id_rsa`)  keep it secret!
+- **Public Key** (`id_rsa.pub`) to be shared
+
+---
+# GitHub: Authentication
+
+.pull-left-50[
+.li-small[
+- Generate SSH keys
+- Copy the Public Key
+]
+
+{{content}}
+]
+.pull-right-50[
+
+]
+
+--
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path, "git-settings-2.png"))
+```
+---
+# GitHub: Authentication
+
+.pull-left-50[
+.li-small[
+- Generate SSH keys
+- Copy the Public Key
+]
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path, "git-settings-2.png"))
+```
+
+]
+.pull-right-50[
+.li-small[
+- Share the Public Key
+]
+
+{{content}}
+]
+
+--
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-ssh-keys.png"))
+```
+
+{{content}}
+
+--
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-ssh-new.png"))
+```
+
+---
+# GitHub: Create a Repository
+
+--
+
+.pull-left-50[
+#### New Repo
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-new-repo.png"))
+```
+]
+.pull-right-50[
+{{content}}
+]
+
+--
+#### Repo Info
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-create-new-repo.png"))
+```
+
+---
+# GitHub: Create a Repository
+
+.pull-left-50[
+#### Clone Repo
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "github-empty-repo.png"))
+```
+
+]
+.pull-right-50[
+]
+
+---
+# GitHub: Create a Repository
+
+.pull-left-50[
+#### Clone Repo
+
+<br>
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-clone.png"))
+```
+
+]
+.pull-right-50[
+{{content}}
+]
+--
+#### Add Details
+
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "github-repo-readme.png"))
+```
+
+---
+# GitHub: Adding Collaborators
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "github-add-collaborators.png"))
+```
+--
+
+.center[Collaborators vs *Pull-Requests*]
+
+---
+# GitHub: Main Features
+
+--
+
+.pull-left-30[
+<br>
+
+.li-small[
+- License
+- Documentation
+- Commit History
+- Commit Diff
+- DOI
+]
+]
+.pull-right-70[
+
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+<br>
+
+.li-small[
+- License
+- .alpha[Documentation]
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+{{content}}
+]
+
+--
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "github-new-file.png"))
+```
+{{content}}
+--
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "github-license-create.png"))
+```
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+<br>
+
+.li-small[
+- License
+- .alpha[Documentation]
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "github-license-template.png"))
+```
+
+{{content}}
+]
+
+--
+
+```{r, out.width="70%"}
+knitr::include_graphics(paste0(image_path, "github-license-commit.png"))
+```
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+<br>
+
+.li-small[
+- .alpha[License]
+- Documentation
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+#### `README.md`
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "github-readme-2.png"))
+```
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+<br>
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- Commit History
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+<br>
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "github-repo-menu.png"))
+```
+]
+---
+# GitHub: Main Features
+
+.pull-left-30[
+<br>
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- Commit History
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-history.png"))
+```
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+<br>
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- .alpha[Commit History]
+- Commit Diff
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-diff.png"))
+```
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+<br>
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- DOI
+]
+]
+.pull-right-70[
+.move-down-140[
+{{content}}
+]
+]
+--
+```{r, out.width="25%"}
+knitr::include_graphics(paste0(image_path, "zenodo-logo.png"))
+```
+
+https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content
+
+---
+# GitHub: Contributing
+
+--
+
+#### Issues
+.pull-left-50[
+
+```{r, out.width="85%"}
+knitr::include_graphics(paste0(image_path, "github-repo-menu-issues.png"))
+```
+
+{{content}}
+]
+.pull-right-50[
+
+]
+--
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-issues.png"))
+```
+
+---
+# GitHub: Contributing
+
+#### Issues
+.pull-left-50[
+
+```{r, out.width="85%"}
+knitr::include_graphics(paste0(image_path, "github-repo-menu-issues.png"))
+```
+
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-issues.png"))
+```
+]
+.pull-right-50[
+.move-down-140[
+.li-small[
+- Avoid creating duplicate issues
+- Provide all the details
+- *Minimal Working Example!*
+]
+]
+]
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-fork.png"))
+```
+]
+.pull-right-50[
+
+]
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-fork.png"))
+```
+
+.li-small[
+- Fetch
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-fork-fetch.png"))
+```
+]
+.pull-right-50[
+
+]
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-fork.png"))
+```
+
+.li-small[
+- Fetch
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-fork-fetch.png"))
+```
+]
+.pull-right-50[
+
+.move-down-80[
+.li-small[
+- Create pull request
+]
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-pr-open-2.png"))
+```
+]
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-fork.png"))
+```
+
+.li-small[
+- Fetch
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-fork-fetch.png"))
+```
+]
+.pull-right-50[
+
+.move-down-80[
+.li-small[
+- Create pull request
+]
+]
+```{r, out.width="95%"}
+knitr::include_graphics(paste0(image_path, "github-pr-create.png"))
+```
+]
+---
+# GitHub: Advanced Features
+
+--
+.pull-left-30[
+.move-down-110[
+- Github actions<br>(CD-CI)
+- Github pages
+- Join the open-source community
+]
+]
+.pull-right-70[
+
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- Github actions<br>(CD-CI)
+- .alpha[Github pages]
+- .alpha[Join the open-source community]
+]
+]
+.pull-right-70[
+
+.move-down-80[
+.center[
+*Automate your workflow from idea to production*
+]
+]
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "github-action.png"))
+```
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Github actions<br>(CD-CI)]
+- Github pages
+- .alpha[Join the open-source community]
+]
+]
+.pull-right-70[
+.move-down-50[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "github-pages.png"))
+```
+]
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Github actions<br>(CD-CI)]
+- .alpha[Github pages]
+- Join the open-source community
+]
+]
+.pull-right-70[
+.move-down-30[
+```{r, out.width="100%"}
+knitr::include_graphics(paste0(image_path, "github-sign.png"))
+```
+]
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Github actions<br>(CD-CI)]
+- .alpha[Github pages]
+- Join the open-source community
+]
+]
+.pull-right-70[
+.move-down-50[
+>_**"Free software"** means software that respects users' freedom and community._
+>
+> _Roughly, it means that the users have the freedom to run, copy, distribute, study, change and improve the software._
+>
+> _Thus, **"free software" is a matter of liberty, not price**. To understand the concept, you should **think of "free" as in "free speech," not as in "free beer"**._
+>
+> — *The Free Software Foundation (Richard Stallman)*
+]
+]
+
+---
+class: inverse, center, middle
+
+# Think free as in free speech, not free beer!
+
+## Moving to the next step...

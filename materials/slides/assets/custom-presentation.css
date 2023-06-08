@@ -336,6 +336,10 @@ blockquote {
 }
 
 /* up */
+.move-up-15 {
+  margin-top:-15px  !important;
+}
+
 .move-up-30 {
   margin-top:-30px  !important;
 }

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>08-github.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # 08 - Github
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step VII: GitHub
+
+---
+# Git hosting services
+
+## &amp;nbsp;
+
+.pull-left-50[
+{{content}}
+]
+.pull-right-50[
+&amp;nbsp;
+]
+
+--
+
+&lt;img src="images/08-github/GitHub-logo.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Git hosting services
+
+## &amp;nbsp;
+
+.pull-left-50[
+&lt;img src="images/08-github/GitHub-logo.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+.move-up-50[
+### Other services
+
+&lt;img src="images/08-github/GitLab_logo.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+&lt;br&gt;
+
+&lt;img src="images/08-github/Bitbucket-Logo-blue.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# Git hosting services
+
+## &amp;nbsp;
+
+.pull-left-50[
+&lt;img src="images/08-github/GitHub-logo.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+
+&lt;br&gt;
+
+- Open-source projects
+
+- Online portfolio for developers
+
+.center[
+{{content}}
+]
+]
+
+--
+
+*GitHub vs OSF?*
+
+---
+# Git hosting services
+
+## &amp;nbsp;
+
+.pull-left-50[
+&lt;img src="images/08-github/GitHub-logo.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+&lt;img src="images/08-github/github-meme.jpeg" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# GitHub: Initial Set Up
+
+--
+#### Create a GitHub Account
+
+&lt;img src="images/08-github/github-sign-in.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+.center[https://github.com/]
+
+---
+# GitHub: Initial Set Up
+
+#### Edit Profile
+
+&lt;img src="images/08-github/github-profile-settings-2.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Authentication
+
+--
+
+#### &amp;nbsp;
+
+&lt;br&gt;
+
+&lt;img src="images/08-github/ssh-0.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# GitHub: Authentication
+
+#### SSH (Secure Shell) Protocol
+
+&lt;br&gt;
+
+&lt;img src="images/08-github/ssh-1.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Authentication
+
+#### SSH (Secure Shell) Protocol
+
+&lt;br&gt;
+
+
+&lt;img src="images/08-github/ssh-2.svg" width="70%" style="display: block; margin: auto;" /&gt;
+---
+# GitHub: Authentication
+
+#### SSH (Secure Shell) Protocol
+
+&lt;br&gt;
+
+&lt;img src="images/08-github/ssh-3.svg" width="70%" style="display: block; margin: auto;" /&gt;
+
+.move-left-130[
+.li-small[
+{{content}}
+]
+]
+--
+
+- **Private Key** (`id_rsa`)  keep it secret!
+- **Public Key** (`id_rsa.pub`) to be shared
+
+---
+# GitHub: Authentication
+
+.pull-left-50[
+.li-small[
+- Generate SSH keys
+- Copy the Public Key
+]
+
+{{content}}
+]
+.pull-right-50[
+
+]
+
+--
+
+&lt;img src="images/08-github/git-settings-2.png" width="75%" style="display: block; margin: auto;" /&gt;
+---
+# GitHub: Authentication
+
+.pull-left-50[
+.li-small[
+- Generate SSH keys
+- Copy the Public Key
+]
+
+&lt;img src="images/08-github/git-settings-2.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+.li-small[
+- Share the Public Key
+]
+
+{{content}}
+]
+
+--
+
+&lt;img src="images/08-github/github-ssh-keys.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+
+--
+
+&lt;img src="images/08-github/github-ssh-new.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Create a Repository
+
+--
+
+.pull-left-50[
+#### New Repo
+&lt;img src="images/08-github/github-new-repo.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+{{content}}
+]
+
+--
+#### Repo Info
+&lt;img src="images/08-github/github-create-new-repo.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Create a Repository
+
+.pull-left-50[
+#### Clone Repo
+&lt;img src="images/08-github/github-empty-repo.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+]
+
+---
+# GitHub: Create a Repository
+
+.pull-left-50[
+#### Clone Repo
+
+&lt;br&gt;
+
+&lt;img src="images/08-github/github-clone.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right-50[
+{{content}}
+]
+--
+#### Add Details
+
+&lt;img src="images/08-github/github-repo-readme.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Adding Collaborators
+
+&lt;img src="images/08-github/github-add-collaborators.png" width="70%" style="display: block; margin: auto;" /&gt;
+--
+
+.center[Collaborators vs *Pull-Requests*]
+
+---
+# GitHub: Main Features
+
+--
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- License
+- Documentation
+- Commit History
+- Commit Diff
+- DOI
+]
+]
+.pull-right-70[
+
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- License
+- .alpha[Documentation]
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+{{content}}
+]
+
+--
+&lt;img src="images/08-github/github-new-file.png" width="70%" style="display: block; margin: auto;" /&gt;
+{{content}}
+--
+
+&lt;img src="images/08-github/github-license-create.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- License
+- .alpha[Documentation]
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+&lt;img src="images/08-github/github-license-template.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+]
+
+--
+
+&lt;img src="images/08-github/github-license-commit.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- .alpha[License]
+- Documentation
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+#### `README.md`
+&lt;img src="images/08-github/github-readme-2.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- Commit History
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+&lt;br&gt;
+
+&lt;img src="images/08-github/github-repo-menu.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+---
+# GitHub: Main Features
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- Commit History
+- .alpha[Commit Diff]
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+&lt;img src="images/08-github/github-history.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- .alpha[Commit History]
+- Commit Diff
+- .alpha[DOI]
+]
+]
+.pull-right-70[
+&lt;img src="images/08-github/github-diff.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# GitHub: Main Features
+
+.pull-left-30[
+&lt;br&gt;
+
+.li-small[
+- .alpha[License]
+- .alpha[Documentation]
+- .alpha[Commit History]
+- .alpha[Commit Diff]
+- DOI
+]
+]
+.pull-right-70[
+.move-down-140[
+{{content}}
+]
+]
+--
+&lt;img src="images/08-github/zenodo-logo.png" width="25%" style="display: block; margin: auto;" /&gt;
+
+https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content
+
+---
+# GitHub: Contributing
+
+--
+
+#### Issues
+.pull-left-50[
+
+&lt;img src="images/08-github/github-repo-menu-issues.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+]
+.pull-right-50[
+
+]
+--
+
+&lt;img src="images/08-github/github-issues.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+# GitHub: Contributing
+
+#### Issues
+.pull-left-50[
+
+&lt;img src="images/08-github/github-repo-menu-issues.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="images/08-github/github-issues.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+.move-down-140[
+.li-small[
+- Avoid creating duplicate issues
+- Provide all the details
+- *Minimal Working Example!*
+]
+]
+]
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+&lt;img src="images/08-github/github-fork.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+]
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+&lt;img src="images/08-github/github-fork.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+.li-small[
+- Fetch
+]
+&lt;img src="images/08-github/github-fork-fetch.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+]
+
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+&lt;img src="images/08-github/github-fork.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+.li-small[
+- Fetch
+]
+&lt;img src="images/08-github/github-fork-fetch.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+.move-down-80[
+.li-small[
+- Create pull request
+]
+]
+&lt;img src="images/08-github/github-pr-open-2.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+---
+# GitHub: Contributing
+
+#### Pull Rrequest
+
+.pull-left-50[
+.li-small[
+- Fork
+]
+&lt;img src="images/08-github/github-fork.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+.li-small[
+- Fetch
+]
+&lt;img src="images/08-github/github-fork-fetch.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+
+.move-down-80[
+.li-small[
+- Create pull request
+]
+]
+&lt;img src="images/08-github/github-pr-create.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+---
+# GitHub: Advanced Features
+
+--
+.pull-left-30[
+.move-down-110[
+- Github actions&lt;br&gt;(CD-CI)
+- Github pages
+- Join the open-source community
+]
+]
+.pull-right-70[
+
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- Github actions&lt;br&gt;(CD-CI)
+- .alpha[Github pages]
+- .alpha[Join the open-source community]
+]
+]
+.pull-right-70[
+
+.move-down-80[
+.center[
+*Automate your workflow from idea to production*
+]
+]
+
+&lt;img src="images/08-github/github-action.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Github actions&lt;br&gt;(CD-CI)]
+- Github pages
+- .alpha[Join the open-source community]
+]
+]
+.pull-right-70[
+.move-down-50[
+&lt;img src="images/08-github/github-pages.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Github actions&lt;br&gt;(CD-CI)]
+- .alpha[Github pages]
+- Join the open-source community
+]
+]
+.pull-right-70[
+.move-down-30[
+&lt;img src="images/08-github/github-sign.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# GitHub: Advanced Features
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Github actions&lt;br&gt;(CD-CI)]
+- .alpha[Github pages]
+- Join the open-source community
+]
+]
+.pull-right-70[
+.move-down-50[
+&gt;_**"Free software"** means software that respects users' freedom and community._
+&gt;
+&gt; _Roughly, it means that the users have the freedom to run, copy, distribute, study, change and improve the software._
+&gt;
+&gt; _Thus, **"free software" is a matter of liberty, not price**. To understand the concept, you should **think of "free" as in "free speech," not as in "free beer"**._
+&gt;
+&gt; — *The Free Software Foundation (Richard Stallman)*
+]
+]
+
+---
+class: inverse, center, middle
+
+# Think free as in free speech, not free beer!
+
+## Moving to the next step...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
