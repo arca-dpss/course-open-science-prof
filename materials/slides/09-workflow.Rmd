@@ -2549,6 +2549,6 @@ if(interactive()){
 ---
 class: inverse, center, middle
 
-# Aim to the Target!
+# Aim at the Target!
 
 ## Moving to the next step...
