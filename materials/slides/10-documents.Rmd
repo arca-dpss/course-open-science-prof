@@ -1,0 +1,256 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/10-documents/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 10 - Dynamic Documents
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step IX: Literate Programming
+
+---
+# Dynamic Documents
+
+--
+.move-down-80[
+.move-left-100[
+$Narrative\ Text\ +\ Analysis\ Code\ =$
+]
+]
+
+
+---
+# Dynamic Documents
+
+
+.move-down-80[
+.move-left-100[
+$Narrative\ Text\ +\ Analysis\ Code\ =\ Literate\ Programming$
+]
+]
+--
+.pull-left-30[
+
+]
+.pull-right-70[
+.move-down-50[
+- Reproducibility
+{{content}}
+]
+]
+
+--
+- Automatically Updates
+{{content}}
+--
+- High-Quality Tables and Figures
+{{content}}
+--
+- 🌵 Avoid hard-coded values
+
+---
+# Dynamic Documents
+
+--
+
+.move-down-140[
+.pull-left-50[
+#### Code Organization
+
+- Analysis code **within** documents
+- Analysis code **outside** documents
+]
+.pull-right-50[
+{{content}}
+]
+]
+
+--
+#### Output Formats
+
+- **PDFs**
+- **Web-Sites**
+
+---
+# Dynamic Documents
+
+--
+
+.pull-left-50[
+## <img style="height:2em" src="`r paste0(image_path, 'r-logo.png')`" class="inline-img">
+
+```{r, out.width='70%'}
+knitr::include_graphics(paste0(image_path, 'rmarkdown-family.png'))
+```
+]
+.pull-right-50[
+{{content}}
+]
+
+--
+## <img style="height:2em" src="`r paste0(image_path, 'Python-logo.png')`" class="inline-img">
+
+```{r, out.width='50%'}
+knitr::include_graphics(paste0(image_path, 'Jupyter_logo.webp'))
+```
+---
+# Dynamic Documents
+
+.move-down-110[
+.center[*There is a new sheriff in town*]
+]
+--
+
+.move-down-50[
+```{r, out.width='50%'}
+knitr::include_graphics(paste0(image_path, 'quarto-logo2.jpeg'))
+```
+]
+
+---
+# Quarto
+
+--
+.move-up-30[
+```{r, out.width='50%'}
+knitr::include_graphics(paste0(image_path, 'report-qmd.png'))
+```
+]
+
+---
+
+# Enhancing Collaboration
+
+--
+.move-down-140[
+.center[
+🌵 Disclaimer: *Shameless moment of Self-Promotion*
+]
+]
+---
+# Enhancing Collaboration
+
+.pull-left-30[
+.move-down-80[
+```{r, out.width='70%'}
+knitr::include_graphics(paste0(image_path, 'trackdown-logo.png'))
+```
+]
+]
+.pull-right-70[
+{{content}}
+]
+--
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'trackdown-rich-text.png'))
+```
+
+---
+# Enhancing Collaboration
+
+.pull-left-30[
+.move-down-80[
+```{r, out.width='70%'}
+knitr::include_graphics(paste0(image_path, 'trackdown-logo.png'))
+```
+]
+]
+.pull-right-70[
+.move-down-80[
+#### Functions
+
+- `upload_file()`
+- `update_file()`
+- `download_file()`
+]
+]
+
+---
+class: inverse, center, middle
+
+# Thanks!

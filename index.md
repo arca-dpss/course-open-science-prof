@@ -83,6 +83,7 @@ Please install the following software in advance.
 - <a href="materials/slides/07-git.html" target="_blank">07 - Git</a>
 - <a href="materials/slides/08-github.html" target="_blank">08 - GitHub</a>
 - <a href="materials/slides/09-workflow.html" target="_blank">09 - Workflow Analysis</a>
+- <a href="materials/slides/10-documents.html" target="_blank">10 - Dynamic Documents</a>
 
 ## Exercises
 
