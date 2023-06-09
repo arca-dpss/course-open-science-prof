@@ -253,4 +253,6 @@ knitr::include_graphics(paste0(image_path, 'trackdown-logo.png'))
 ---
 class: inverse, center, middle
 
-# Thanks!
+# We can now unsinstall Microsoft Words 😉
+
+## Moving to the next step...
