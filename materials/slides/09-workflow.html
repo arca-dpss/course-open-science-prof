@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>09-workflow.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # 09 - Workflow Analysis
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step VIII: Workflows
+
+
+---
+# Run the Analysis
+
+--
+
+.pull-left-30[
+.move-down-140[
+- Single script
+- Multiple scripts
+- Main script
+]
+]
+.pull-right-70[
+
+]
+
+---
+# Run the Analysis
+
+.pull-left-30[
+.move-down-140[
+- Single script
+- .alpha[Multiple scripts]
+- .alpha[Main script]
+]
+]
+.pull-right-70[
+.move-down-80[
+```
+- my-project/
+    |
+    |-- analysis/
+    |     |-- my-analysis
+    |
+    |-- src/
+    |     |-- data-munging
+    |     |-- models
+    |     |-- plots-tables
+    |     |-- utils
+```
+]
+]
+
+---
+# Run the Analysis
+
+.pull-left-30[
+.move-down-140[
+- .alpha[Single script]
+- Multiple scripts
+- .alpha[Main script]
+]
+]
+.pull-right-70[
+.move-down-80[
+```
+- my-project/
+    |
+    |-- analysis/
+    |     |-- 01-data-preparation
+    |     |-- 02-experiment-A
+    |     |-- 03-experiment-B
+    |     |-- 04-comparison-experiments
+    |     |-- 05-sensitivity-analysis
+    |
+    |-- src/
+    |     |-- data-munging
+    |     |-- models
+    |     |-- plots-tables
+    |     |-- utils
+```
+]
+]
+
+---
+# Run the Analysis
+
+.pull-left-30[
+.move-down-140[
+- .alpha[Single script]
+- .alpha[Multiple scripts]
+- Main script
+]
+]
+.pull-right-70[
+.move-down-80[
+```
+- my-project/
+    |
+    |-- analysis/
+    |     |-- 01-data-preparation
+    |     |-- 02-experiment-A
+    |     |-- 03-experiment-B
+    |     |-- 04-comparison-experiments
+    |     |-- 05-sensitivity-analysis
+    |     |-- main
+    |
+    |-- src/
+    |     |-- data-munging
+    |     |-- models
+    |     |-- plots-tables
+    |     |-- utils
+```
+]
+]
+
+---
+# Run the Analysis
+
+.pull-left-30[
+.move-down-140[
+- .alpha[Single script]
+- .alpha[Multiple scripts]
+- Main script
+]
+]
+.pull-right-70[
+.move-down-80[
+```
+- my-project/
+    |
+    |-- analysis/
+    |     |-- 01-data-preparation
+    |     |-- 02-experiment-A
+    |     |-- 03-experiment-B
+    |     |-- 04-comparison-experiments
+    |     |-- 05-sensitivity-analysis
+*   |     |-- main
+    |
+    |-- src/
+    |     |-- data-munging
+    |     |-- models
+    |     |-- plots-tables
+    |     |-- utils
+```
+]
+]
+
+---
+# General Reccomendations
+
+--
+
+.pull-left-30[
+.move-down-120[
+- Documentation
+- README
+- Random numbers
+- Session Settings
+]
+]
+.pull-right-70[
+]
+
+---
+# General Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- Documentation
+- .alpha[README]
+- .alpha[Random numbers]
+- .alpha[Session Settings]
+]
+]
+.pull-right-70[
+.move-up-50[
+
+&lt;img src="images/09-workflow/r-script.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# General Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Documentation]
+- README
+- .alpha[Random numbers]
+- .alpha[Session Settings]
+]
+]
+.pull-right-70[
+.move-left-130[
+.move-down-110[
+.li-smalll[
+Instructions about: 
+
+- Requirements
+- Installation
+- How to run
+]
+]
+]
+]
+
+---
+# General Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Documentation]
+- .alpha[README]
+- Random numbers
+- .alpha[Session Settings]
+]
+]
+.pull-right-70[
+.move-down-110[
+&lt;img src="images/09-workflow/rng.jpeg" width="100%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# General Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Documentation]
+- .alpha[README]
+- .alpha[Random numbers]
+- Session Settings
+]
+]
+.pull-right-70[
+.move-down-170[
+- Local settings
+- Explicit default options
+]
+]
+
+---
+# Workflow Manager
+
+--
+
+.pull-left-50[
+.move-down-120[
+- Automatically Run the Analysis
+- Discover Dependencies
+- Update the Analysis
+- Caching System
+]
+]
+.pull-right-50[
+.move-down-120[
+{{content}}
+]
+]
+
+--
+&lt;img src="images/09-workflow/gnu-make.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, middle, center
+
+# Workflow in R
+
+---
+# R Reccomendations
+--
+
+.pull-left-30[
+.move-down-120[
+- Script Sections
+- Loading Functions
+- Loading R-packages
+- Reproducibility
+]
+]
+.pull-right-50[
+]
+
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- Script Sections
+- .alpha[Loading Functions]
+- .alpha[Loading R-packages]
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+.move-left-100[
+.move-down-120[
+.code-size-12[
+
+```r
+# Section 1 ####
+
+# Section 2 ----
+
+#----    Section 3    ----
+
+####   Not Valid Section   --##
+```
+]
+]
+]
+]
+
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- Script Sections
+- .alpha[Loading Functions]
+- .alpha[Loading R-packages]
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+.move-up-50[
+&lt;img src="images/09-workflow/script-sections.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- Script Sections
+- .alpha[Loading Functions]
+- .alpha[Loading R-packages]
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+.move-up-50[
+&lt;img src="images/09-workflow/script-collapsed.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+]
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- Script Sections
+- .alpha[Loading Functions]
+- .alpha[Loading R-packages]
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+&lt;img src="images/09-workflow/nav-top.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="images/09-workflow/nav-bottom.png" width="70%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Script Sections]
+- Loading Functions
+- .alpha[Loading R-packages]
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+- `source()`
+]
+]
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```r
+# List all scripts in R/
+script_list &lt;- list.files("R", full.names = TRUE)
+
+# Source scripts
+invisible(sapply(script_list, source))
+```
+
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Script Sections]
+- Loading Functions
+- .alpha[Loading R-packages]
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+- `source()`
+]
+]
+.code-size-12[
+
+```r
+# List all scripts in R/
+script_list &lt;- list.files("R", full.names = TRUE)
+
+# Source scripts
+invisible(sapply(script_list, source))
+```
+]
+
+.move-down-50[
+.li-small[
+- `devtools::load_all()`  (shortcut `Ctrl/Cmd + Shift + L`)
+]
+]
+.code-size-12[
+
+```r
+# Load functions
+devtools::load_all(path = "&lt;path-to-the-project-root&gt;")
+```
+]
+]
+
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Script Sections]
+- .alpha[Loading Functions]
+- Loading R-packages
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+#### `library()`
+.li-small[
+{{content}}
+]
+]
+--
+- Analysis Scripts
+{{content}}
+--
+- `.Rprofile`
+- `DESCRIPTION` (in the `Depends` field)
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Script Sections]
+- .alpha[Loading Functions]
+- Loading R-packages
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+#### `library()`
+.li-small[
+- Analysis Scripts
+- `.Rprofile`
+- `DESCRIPTION` (in the `Depends` field)
+]
+
+.move-down-50[
+#### Conflicts
+]
+
+.li-small[
+{{content}}
+]
+]
+
+--
+
+- `&lt;package&gt;::&lt;function()&gt;`
+{{content}}
+
+--
+
+- `conflicted` https://conflicted.r-lib.org/
+
+---
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Script Sections]
+- .alpha[Loading Functions]
+- Loading R-packages
+- .alpha[Reproducibility]
+]
+]
+.pull-right-70[
+#### `library()`
+.li-small[
+- Analysis Scripts
+- `.Rprofile`
+- `DESCRIPTION` (in the `Depends` field)
+]
+
+.move-down-50[
+#### Conflicts
+]
+
+.li-small[
+- `&lt;package&gt;::&lt;function()&gt;`
+- `conflicted` https://conflicted.r-lib.org/
+
+.font-size-18[
+Common conflicts
+]
+.li-small[
+- `dplyr::select()` vs `MASS::select()`
+- `dplyr::filter()` vs `stats::filter()`
+]
+]
+]
+
+---
+
+# R Reccomendations
+
+.pull-left-30[
+.move-down-120[
+- .alpha[Script Sections]
+- .alpha[Loading Functions]
+- .alpha[Loading R-packages]
+- Reproducibility
+]
+]
+.pull-right-70[
+.move-down-140[
+{{content}}
+]
+]
+
+--
+- Random Number Generator `set.seed()`
+{{content}}
+--
+- Global Options (e.g, `stringsAsFactors` or `contrasts`)
+{{content}}
+--
+- Project Requirements
+
+---
+
+## `.Rprofile`
+
+--
+
+.pull-left-50[
+
+```r
+#----    .Rprofile    ----#
+
+# Load custom functions
+devtools::load_all()
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Settings ggplot
+theme_set(theme_bw())
+```
+
+.center[
+.font-18[
+{{content}}
+]
+]
+]
+.pull-right-50[
+
+]
+
+--
+Rely only on code declared explicitly&lt;br&gt;in the analysis script
+
+---
+
+## `.Rprofile`
+
+.pull-left-50[
+
+```r
+#----    .Rprofile    ----#
+
+# Load custom functions
+devtools::load_all()
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Settings ggplot
+theme_set(theme_bw())
+```
+
+.center[
+.font-18[
+Rely only on code declared explicitly&lt;br&gt;in the analysis script
+]
+]
+]
+.pull-right-50[
+
+```r
+#----    .Rprofile    ----#
+
+# Commands for interactive and non-interactive sessions
+...
+
+# Commands only for interactive sessions
+*if(interactive()){
+  # Load custom functions
+  devtools::load_all()
+  
+  # Load packages
+  library("tidyverse")
+  library("lme4")
+
+  # Settings ggplot
+  theme_set(theme_bw())
+  }
+```
+]
+---
+# Workflow Manager
+
+--
+
+.pull-left-30[
+&lt;br&gt;
+
+&lt;img src="images/09-workflow/targets-hex.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+.font-14[
+https://github.com/ropensci/targets
+]
+]
+.pull-right-70[
+.move-up-30[
+{{content}}
+]
+]
+
+--
+&lt;br&gt;
+
+
+```r
+#----    Workflow    ----
+list(
+  # Get data
+  tar_target(raw_data_file, "data/raw-data.csv", 
+             format = "file"),
+  tar_target(my_data, get_my_data(raw_data_file)),
+  
+  # Descriptive statistics
+  tar_target(plot_obs, get_plot_obs(my_data)),
+  
+  # Inferential statistics
+  tar_target(lm_fit, get_lm_fit(my_data))
+)
+```
+
+---
+# Workflow Manager
+
+.pull-left-30[
+&lt;br&gt;
+
+&lt;img src="images/09-workflow/targets-hex.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+.font-14[
+https://github.com/ropensci/targets
+]
+]
+.pull-right-70[
+&lt;img src="images/09-workflow/pipeline-new-function.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+.center[
+{{content}}
+]
+]
+
+--
+
+`targets::tar_make()`
+
+---
+# Workflow Manager
+
+.pull-left-30[
+&lt;br&gt;
+
+&lt;img src="images/09-workflow/targets-hex.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+.font-14[
+https://github.com/ropensci/targets
+]
+]
+.pull-right-70[
+&lt;img src="images/09-workflow/pipeline-end.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Workflow Manager
+
+.pull-left-30[
+&lt;br&gt;
+
+&lt;img src="images/09-workflow/targets-hex.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+.font-14[
+https://github.com/ropensci/targets
+]
+]
+.pull-right-70[
+.move-up-100[
+&lt;img src="images/09-workflow/target-net.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+]
+]
+
+---
+## `targets` Project Structure
+
+--
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+  |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+
+]
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+library("targets")
+
+#----    Settings    ----
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Source custom functions
+source("R/my-functions.R")
+
+# Options
+options(tidyverse.quiet = TRUE)
+
+#----    Workflow    ----
+
+list(
+  # list of targets
+)
+```
+]
+]
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+*library("targets")
+
+#----    Settings    ----
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Source custom functions
+source("R/my-functions.R")
+
+# Options
+options(tidyverse.quiet = TRUE)
+
+#----    Workflow    ----
+
+list(
+  # list of targets
+)
+```
+]
+]
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+library("targets")
+
+#----    Settings    ----
+
+*# Load packages
+*library("tidyverse")   # Or using
+*library("lme4")        # tar_option_set(packages = c("&lt;packages&gt;"))
+
+# Source custom functions
+source("R/my-functions.R")
+
+# Options
+options(tidyverse.quiet = TRUE)
+
+#----    Workflow    ----
+
+list(
+  # list of targets
+)
+```
+]
+]
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+library("targets")
+
+#----    Settings    ----
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+*# Source custom functions
+*source("R/my-functions.R")
+
+# Options
+options(tidyverse.quiet = TRUE)
+
+#----    Workflow    ----
+
+list(
+  # list of targets
+)
+```
+]
+]
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+library("targets")
+
+#----    Settings    ----
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Source custom functions
+source("R/my-functions.R")
+
+*# Options
+*options(tidyverse.quiet = TRUE)
+
+#----    Workflow    ----
+
+list(
+  # list of targets
+)
+```
+]
+]
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+library("targets")
+
+#----    Settings    ----
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Source custom functions
+source("R/my-functions.R")
+
+# Options
+options(tidyverse.quiet = TRUE)
+
+#----    Workflow    ----
+
+*list(
+*  # list of targets
+*)
+```
+]
+]
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+#----    Workflow    ----
+
+list(
+  # Get data
+  tar_target(raw_data_file, "data/raw-data.csv", format = "file"),
+  tar_target(my_data, get_my_data(raw_data_file)),
+  
+  # Descriptive statistics
+  tar_target(plot_obs, get_plot_obs(my_data)),
+  
+  # Inferential statistics
+  tar_target(lm_fit, get_lm_fit(my_data))
+)
+```
+
+{{content}}
+]
+]
+
+--
+#### Defining Targets
+
+`tar_target(&lt;target_name&gt;, &lt;expression&gt;) `
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.R
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#==========================#
+#====    _targets.R    ====#
+#==========================#
+
+#----    Workflow    ----
+
+list(
+  # Get data
+* tar_target(raw_data_file, "data/raw-data.csv", format = "file"),
+  tar_target(my_data, get_my_data(raw_data_file)),
+  
+  # Descriptive statistics
+  tar_target(plot_obs, get_plot_obs(my_data)),
+  
+  # Inferential statistics
+  tar_target(lm_fit, get_lm_fit(my_data))
+)
+```
+
+#### Defining Targets
+
+`tar_target(&lt;target_name&gt;, &lt;expression&gt;) `
+]
+]
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+  |-- _targets.R
+* |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+#### Content
+
+- `meta/` metadata regarding the targets
+- `objects/` targets results
+- `users/` store custom files
+
+---
+## `targets` Project Structure
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+- my-project/
+  |
+  |-- _targets.R
+* |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+#### Content
+- `meta/` metadata regarding the targets
+- `objects/` targets results
+- `users/` store custom files
+]
+]
+
+.move-down-30[
+#### Details
+]
+.li-small[
+- automatically created
+- `.gitignore` automatically added
+- `_targets/meta/meta` is important
+]
+]
+---
+## `targets` Workflow
+
+--
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+]
+]
+.pull-right-70[
+
+
+]
+
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.code-size-12[
+
+```r
+targets::tar_manifest(fields = "command")
+## # A tibble: 4 × 2
+##   name          command                       
+##   &lt;chr&gt;         &lt;chr&gt;                         
+## 1 raw_data_file "\"data/raw-data.csv\""       
+## 2 my_data       "get_my_data(raw_data_file)"  
+## 3 plot_obs      "get_plot_obs(data = my_data)"
+## 4 lm_fit        "get_lm_fit(data = my_data)"
+```
+]
+]
+]
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+targets::tar_visnetwork()
+```
+]
+&lt;img src="images/09-workflow/pipeline-start.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+]
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+
+#### Run Analyis
+.li-small[
+- `tar_make()`
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.code-size-12[
+
+```r
+targets::tar_make()
+## • start target raw_data_file
+## • built target raw_data_file
+## • start target my_data
+## • built target my_data
+## • start target plot_obs
+## • built target plot_obs
+## • start target lm_fit
+## • built target lm_fit
+## • end pipeline
+```
+]
+]
+]
+
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+
+#### Run Analyis
+.li-small[
+- `tar_make()`
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+targets::tar_visnetwork()
+```
+]
+&lt;img src="images/09-workflow/pipeline-end.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+
+#### Run Analyis
+.li-small[
+- `tar_make()`
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+targets::tar_visnetwork()
+```
+]
+&lt;img src="images/09-workflow/pipeline-new-function.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+]
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+
+#### Run Analyis
+.li-small[
+- `tar_make()`
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.code-size-12[
+
+```r
+targets::tar_make()
+## ✔ skip target raw_data_file
+## ✔ skip target my_data
+## ✔ skip target plot_obs
+## • start target lm_fit
+## • built target lm_fit
+## • end pipeline
+```
+]
+]
+]
+
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+
+#### Run Analyis
+.li-small[
+- `tar_make()`
+]
+
+#### Load Results
+]
+]
+.pull-right-70[
+
+]
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+
+#### Run Analyis
+.li-small[
+- `tar_make()`
+]
+
+#### Load Results
+.li-small[
+- `tar_read()`
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+targets::tar_read(plot_obs)
+```
+
+&lt;img src="images/09-workflow/plot-obs-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+## `targets` Workflow
+
+.pull-left-30[
+.move-down-50[
+#### Check Pipline
+.li-small[
+- `tar_manifest()`
+- `tar_visnetwork()`
+]
+
+#### Run Analyis
+.li-small[
+- `tar_make()`
+]
+
+#### Load Results
+.li-small[
+- `tar_read()`
+- `tar_load()`
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+targets::tar_load(lm_fit)
+summary(lm_fit)
+## 
+## Call:
+## lm(formula = y ~ x, data = data)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.83060 -0.70935  0.08828  0.64521  1.82840 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   1.2076     0.2225   5.428 3.47e-06 ***
+## xB           -1.4478     0.3146  -4.601 4.58e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.995 on 38 degrees of freedom
+## Multiple R-squared:  0.3578, Adjusted R-squared:  0.3409 
+## F-statistic: 21.17 on 1 and 38 DF,  p-value: 4.575e-05
+```
+]
+]
+
+---
+## `targets` Advanced Features
+
+--
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- R Markdown
+- Reproducibility
+- Branching
+- Load All Targets
+]
+]
+]
+.pull-right-70[
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.move-down-50[
+.code-size-12[
+
+```
+- my-project/
+  |
+  |
+  |
+  |
+  |-- _targets.R
+  |
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-50[
+
+]
+]
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.move-down-50[
+.code-size-12[
+
+```
+- my-project/
+  |
+  |
+  |
+  |
+* |-- _targets.R
+  |
+* |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-50[
+
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.move-down-50[
+.code-size-12[
+
+```
+- my-project/
+  |
+  |
+  |
+  |
+  |-- _targets.R
+  |
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-50[
+.move-down-50[
+.code-size-12[
+```
+- my-project/
+  |
+  |-- _targets.yaml
+  |
+  |-- analysis/
+  |   |-- targets-workflow.R
+  |   |-- targets-analysis.R
+  |   |-- _targets/
+  |
+  |-- data/
+  |   |-- raw-data.csv
+  |
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- ...
+```
+]
+]
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.move-down-50[
+.code-size-12[
+
+```
+- my-project/
+  |
+  |
+  |
+  |
+* |-- _targets.R
+  |
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-50[
+.move-down-50[
+.code-size-12[
+```
+- my-project/
+  |
+  |-- _targets.yaml
+  |
+* |-- analysis/
+* |   |-- targets-workflow.R
+  |   |-- targets-analysis.R
+  |   |-- _targets/
+  |
+  |-- data/
+  |   |-- raw-data.csv
+  |
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- ...
+```
+]
+]
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.move-down-50[
+.code-size-12[
+
+```
+- my-project/
+  |
+  |
+  |
+  |
+  |-- _targets.R
+  |
+* |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-50[
+.move-down-50[
+.code-size-12[
+```
+- my-project/
+  |
+  |-- _targets.yaml
+  |
+* |-- analysis/
+  |   |-- targets-workflow.R
+  |   |-- targets-analysis.R
+* |   |-- _targets/
+  |
+  |-- data/
+  |   |-- raw-data.csv
+  |
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- ...
+```
+]
+]
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.move-down-50[
+.code-size-12[
+
+```
+- my-project/
+  |
+  |
+  |
+  |
+  |-- _targets.R
+  |
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-50[
+.move-down-50[
+.code-size-12[
+```
+- my-project/
+  |
+  |-- _targets.yaml
+  |
+  |-- analysis/
+  |   |-- targets-workflow.R
+* |   |-- targets-analysis.R
+  |   |-- _targets/
+  |
+  |-- data/
+  |   |-- raw-data.csv
+  |
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- ...
+```
+]
+]
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.pull-left-50[
+.move-down-50[
+.code-size-12[
+
+```
+- my-project/
+  |
+  |
+  |
+  |
+  |-- _targets.R
+  |
+  |-- _targets/
+  |
+  |-- data/
+  |  |-- raw-data.csv
+  |
+  |-- R/
+  |  |-- my-functions.R
+  |  |-- ...
+```
+]
+]
+]
+.pull-right-50[
+.move-down-50[
+.code-size-12[
+```
+- my-project/
+  |
+* |-- _targets.yaml
+  |
+  |-- analysis/
+  |   |-- targets-workflow.R
+* |   |-- targets-analysis.R
+  |   |-- _targets/
+  |
+  |-- data/
+  |   |-- raw-data.csv
+  |
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- ...
+```
+]
+]
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.code-size-12[
+
+```r
+# Targets settings
+targets::tar_config_set(script = "analysis/targets-workflow.R",
+                        store = "analysis/_targets/")
+```
+]
+]
+
+.move-down-50[
+.code-size-12[
+{{content}}
+]
+]
+]
+
+--
+```yaml
+#----    _targets.yaml    ----#
+main:
+  script: analysis/targets-workflow.R
+  store: analysis/_targets/
+```
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.move-down-30[
+.code-size-12[
+
+```r
+#----    targets-analysis.R    ----#
+
+# Targets settings
+targets::tar_config_set(script = "analysis/targets-workflow.R",
+                        store = "analysis/_targets/")
+
+#----    Analysis    ----
+
+# Check workflow
+targets::tar_manifest(fields = "command")
+targets::tar_visnetwork()
+
+# Run analysis
+targets::tar_make()
+
+# End
+targets::tar_visnetwork()
+
+
+#----    Results    ----
+# Load the results
+...
+
+```
+]
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- My Proj Structure
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.move-down-30[
+.code-size-12[
+
+```r
+#----    targets-analysis.R    ----#
+
+# Targets settings
+script = "analysis/targets-workflow.R"
+store = "analysis/_targets/"
+
+#----    Analysis    ----
+
+# Check workflow
+targets::tar_manifest(fields = "command", script = script)
+targets::tar_visnetwork(script = script, store = store)
+
+# Run analysis
+targets::tar_make(script = script, store = store)
+
+# End
+targets::tar_visnetwork(script = script, store = store)
+
+
+#----    Results    ----
+# Load the results
+...
+
+```
+]
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- R Markdown
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- R Markdown
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+
+.li-small[
+
+- **R Markdown as Primary Script**&lt;br&gt;Pipeline defined and managed within R Markdown&lt;br&gt;https://books.ropensci.org/targets/markdown.html
+
+&lt;br&gt;
+
+{{content}}
+]
+]
+]
+--
+- **R Markdown as Target**&lt;br&gt;R Markdown considered as target in the pipeline&lt;br&gt;https://books.ropensci.org/targets/files.html#literate-programming
+
+---
+# R Markdown as Target
+
+--
+
+.pull-left-50[
+
+`documents/report.Rmd`
+
+&lt;img src="images/09-workflow/report-analysis.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+
+
+```r
+#----    Targets-workflow.R    ----#
+
+list(
+  ...
+  
+  tarchetypes::tar_render(
+    report, "documents/report.Rmd"
+  ),
+)
+```
+
+{{content}}
+
+--
+
+&lt;img src="images/09-workflow/pipeline-report.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# R Markdown as Target
+
+.pull-left-50[
+
+`documents/report.Rmd`
+
+&lt;img src="images/09-workflow/report-analysis.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+.move-down-50[
+Compile Report
+
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+
+- `targets::tar_make()`
+{{content}}
+
+--
+- `Knit`
+
+---
+# R Markdown as Target
+
+.pull-left-50[
+
+`documents/report.Rmd`
+
+&lt;img src="images/09-workflow/report-analysis.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+.move-down-50[
+Compile Report
+
+.li-small[
+- `targets::tar_make()`
+- `Knit`
+]
+
+.font-18[
+Specify `_targets/` position with `tar_config_set()`
+]
+
+.code-size-12[
+{{content}}
+]
+]
+]
+
+--
+```
+#----    documents/_targets.yaml    ----#
+main:
+  store: ../analysis/_targets/
+```
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- Reproducibility
+- .alpha[Branching]
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.move-down-110[
+{{content}}
+]
+]
+
+--
+- Random Number Generator
+
+{{content}}
+--
+- Global Settings
+
+{{content}}
+--
+- Project Requirements
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- Branching
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+{{content}}
+]
+]
+
+--
+&lt;img src="images/09-workflow/target-branching.png" width="100%" style="display: block; margin: auto;" /&gt;
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- Branching
+- .alpha[Load All Targets]
+]
+]
+]
+.pull-right-70[
+.move-down-110[
+.li-small[
+- **Dynamic Branching** - New targets are defined dynamically&lt;br&gt;https://books.ropensci.org/targets/dynamic.html
+
+&lt;br&gt;
+{{content}}
+]
+]
+]
+
+--
+- **Static Branching** - New targets are defined a priori&lt;br&gt;https://books.ropensci.org/targets/static.html
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- Load All Targets
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```r
+#----    R/Targets-utils.R    ----#
+
+#----    load_glob_env    ----
+
+# Load targets in the global environment
+load_glob_env &lt;- function(..., 
+                          store = targets::tar_config_get("store")){
+  targets::tar_load(..., envir = globalenv(), store = store)
+}
+
+#----    tar_load_all    ----
+
+# Load listed targets
+tar_load_all &lt;- function(store = targets::tar_config_get("store")){
+  targets &lt;- c("my_data", "lm_fit", "plot_obs", 
+               "&lt;other-targets&gt;", "...")
+
+  # load
+  sapply(targets, load_glob_env, store = store)
+
+  return(cat("Tartgets loaded!\n"))
+}
+```
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- Load All Targets
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#----    .Rprofile    ----#
+
+...
+
+# Commands only for interactive sessions
+if(interactive()){
+    
+    ...
+  
+    # Load custom function
+    source("R/targets-utils.R")
+    
+    # alternatively devtools::load_all()
+  
+    # Load targets
+    tar_load_all()
+    
+    ...
+  }
+```
+
+]
+]
+---
+class: inverse, center, middle
+
+# Aim to the Target!
+
+## Moving to the next step...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

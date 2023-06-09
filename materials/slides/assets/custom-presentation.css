@@ -390,7 +390,11 @@ blockquote {
   display: inline-block;s
 }
 
+/* other */
 
+.in-line{
+  display: inline-block;
+}
 
 /*----    text style    ----*/
 
