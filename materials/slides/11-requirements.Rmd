@@ -1,0 +1,795 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/11-requirements/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 11 - Requirements
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step X: Requirements
+
+
+---
+# Requirements
+
+<br>
+
+--
+
+.pull-left-50[
+- **System Prerequisites**<br>(e.g., Operating System and CPU details)
+{{content}}
+]
+.pull-right-50[
+]
+
+--
+- **Software**<br>(e.g., R, Python, or Julia)
+{{content}}
+--
+- **Libraries**
+
+---
+# Requirements
+
+<br>
+
+.pull-left-50[
+- **System Prerequisites**<br>(e.g., Operating System and CPU details)
+- **Software**<br>(e.g., R, Python, or Julia)
+- **Libraries**
+]
+.pull-right-50[
+```{r, echo= TRUE, eval = FALSE}
+#---- requirements.txt ----
+    
+library_1==x.xx.xx
+library_2==x.xx.xx
+
+...
+```
+
+.move-down-30[
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+#### Versioning x.xx.xx
+
+- Patch
+- Minor Release
+- Major Release
+
+---
+# Installation
+
+<br>
+
+--
+
+.pull-left-50[
+#### Instruction
+
+- Download project
+- Install required libraries
+
+.move-down-50[
+{{content}}
+]
+]
+.pull-right-50[
+
+]
+
+--
+- Unusual software
+- Configuration settings
+
+---
+# Installation
+
+<br>
+
+.pull-left-50[
+#### Instruction
+
+- Download project
+- Install required libraries
+
+.move-down-50[
+- Unusual software
+- Configuration settings
+]
+]
+.pull-right-50[
+Example:
+
+- [RStan](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started)
+- [Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll)
+
+{{content}}
+]
+--
+Nice to have:
+
+- `install.sh`
+---
+class: inverse, middle, center
+
+# R Dependencies
+
+---
+# R Dependencies
+
+--
+.pull-left-50[
+#### R Version
+
+.code-size-12[
+{{content}}
+]
+]
+.pull-right-50[
+
+]
+
+--
+
+```{r, echo=TRUE, eval=FALSE}
+version
+##                _ 
+## platform       x86_64-apple-darwin20       
+## arch           x86_64                      
+## os             darwin20                    
+## system         x86_64, darwin20            
+## status                                     
+## major          4                           
+## minor          3.0                         
+## year           2023                        
+## month          04                          
+## day            21                          
+## svn rev        84292                       
+## language       R                           
+## version.string R version 4.3.0 (2023-04-21)
+## nickname       Already Tomorrow
+```
+
+---
+# R Dependencies
+
+.pull-left-50[
+#### R Version
+
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+version
+##                _ 
+## platform       x86_64-apple-darwin20       
+## arch           x86_64                      
+## os             darwin20                    
+## system         x86_64, darwin20            
+## status                                     
+## major          4                           
+## minor          3.0                         
+## year           2023                        
+## month          04                          
+## day            21                          
+## svn rev        84292                       
+## language       R                           
+## version.string R version 4.3.0 (2023-04-21)
+## nickname       Already Tomorrow
+```
+]
+]
+.pull-right-50[
+#### Other Related Software
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```{r, echo=TRUE, eval=FALSE}
+sessioninfo::session_info()$platform
+## setting  value
+## version  R version 4.3.0 (2023-04-21)
+## os       macOS Ventura 13.4
+## system   x86_64, darwin20
+## ui       RStudio
+## language (EN)
+## collate  en_US.UTF-8
+## ctype    en_US.UTF-8
+## tz       Europe/Rome
+## date     2023-06-10
+## rstudio  2023.03.1+446 Cherry Blossom (desktop)
+## pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
+## 
+```
+
+---
+# R Dependencies
+
+.pull-left-50[
+#### R Packages
+
+.code-small[
+{{content}}
+]
+]
+.pull-right-50[
+]
+
+--
+
+```{r, echo=TRUE, eval=FALSE}
+sessioninfo::session_info()
+## ─ Session info ─────────────────────────────────────────────
+##
+##  [...]
+## 
+## ─ Packages ─────────────────────────────────────────────────
+##  ! package       * version date (UTC) lib source
+##  P devtools        2.4.5   2022-10-11 [?] CRAN (R 4.3.0)
+##  P dplyr           1.1.2   2023-04-20 [?] CRAN (R 4.3.0)
+##  P knitr           1.43    2023-05-25 [?] CRAN (R 4.3.0)
+##  P magrittr        2.0.3   2022-03-30 [?] CRAN (R 4.3.0)
+##    rmarkdown       2.22    2023-06-01 [1] CRAN (R 4.3.0)
+##  P tibble          3.2.1   2023-03-20 [?] CRAN (R 4.3.0)
+##  P xaringan        0.28    2022-12-13 [?] CRAN (R 4.3.0)
+## 
+##  P ── Loaded and on-disk path mismatch.
+## ────────────────────────────────────────────────────────────
+```
+
+---
+# R Dependencies
+
+.pull-left-50[
+#### R Packages
+
+.code-small[
+```{r, echo=TRUE, eval=FALSE}
+sessioninfo::session_info()
+## ─ Session info ─────────────────────────────────────────────
+##
+##  [...]
+## 
+## ─ Packages ─────────────────────────────────────────────────
+##  ! package       * version date (UTC) lib source
+##  P devtools        2.4.5   2022-10-11 [?] CRAN (R 4.3.0)
+##  P dplyr           1.1.2   2023-04-20 [?] CRAN (R 4.3.0)
+##  P knitr           1.43    2023-05-25 [?] CRAN (R 4.3.0)
+##  P magrittr        2.0.3   2022-03-30 [?] CRAN (R 4.3.0)
+##    rmarkdown       2.22    2023-06-01 [1] CRAN (R 4.3.0)
+##  P tibble          3.2.1   2023-03-20 [?] CRAN (R 4.3.0)
+##  P xaringan        0.28    2022-12-13 [?] CRAN (R 4.3.0)
+## 
+##  P ── Loaded and on-disk path mismatch.
+## ────────────────────────────────────────────────────────────
+```
+]
+]
+.pull-right-50[
+#### &nbsp;
+
+.code-small[
+```{r, echo=TRUE, eval=FALSE}
+
+## ─ Python configuration ──────────────────────────────────────────────────────────────
+##  python:         /usr/bin/python3
+##  libpython:      /usr/lib/python3.10/config-3.10-x86_64-linux-gnu/libpython3.10.so
+##  pythonhome:     //usr://usr
+##  version:        3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0]
+##  numpy:           [NOT FOUND]
+##  
+##  python versions found: 
+##   /usr/bin/python3
+##   /usr/share/miniconda/bin/python
+## 
+## ─────────────────────────────────────────────────────────────────────────────────────
+
+```
+]
+]
+
+---
+class: inverse, middle, center
+
+# R Package Managment
+
+---
+## `renv`
+
+.pull-left-30[
+.move-down-90[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-hex.png'))
+```
+]
+.font-14[
+.center[
+https://rstudio.github.io/renv/
+]
+]
+]
+.pull-right-70[
+{{content}}
+]
+
+--
+
+```{r, out.width='70%'}
+knitr::include_graphics(paste0(image_path, 'proj-library.png'))
+```
+
+---
+## `renv`
+
+.pull-left-30[
+.move-down-90[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-hex.png'))
+```
+]
+.font-14[
+.center[
+https://rstudio.github.io/renv/
+]
+]
+]
+.pull-right-70[
+.move-up-50[
+#### Caching System
+]
+
+.move-down-50[
+{{content}}
+]
+]
+
+--
+
+```{r}
+data_table <- data.frame(
+  Platform = c("Linux", "macOS", "Windows"),
+  Location = c("~/.local/share/renv", "~/Library/Application Support/renv", "%LOCALAPPDATA%/renv")
+)
+kable(data_table, booktabs = TRUE, escape = TRUE, align = c("l")) %>%
+  kable_styling(full_width = FALSE)
+```
+
+{{content}}
+--
+```{r, out.width='70%'}
+knitr::include_graphics(paste0(image_path, 'cache-revrsion.png'))
+```
+
+{{content}}
+--
+```{r, out.width='70%'}
+knitr::include_graphics(paste0(image_path, 'cache-package.png'))
+```
+
+---
+## `renv` Workflow
+
+--
+
+.pull-left-40[
+.move-down-110[
+{{content}}
+]
+]
+.pull-right-60[
+.move-down-50[
+```{r, out.width='70%'}
+knitr::include_graphics(paste0(image_path, 'use-renv.png'))
+```
+]
+]
+
+--
+- `init()`
+
+---
+## `renv` Workflow
+
+.pull-left-40[
+.move-down-110[
+- `init()`
+]
+]
+.pull-right-60[
+.move-down-50[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-active.png'))
+```
+]
+
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+```{r, eval=FALSE, echo=TRUE}
+# Install packages as usual
+install.packages('<name-package>')
+```
+
+---
+## `renv` Workflow
+
+.pull-left-40[
+.move-down-110[
+- `init()`
+- `snapshot()`
+]
+]
+.pull-right-60[
+.move-down-50[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-active.png'))
+```
+]
+
+.code-size-12[
+```{r, eval=FALSE, echo=TRUE}
+# Install packages as usual
+install.packages('<name-package>')
+
+# Capturing project's R package dependencies
+renv::snapshot()
+```
+]
+]
+
+---
+## `renv` Workflow
+
+.pull-left-40[
+.move-down-110[
+- `init()`
+- `snapshot()`
+]
+]
+.pull-right-60[
+.move-up-100[
+.code-small[
+```
+#----    renv.lock    ----#
+
+"DBI": {
+  "Package": "DBI",
+  "Version": "1.1.3",
+  "Source": "Repository",
+  "Repository": "CRAN",
+  "Requirements": [
+    "methods"
+  ],
+  "Hash": "d0d9a365c08b9a8b31c73c26057160b1"
+},
+"HDInterval": {
+  "Package": "HDInterval",
+  "Version": "0.2.4",
+  "Source": "Repository",
+  "Repository": "CRAN",
+  "Hash": "b5b77433b286dd869ff33ee7fd5c545f"
+},
+"MASS": {
+  "Package": "MASS",
+  "Version": "7.3-58.3",
+  "Source": "Repository",
+  "Repository": "CRAN",
+  "Requirements": [
+    "grDevices",
+    "graphics",
+    "utils"
+  ],
+  "Hash": "9586b552d57f5516fe4d25398c1bacd6"
+}
+```
+]
+]
+]
+
+---
+## `renv` Workflow
+
+.pull-left-40[
+.move-down-110[
+- `init()`
+- `snapshot()`
+- `restore()`
+]
+]
+.pull-right-60[
+.move-down-50[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-active.png'))
+```
+]
+
+.code-size-12[
+```{r, eval=FALSE, echo=TRUE}
+# Install packages as usual
+install.packages('<name-package>')
+
+# Capturing project's R package dependencies
+renv::snapshot()
+
+# Restore a project's dependencies
+renv::restore()
+```
+]
+]
+
+
+---
+## `renv` Workflow
+
+.pull-left-40[
+.move-down-110[
+- `init()`
+- `snapshot()`
+- `restore()`
+]
+]
+.pull-right-60[
+.move-down-110[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-actions.png'))
+```
+]
+]
+
+---
+## `renv` Advanced Features
+
+--
+
+.pull-left-50[
+.move-down-80[
+#### Files Structure
+]
+.move-down-30[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'proj-folder.png'))
+```
+]
+]
+.pull-right-50[
+
+]
+---
+## `renv` Advanced Features
+
+.pull-left-50[
+.move-down-80[
+#### Files Structure
+]
+.move-down-30[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'proj-folder.png'))
+```
+]
+]
+.pull-right-50[
+.move-down-80[
+.li-small[
+- `.Rprofile`
+
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-rprofile.png'))
+```
+]
+]
+]
+
+---
+## `renv` Advanced Features
+
+.pull-left-50[
+.move-down-80[
+#### Files Structure
+]
+.move-down-30[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'proj-folder.png'))
+```
+]
+]
+.pull-right-50[
+.move-down-80[
+.li-small[
+- `.Rprofile`
+- `renv.lock`
+
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'lock-file.png'))
+```
+]
+]
+]
+---
+## `renv` Advanced Features
+
+.pull-left-50[
+.move-down-80[
+#### Files Structure
+]
+.move-down-30[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'proj-folder.png'))
+```
+]
+]
+.pull-right-50[
+.move-down-80[
+.li-small[
+- `.Rprofile`
+- `renv.lock`
+- `renv/`
+
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'renv-folder.png'))
+```
+]
+]
+]
+
+---
+## `renv` Advanced Features
+
+<br>
+
+.pull-left-50[
+#### Snapshot Types
+
+.li-small[
+- `"all"`
+- `"implicit"` (default)
+- `"explicit"` (project `DESCRIPTION` file)
+- `"custom"` user-defined filter instead
+]
+]
+.pull-right-50[
+.code-size-12[
+{{content}}
+]
+]
+--
+
+#### Detecting Packages
+
+```{r, echo=TRUE, eval=FALSE}
+# Correctly detected by renv
+library("tidyverse")
+
+trackdown::upload_file(...)
+
+# Not detected by renv
+packages_list <- c("tidyverse", "trackdown")
+
+lapply(packages_list, library, 
+       character.only = TRUE)
+
+for (package in packages_list) {
+  library(package, character.only = TRUE)
+}
+```
+
+---
+## `renv` Advanced Features
+
+<br>
+
+- R version
+    ```{r, echo=TRUE, eval=FALSE}
+    ## Warning: Project requested R version '3.6.1' but '4.1.0' is currently being used
+    ```
+--
+
+- `.renvignore` File
+
+--
+
+- Restore Issue(s)
+
+---
+class: inverse, center, middle
+
+# A Package to Rule Them All
+
+## Moving to the next step...
