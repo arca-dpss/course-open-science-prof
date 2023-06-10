@@ -26,7 +26,7 @@ Researchers are disorganized and chaotic by nature. While this may be the secret
 
 ### Materials
 
-This is the main repository collecting all the slides and other materials. For further details, see the course website at https://arca-dpss.github.io/course-open-scinence-prof/.
+This is the main repository collecting all the slides and other materials. For further details, see the course website at https://arca-dpss.github.io/course-open-science-prof/.
 
 
 ## ARCA (Applied Research Courses Academy)

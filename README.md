@@ -24,7 +24,7 @@ Science an open-source knowledge development!
 
 This is the main repository collecting all the slides and other
 materials. For further details, see the course website at
-<https://arca-dpss.github.io/course-open-scinence-prof/>.
+<https://arca-dpss.github.io/course-open-science-prof/>.
 
 ## ARCA (Applied Research Courses Academy)
 
