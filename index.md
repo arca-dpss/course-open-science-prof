@@ -85,6 +85,7 @@ Please install the following software in advance.
 - <a href="materials/slides/09-workflow.html" target="_blank">09 - Workflow Analysis</a>
 - <a href="materials/slides/10-documents.html" target="_blank">10 - Dynamic Documents</a>
 - <a href="materials/slides/11-requirements.html" target="_blank">11 - Requirements</a>
+- <a href="materials/slides/12-docker.html" target="_blank">12 - Docker</a>
 
 ## Exercises
 
