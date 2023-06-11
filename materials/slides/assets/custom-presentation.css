@@ -115,9 +115,26 @@ li {
   padding-bottom: 0em;
 }
 
+.li-size-10 li {
+  padding-bottom: 0.5em;
+  font-size: 10pt;
+}
+
+.li-size-10 p {
+  font-size: 10pt;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
 .li-size-14 li {
   padding-bottom: 0.5em;
   font-size: 14pt;
+}
+
+.li-size-14 p {
+  font-size: 14pt;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .li-small li {

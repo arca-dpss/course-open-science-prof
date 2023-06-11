@@ -1,0 +1,1171 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/13-rocker/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # 13 - Rocker
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+class: center, middle, inverse
+# Step XII: Rocker
+
+---
+# Rocker
+
+.pull-left-30[
+.move-down-80[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'rocker-logo.png'))
+```
+.font-14[
+https://www.rocker-project.org/
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+
+{{content}}
+]
+]
+
+--
+
+- `r-ver` with Base-R
+- `rstudio` adds RStudio
+- `tidyverse` adds tidyverse and devtools packages
+- `verse` adds tex and publishing-related packages
+
+---
+# Rocker
+
+.pull-left-30[
+.move-down-80[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'rocker-logo.png'))
+```
+.font-14[
+https://www.rocker-project.org/
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.code-size-12[
+```bash
+$ docker run --rm -p 8787:8787 -e PASSWORD=my-pw rocker/rstudio:4.1.0
+```
+]
+]
+
+.move-down-50[
+.li-small[
+{{content}}
+]
+]
+]
+
+--
+
+- `--rm` (optional)
+- `-p 8787:8787` map the port to access RStudio Server
+- `-e PASSWORD=my-pw` password for login
+  - default username is **`rstudio`**
+  - disable authentication `-e DISABLE_AUTH=true`
+- `4.1.0` version tag
+
+---
+
+# Rocker
+
+.pull-left-30[
+.move-down-80[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'rocker-logo.png'))
+```
+.font-14[
+https://www.rocker-project.org/
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.code-size-12[
+```bash
+$ docker run --rm -p 8787:8787 -e PASSWORD=my-pw rocker/rstudio:4.1.0
+```
+]
+]
+
+.move-down-50[
+.code-size-12[
+
+```bash
+Unable to find image 'rocker/rstudio:4.1.0' locally
+4.1.0: Pulling from rocker/rstudio
+7b1a6ab2e44d: Pull complete 
+34cb923ed704: Pull complete 
+f2f213d01c8c: Downloading [=======================>         ]  200.7MB/295.8MB
+7c05c07f0160: Download complete 
+f72cf49d9462: Download complete 
+6abf17a5ebed: Downloading [===========================>     ]  171.7MB/218.4MB
+9a11ac2d5af1: Download complete 
+```
+]
+]
+
+.move-down-30[
+.center[
+{{content}}
+]
+]
+]
+
+--
+
+[http://localhost:8787/](http://localhost:8787/)
+
+---
+
+# Rocker
+
+.pull-left-30[
+.move-down-80[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'rocker-logo.png'))
+```
+.font-14[
+https://www.rocker-project.org/
+]
+]
+]
+.pull-right-70[
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-login.png'))
+```
+]
+
+---
+
+# Rocker
+
+.pull-left-30[
+.move-down-80[
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'rocker-logo.png'))
+```
+.font-14[
+https://www.rocker-project.org/
+]
+]
+]
+.pull-right-70[
+```{r, out.width='100%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-interface.png'))
+```
+]
+
+---
+
+# Rocker Data Storage
+
+--
+
+.pull-left-40[
+#### Upload/Export
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-upload.png'))
+```
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-export.png'))
+```
+]
+.pull-right-60[
+.code-size-14[
+{{content}}
+]
+]
+
+--
+#### Bind Mounts
+
+```bash
+-v /Users/<user-name>/my-project/:/home/rstudio/my-project/
+```
+
+---
+
+# Rocker Data Storage
+
+.pull-left-40[
+#### Upload/Export
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-upload.png'))
+```
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-export.png'))
+```
+]
+.pull-right-60[
+.code-size-14[
+#### Bind Mounts
+
+```bash
+-v /Users/<user-name>/my-project/:/home/rstudio/my-project/
+```
+.li-small[
+- Mounting bind mounts at the runtime automatically assign ownerships to the default users (`rstudio`)
+]
+
+{{content}}
+]
+]
+
+--
+
+#### Volumes
+
+```bash
+-v My-volume:/home/rstudio/my-volume/
+```
+
+---
+
+# Rocker Data Storage
+
+.pull-left-40[
+#### Upload/Export
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-upload.png'))
+```
+
+```{r, out.width='65%'}
+knitr::include_graphics(paste0(image_path, 'RStudio-Server-export.png'))
+```
+]
+.pull-right-60[
+.code-size-14[
+#### Bind Mounts
+
+```bash
+-v /Users/<user-name>/my-project/:/home/rstudio/my-project/
+```
+.li-small[
+- Mounting bind mounts at the runtime automatically assign ownerships to the default users (`rstudio`)
+]
+
+#### Volumes
+
+```bash
+-v My-volume:/home/rstudio/my-volume/
+```
+
+.code-small[
+```bash
+#----    Dockerfile    ----#
+# Base image
+FROM rocker/rstudio:4.1.0
+
+# Create folder and change owner (user:group)
+RUN mkdir /home/rstudio/My-project \
+      && chown -R rstudio:rstudio /home/rstudio/my-project
+
+# Define volume
+VOLUME /home/rstudio/my-project
+```
+]
+]
+]
+
+---
+## Custom `Dockerfile`
+
+<br>
+
+--
+.pull-left-50[
+#### Install Dependencies
+
+.code-size-12[
+```bash
+#----    Dockerfile    ----#
+# Base image
+FROM rocker/rstudio:4.1.0
+
+# Install external dependencies
+RUN apt-get update \
+    && apt-get install -y curl
+
+# Install R packages
+RUN R -e "install.packages('trackdown')"
+```
+]
+]
+.pull-right-50[
+.code-size-12[
+{{content}}
+]
+]
+
+--
+
+#### Run an R script
+
+```bash
+#----    Dockerfile    ----#
+...
+
+# Install R packages
+COPY my-install.R /my-install.R
+RUN Rscript my-install.R
+```
+
+---
+# Rocker Worklow
+
+--
+
+- **After the Development**
+
+---
+# Rocker Worklow
+
+
+- **After the Development**
+
+  - Complete the analysis
+  - Create container
+  - Re-run the analysis
+  
+--
+
+- **During the Development**
+
+---
+# Rocker Worklow
+
+
+- **After the Development**
+
+  - Complete the analysis
+  - Create container
+  - Re-run the analysis
+
+- **During the Development**
+
+  - Create container
+  - Develop from within the container
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+  |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+
+]
+]
+.pull-right-70[
+
+]
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+* |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+
+]
+]
+.pull-right-70[
+.code-size-12[
+{{content}}
+]
+]
+
+--
+#### Define Container
+
+```bash
+#----    Dockerfile    ----
+FROM rocker/rstudio:4.1.2
+
+# Copy project files
+COPY . /home/rstudio/my-project
+
+# Change ownership
+RUN chown -R rstudio:rstudio /home/rstudio/
+```
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+* |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+]
+]
+.pull-right-70[
+#### Define Container
+
+.code-size-12[
+```bash
+#----    Dockerfile    ----
+FROM rocker/rstudio:4.1.2
+
+# Copy project files
+COPY . /home/rstudio/my-project
+
+# Change ownership
+RUN chown -R rstudio:rstudio /home/rstudio/
+```
+]
+
+.move-down-80[
+.li-small[
+- `.dockerignore` exclude results and not required files
+]
+]
+]
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+  |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+]
+]
+.pull-right-70[
+#### Instructions
+.code-size-14[
+.li-size-14[
+> To reproduce the analysis:
+>
+> - Download the project repository at <link-repository> or by running,
+>
+>    ``` bash
+>    git clone <link-repository>
+>    ```
+> - Build the image by running,
+>
+>    ```bash
+>    docker build -t my-project:1.0.0 .
+>    ```
+> - Run the container by running,
+>
+>    ``` bash
+>    docker run --rm -p 8787:8787 -e PASSWORD="<your-PW>" my-project:1.0.0
+>    ```
+> - In your browser, go to http://localhost:8787 and login to RStudio Server (username: rstudio; PW: <your-PW>).
+]
+]
+]
+
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+  |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+]
+]
+.pull-right-70[
+#### Instructions (continue)
+.code-size-14[
+.li-size-14[
+> - Open the R project by double-clicking the file `my-project/my-project.Rproj` file you can find in the project. A new R-studio session will open.
+> - Run `renv::restore()` to install the project’s dependencies (have a coffee, it takes some time).
+> - Run `targets::tar_make()` to run the analysis using `targets`. (Note that this will properly work because we defined targets script and store locations in the `_targets.yaml` file).
+> - To compile the report, open `documents/report.Rmd` and compile the file
+>     clicking the `Knitr` button  (or run `rmarkdown::render(input = 'documents/report.Rmd')`).
+]
+]
+]
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+* |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+]
+]
+.pull-right-70[
+#### Define Container
+
+.code-size-12[
+```bash
+#----    Dockerfile    ----
+FROM rocker/rstudio:4.1.2
+
+# Copy project files
+COPY . /home/rstudio/my-project
+
+# Change ownership
+RUN chown -R rstudio:rstudio /home/rstudio/
+```
+]
+]
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+* |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+]
+]
+.pull-right-70[
+#### Define Container: Add R-packages
+
+.code-size-12[
+```bash
+#----    Dockerfile    ----
+FROM rocker/rstudio:4.1.2
+
+# Copy project files
+COPY . /home/rstudio/my-project
+
+*# Install renv
+*ENV RENV_VERSION 0.15.1
+*ENV RENV_PATHS_CACHE /home/rstudio/.cache/R/renv
+*RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
+*RUN R -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
+
+*# Install packages
+*WORKDIR /home/rstudio/my-project
+*RUN R -e "renv::restore()"
+
+# Change ownership
+RUN chown -R rstudio:rstudio /home/rstudio/
+```
+]
+]
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+  |-- _targets.yaml
+  |-- DESCRIPTION
+* |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+  |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+]
+]
+.pull-right-70[
+#### Define Container: Run the Analysis and Report
+
+.code-size-12[
+```bash
+#----    Dockerfile    ----
+FROM rocker/rstudio:4.1.2
+
+# Copy project files
+COPY . /home/rstudio/my-project
+
+# Install renv
+ENV RENV_VERSION 0.15.1
+ENV RENV_PATHS_CACHE /home/rstudio/.cache/R/renv
+RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
+RUN R -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
+
+# Install packages
+WORKDIR /home/rstudio/my-project
+RUN R -e "renv::restore()"
+
+*# Run targets
+*RUN R -e "targets::tar_make()"
+*# Render report
+*RUN R -e "rmarkdown::render(input = 'documents/report.Rmd')"
+
+# Change ownership
+RUN chown -R rstudio:rstudio /home/rstudio/
+```
+]
+]
+
+---
+# After the Development
+
+.pull-left-30[
+.code-size-12[
+```
+My-project/
+  |-- .gitignore
+  |-- .Rprofile
+* |-- _targets.yaml
+  |-- DESCRIPTION
+* |-- Dockerfile
+  |-- my-project.Rproj
+  |-- README
+  |-- renv.lock
+  |-- .git/
+  |-- analysis/
+  |   |-- _taregts/
+  |   |-- targets-analysis.R
+  |   |-- targets-workflow.R
+  |-- data/
+  |   |-- raw-data.csv
+  |-- documents/
+* |   |-- _targets.yaml
+  |   |-- report.Rmd
+  |-- R/
+  |   |-- my-functions.R
+  |   |-- targets-utils.R
+  |-- renv/
+```
+]
+]
+.pull-right-70[
+#### Define Container: Run the Analysis and Report
+
+.code-size-12[
+```bash
+#----    Dockerfile    ----
+FROM rocker/rstudio:4.1.2
+
+# Copy project files
+COPY . /home/rstudio/my-project
+
+# Install renv
+ENV RENV_VERSION 0.15.1
+ENV RENV_PATHS_CACHE /home/rstudio/.cache/R/renv
+RUN R -e "install.packages('remotes', repos = c(CRAN = 'https://cloud.r-project.org'))"
+RUN R -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
+
+# Install packages
+WORKDIR /home/rstudio/my-project
+RUN R -e "renv::restore()"
+
+*# Run targets
+*RUN R -e "targets::tar_make()"
+*# Render report
+*RUN R -e "rmarkdown::render(input = 'documents/report.Rmd')"
+
+# Change ownership
+RUN chown -R rstudio:rstudio /home/rstudio/
+```
+]
+]
+---
+# Rocker as IDE
+
+--
+
+.pull-left-60[
+.move-down-80[
+#### Run Container
+]
+
+.code-size-12[
+```bash
+docker run --rm -p 8787:8787 -e DISABLE_AUTH=true \
+    -v  ~/Desktop/My-project:/home/rstudio/my-project \
+    rocker/verse:4.1.2
+```
+]
+]
+.pull-right-40[
+
+]
+
+---
+# Rocker as IDE
+
+.pull-left-60[
+.move-down-80[
+#### Run Container: renv Cache
+]
+
+.code-size-12[
+```bash
+docker run --rm -p 8787:8787 -e DISABLE_AUTH=true \
+    -v  ~/Desktop/My-project:/home/rstudio/my-project \
+    rocker/verse:4.1.2
+```
+]
+]
+.pull-right-40[
+.move-down-80[
+.code-size-12[
+{{content}}
+]
+]
+]
+
+--
+#### Host System
+
+```
+~/Docker/
+    |-- renv-cache/
+```
+
+---
+# Rocker as IDE
+
+.pull-left-60[
+.move-down-80[
+#### Run Container: renv Cache
+]
+
+.code-size-12[
+```bash
+docker run --rm -p 8787:8787 -e DISABLE_AUTH=true \
+    -v  ~/Desktop/my-project:/home/rstudio/my-project \
+*   -v  ~/Docker/renv-cache:/home/rstudio/.cache/R/renv \
+*   -e  RENV_PATHS_CACHE=home/rstudio/.cache/R/renv \
+    rocker/verse:4.1.2
+```
+]
+]
+.pull-right-40[
+.move-down-80[
+.code-size-12[
+#### Host System
+
+```
+~/Docker/
+    |-- renv-cache/
+```
+]
+]
+]
+
+---
+# Rocker as IDE
+
+.pull-left-60[
+.move-down-80[
+#### Run Container: GitHub Authentication
+]
+
+.code-size-12[
+```bash
+docker run --rm -p 8787:8787 -e DISABLE_AUTH=true \
+    -v  ~/Desktop/my-project:/home/rstudio/my-project \
+    -v  ~/Docker/renv-cache:/home/rstudio/.cache/R/renv \
+    -e  RENV_PATHS_CACHE=home/rstudio/.cache/R/renv \
+    rocker/verse:4.1.2
+```
+]
+]
+.pull-right-40[
+.move-down-80[
+.code-size-12[
+#### Host System
+
+```
+~/Docker/
+    |-- renv-cache/
+```
+]
+]
+]
+---
+# Rocker as IDE
+
+.pull-left-60[
+.move-down-80[
+#### Run Container: GitHub Authentication
+]
+
+.code-size-12[
+```bash
+docker run --rm -p 8787:8787 -e DISABLE_AUTH=true \
+    -v  ~/Desktop/my-project:/home/rstudio/my-project \
+    -v  ~/Docker/renv-cache:/home/rstudio/.cache/R/renv \
+    -e  RENV_PATHS_CACHE=home/rstudio/.cache/R/renv \
+    rocker/verse:4.1.2
+```
+]
+]
+.pull-right-40[
+.move-down-80[
+.code-size-12[
+#### Host System
+
+```
+~/Docker/
+    |-- renv-cache/
+    |-- docker-gitconfig.txt
+    |-- ssh-key
+```
+]
+]
+]
+---
+# Rocker as IDE
+
+.pull-left-60[
+.move-down-80[
+#### Run Container: GitHub Authentication
+]
+
+.code-size-12[
+```bash
+docker run --rm -p 8787:8787 -e DISABLE_AUTH=true \
+    -v  ~/Desktop/my-project:/home/rstudio/my-project \
+    -v  ~/Docker/renv-cache:/home/rstudio/.cache/R/renv \
+    -e  RENV_PATHS_CACHE=home/rstudio/.cache/R/renv \
+    rocker/verse:4.1.2
+```
+]
+]
+.pull-right-40[
+.move-down-80[
+.code-size-12[
+#### Host System
+
+```
+~/Docker/
+    |-- renv-cache/
+*   |-- docker-gitconfig.txt
+    |-- ssh-key
+```
+
+```
+#----    gitconfig    ----#
+[user]
+        name = <username>
+        email = <user-email>
+[merge]
+        conflictstyle = diff3
+```
+
+]
+]
+]
+
+---
+# Rocker as IDE
+
+.pull-left-60[
+.move-down-80[
+#### Run Container: GitHub Authentication
+]
+
+.code-size-12[
+```bash
+docker run --rm -p 8787:8787 -e DISABLE_AUTH=true \
+    -v  ~/Desktop/my-project:/home/rstudio/my-project \
+    -v  ~/Docker/renv-cache:/home/rstudio/.cache/R/renv \
+    -e  RENV_PATHS_CACHE=home/rstudio/.cache/R/renv \
+*   -v  ~/Docker/ssh-key:/home/rstudio/.ssh\
+*   -v  ~/Docker/docker-gitconfig.txt:/etc/gitconfig\
+    rocker/verse:4.1.2
+```
+]
+]
+.pull-right-40[
+.move-down-80[
+.code-size-12[
+#### Host System
+
+```
+~/Docker/
+    |-- renv-cache/
+    |-- docker-gitconfig.txt
+    |-- ssh-key
+```
+
+```
+#----    gitconfig    ----#
+[user]
+        name = <username>
+        email = <user-email>
+[merge]
+        conflictstyle = diff3
+```
+
+]
+]
+]
+---
+class: inverse, center, middle
+
+# Happily (and Reproducible) Ever After
+
+## The End 🎉🎉
