@@ -148,7 +148,7 @@ li, img {
   font-size:10pt;
 }
 
-.code-size-12 code, .code-size-12 remark-code-line {
+.code-size-12 code, .code-size-16 remark-code, .code-size-12 remark-code-line {
   font-size:12pt;
 }
 
@@ -228,6 +228,16 @@ blockquote {
 }
 
 /*----    layout    ----*/
+
+/* 70/30 */
+.pull-left-70 {
+  float: left;
+  width: 67%;
+}
+.pull-right-30 {
+  float: right;
+  width: 27%;
+}
 
 /* 60/40 */
 .pull-left-60 {

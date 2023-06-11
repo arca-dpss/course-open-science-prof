@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>12-docker.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # 13 - Docker
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+# Is everything under control?
+
+--
+
+&lt;img src="images/12-docker/docker-meme.png" width="35%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle, inverse
+# Step XI: Containerization
+
+---
+# Containerization
+
+--
+
+.pull-left-30[
+
+.move-down-140[
+&lt;img src="images/12-docker/docker-logo.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+]
+.pull-right-70[
+.move-down-30[
+{{content}}
+]
+]
+--
+
+#### Containers VS Virtual Machines
+&lt;img src="images/12-docker/container-vs-vm.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+# Docker Elements
+
+.move-down-110[
+&lt;img src="images/12-docker/Docker-elements-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+---
+# Docker Elements
+
+.move-down-110[
+&lt;img src="images/12-docker/Docker-elements-2.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+---
+# Docker Elements
+
+.move-down-110[
+&lt;img src="images/12-docker/Docker-elements-3.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+## `Dockerfile`
+
+--
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+*FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.li-small[
+- `From &lt;image&gt;:&lt;version&gt;`
+]
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+*FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.li-small[
+- `From &lt;image&gt;:&lt;version&gt;`
+  - `&lt;DockerHub-Namespace&gt;/&lt;Repository&gt;:&lt;version&gt;`
+  - 🌵 Do not use `latest` tag!
+]
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+*RUN apt-get update \
+*   &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+*RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.li-small[
+- `From &lt;image&gt;:&lt;version&gt;`
+  - `&lt;DockerHub-Namespace&gt;/&lt;Repository&gt;:&lt;version&gt;`
+  - 🌵 Do not use `latest` tag!
+- `RUN &lt;command&gt;` (default shell)
+]
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+*RUN apt-get update \
+*   &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+*RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.li-small[
+- `From &lt;image&gt;:&lt;version&gt;`
+  - `&lt;DockerHub-Namespace&gt;/&lt;Repository&gt;:&lt;version&gt;`
+  - 🌵 Do not use `latest` tag!
+- `RUN &lt;command&gt;` (default shell)
+  - `&lt;path-to-shell&gt; -c '&lt;command&gt;'` specify shell
+  - `\` used to split long commands
+]
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+*COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.li-small[
+- `From &lt;image&gt;:&lt;version&gt;`
+  - `&lt;DockerHub-Namespace&gt;/&lt;Repository&gt;:&lt;version&gt;`
+  - 🌵 Do not use `latest` tag!
+- `RUN &lt;command&gt;` (default shell)
+  - `&lt;path-to-shell&gt; -c '&lt;command&gt;'` specify shell
+  - `\` used to split long commands
+- `Copy &lt;host-path&gt; &lt;image-path&gt;`
+]
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+*CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+.li-small[
+- `From &lt;image&gt;:&lt;version&gt;`
+  - `&lt;DockerHub-Namespace&gt;/&lt;Repository&gt;:&lt;version&gt;`
+  - 🌵 Do not use `latest` tag!
+- `RUN &lt;command&gt;` (default shell)
+  - `&lt;path-to-shell&gt; -c '&lt;command&gt;'` specify shell
+  - `\` used to split long commands
+- `Copy &lt;host-path&gt; &lt;image-path&gt;`
+- `CMD &lt;command&gt;` default command to run at start 
+]
+]
+]
+
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+- `ADD &lt;src&gt; &lt;image-path&gt;` allow tar extraction and URLs
+{{content}}
+]
+]
+]
+--
+
+- `LABEL &lt;key&gt;=&lt;value&gt;` adds metadata to an image
+
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+- `ADD &lt;src&gt; &lt;image-path&gt;` allow tar extraction and URLs
+- `LABEL &lt;key&gt;=&lt;value&gt;` adds metadata to an image
+  - email, license, etc.
+{{content}}
+]
+]
+]
+
+--
+
+- `ENV &lt;key&gt;=&lt;value&gt;` environment variables used in instructions
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+- `ADD &lt;src&gt; &lt;image-path&gt;` allow tar extraction and URLs
+- `LABEL &lt;key&gt;=&lt;value&gt;` adds metadata to an image
+  - email, license, etc.
+- `ENV &lt;key&gt;=&lt;value&gt;` environment variables used in instructions
+  - Available also at run time
+{{content}}
+]
+]
+]
+
+--
+- `WORKDIR &lt;path-wd&gt;` set working directory
+{{content}}
+--
+
+- `EXPOSE &lt;port&gt;` specify network ports available at run time
+{{content}}
+--
+
+- `SHELL ["executable", "parameters"]`&lt;br&gt;define the default shell used (`["/bin/sh", "-c"]`)
+
+{{content}}
+--
+- `VOLUME ["/path-to-volume"]`&lt;br&gt;create directories for persistent data storage
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-50[
+.li-small[
+- `ADD &lt;src&gt; &lt;image-path&gt;` allow tar extraction and URLs
+- `LABEL &lt;key&gt;=&lt;value&gt;` adds metadata to an image
+  - email, license, etc.
+- `ENV &lt;key&gt;=&lt;value&gt;` environment variables used in instructions
+  - Available also at run time
+- `WORKDIR &lt;path-wd&gt;` set working directory
+- `EXPOSE &lt;port&gt;` specify network ports available at run time
+- `SHELL ["executable", "parameters"]`&lt;br&gt;define the default shell used (`["/bin/sh", "-c"]`)
+- `VOLUME ["/path-to-volume"]`&lt;br&gt;create directories for persistent data storage
+]
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+]
+]
+
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+*COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+]
+]
+
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+
+
+- **Layer Caching**
+]
+]
+
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+*COPY . /app-new
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+
+
+- **Layer Caching**
+]
+]
+
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+*FROM ubuntu:18.04
+*
+*# Install packages
+*RUN apt-get update \
+*   &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app-new
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+
+
+- **Layer Caching**
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+*COPY . /app-new
+*RUN make /app
+*CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+
+
+- **Layer Caching**
+]
+]
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+*FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+
+
+- **Layer Caching**
+
+
+- **Image Version Tag**
+]
+]
+
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+*FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+
+
+- **Layer Caching**
+
+
+- **Image Version Tag**
+.li-small[
+  - No tag --&gt; `latest`
+{{content}}
+]
+]
+]
+
+--
+- Hindered Reproducibility
+- Unpredictable Behaviour
+---
+## `Dockerfile`
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+#----    Dockerfile    ----
+*FROM ubuntu:18.04
+
+# Install packages
+RUN apt-get update \
+    &amp;&amp; apt-get install -y curl
+
+# Get and run my app
+COPY . /app
+RUN make /app
+CMD python /app/app.py
+```
+]
+]
+]
+.pull-right-70[
+.move-down-80[
+- `.dockerignore`
+
+
+- **Layer Caching**
+
+
+- **Image Version Tag**
+.li-small[
+  - No tag --&gt; `latest`
+- Hindered Reproducibility
+- Unpredictable Behaviour
+]
+
+.center[*Always specify the version tag!*]
+]
+]
+
+---
+# Extra: File Permission
+
+&lt;br&gt;
+
+--
+
+.pull-left-70[
+.code-size-12[
+```
+$ ls -l Desktop/
+drwxr-xr-x@ 17 claudio  staff    23544 Dec 17 17:09 Courses
+drwxr-xr-x@ 17 claudio  staff    14590 Dec 17 17:09 Presentations
+-rw-r--r--   1 claudio  staff     5928 Feb  3 14:41 Repot.pdf
+-rw-r--r--@  1 claudio  staff      160 Jan 18 11:10 TODO-list.txt
+```
+]
+]
+.pull-right-30[
+.li-small[
+{{content}}
+]
+]
+
+--
+
+#### Permissions
+
+- Read (r)
+- Write (w)
+- Execute (x)
+
+{{content}}
+
+--
+
+#### Users
+
+- Owner
+- Group
+- Others
+
+---
+# Extra: File Permission
+
+&lt;br&gt;
+
+.pull-left-70[
+.code-size-12[
+```
+$ ls -l Desktop/
+drwxr-xr-x@ 17 claudio  staff    23544 Dec 17 17:09 Courses
+drwxr-xr-x@ 17 claudio  staff    14590 Dec 17 17:09 Presentations
+-rw-r--r--   1 claudio  staff     5928 Feb  3 14:41 Repot.pdf
+-rw-r--r--@  1 claudio  staff      160 Jan 18 11:10 TODO-list.txt
+```
+]
+
+&lt;br&gt;
+
+.code-size-16[
+- `chown [OPTION]... [OWNER][:[GROUP]] FILE`&lt;br&gt;Change owner
+- `chmod [OPTION]... MODE[,MODE]... FILE...`&lt;br&gt;Change permissions
+]
+]
+.pull-right-30[
+.li-small[
+#### Permissions
+
+- Read (r)
+- Write (w)
+- Execute (x)
+
+#### Users
+
+- Owner
+- Group
+- Others
+]
+]
+
+---
+# Extra: File Permission
+
+&lt;br&gt;
+
+.pull-left-50[
+.code-size-12[
+```
+#----    Dockerfile    ----
+FROM my-base-image
+
+# The default user is "my-user"
+
+COPY host-folder docker-folder
+
+*RUN chown -R my-user docker-folder
+```
+]
+]
+.pull-right-30[
+
+]
+
+---
+# Build Image
+
+--
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+my-project/
+    |-- Dockerfile
+    |-- README
+    |-- data/
+    |-- documents/
+    |-- code/
+```
+]
+]
+]
+.pull-right-70[
+
+]
+
+---
+# Build Image
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+my-project/
+*   |-- Dockerfile
+    |-- README
+    |-- data/
+    |-- documents/
+    |-- code/
+```
+]
+]
+]
+.pull-right-70[
+
+]
+---
+# Build Image
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+my-project/
+*   |-- Dockerfile
+    |-- README
+    |-- data/
+    |-- documents/
+    |-- code/
+```
+]
+]
+]
+.pull-right-70[
+.li-small[
+- `docker build [OPTIONS] PATH` build image
+  - `-t` add tag `image-name:tag`
+]
+]
+
+---
+# Build Image
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+my-project/
+*   |-- Dockerfile
+    |-- README
+    |-- data/
+    |-- documents/
+    |-- code/
+```
+]
+]
+]
+.pull-right-70[
+.li-small[
+- `docker build [OPTIONS] PATH` build image
+  - `-t` add tag `image-name:tag`
+.code-size-12[
+    ```
+$ docker build -t my-image:1.0.0 .
+    ```
+]
+]
+]
+
+---
+# Build Image
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+my-project/
+*   |-- Dockerfile
+    |-- README
+    |-- data/
+    |-- documents/
+    |-- code/
+```
+]
+]
+]
+.pull-right-70[
+.li-small[
+- `docker build [OPTIONS] PATH` build image
+  - `-t` add tag `image-name:tag`
+.code-size-12[
+    ```
+$ docker build -t my-image:1.0.0 .
+    ```
+]
+- `docker images` or `docker image ls`&lt;br&gt;List available images
+]
+]
+
+---
+# Build Image
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+my-project/
+*   |-- Dockerfile
+    |-- README
+    |-- data/
+    |-- documents/
+    |-- code/
+```
+]
+]
+]
+.pull-right-70[
+.li-small[
+- `docker build [OPTIONS] PATH` build image
+  - `-t` add tag `image-name:tag`
+.code-size-12[
+    ```
+$ docker build -t my-image:1.0.0 .
+    ```
+]
+- `docker images` or `docker image ls`&lt;br&gt;List available images
+.code-size-12[
+  ```bash
+$ docker images
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+my-image                   1.0.0               bdcd08818a09        2 minutes ago       5.59MB
+
+  ```
+]
+]
+]
+---
+# Build Image
+
+.pull-left-30[
+.move-down-110[
+.code-size-12[
+```
+my-project/
+*   |-- Dockerfile
+    |-- README
+    |-- data/
+    |-- documents/
+    |-- code/
+```
+]
+]
+]
+.pull-right-70[
+.li-small[
+- `docker build [OPTIONS] PATH` build image
+  - `-t` add tag `image-name:tag`
+.code-size-12[
+    ```
+$ docker build -t my-image:1.0.0 .
+    ```
+]
+- `docker images` or `docker image ls`&lt;br&gt;List available images
+.code-size-12[
+  ```bash
+$ docker images
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+my-image                   1.0.0               bdcd08818a09        2 minutes ago       5.59MB
+
+  ```
+]
+- `docker image rm &lt;Image-ID&gt;` remove image
+]
+]
+
+---
+# Run Image
+
+--
+.pull-left-50[
+.code-size-16[
+```
+$ docker run [OPTIONS] IMAGE
+```
+]
+
+.move-down-50[
+.li-small[
+{{content}}
+]
+]
+]
+.pull-right-50[
+.li-small[
+
+]
+]
+
+--
+
+- `--name &lt;name-container&gt;`&lt;br&gt;Assign container name
+- `--rm` container removed when stopped
+- `-it` interactive mode and terminal session
+- `-d` run in detached mode
+
+---
+# Run Image
+
+.pull-left-50[
+.code-size-16[
+```
+$ docker run [OPTIONS] IMAGE
+```
+]
+
+.move-down-50[
+.li-small[
+- `--name &lt;name-container&gt;`&lt;br&gt;Assign container name
+- `--rm` container removed when stopped
+- `-it` interactive mode and terminal session
+- `-d` run in detached mode
+]
+]
+]
+.pull-right-50[
+.move-down-120[
+.li-small[
+- `-v &lt;host-path&gt;:&lt;container-path&gt;`&lt;br&gt;Attach a volume or bind mount
+- `-e &lt;name&gt;=&lt;value&gt;` define (or overwrite) an environment variable
+- `-p &lt;host-port&gt;:&lt;container-port&gt;`&lt;br&gt;Map ports 
+- `-u` (or `--user`) define the username
+]
+]
+]
+.in-line[
+.code-size-16[
+{{content}}
+]
+]
+
+--
+```
+$ docker run --name my-container -it my-image:1.0.0
+```
+
+---
+# Run Image
+
+&lt;br&gt;
+--
+
+.li-small[
+- `docker stop &lt;container-name&gt; ` stop running container
+
+
+{{content}}
+]
+
+--
+- `docker container ls` or  `docker ps`&lt;br&gt;List running containers
+  - `-a` all available containers (also stopped)
+
+---
+# Run Image
+
+&lt;br&gt;
+
+.li-small[
+- `docker stop &lt;container-name&gt; ` stop running container
+
+
+- `docker container ls` or  `docker ps`&lt;br&gt;List running containers
+  - `-a` all available containers (also stopped)
+.code-size-12[
+  ```bash
+$ docker container ls -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+fa28e5e1c2fc        my-image:1.0.0      "/bin/sh"           5 minutes ago       Exited (0) 2 minutes ago                       my-container
+
+  ```
+]
+
+
+{{content}}
+]
+
+--
+
+- `docker rm &lt;container-name&gt;` remove container
+
+---
+
+# Moving Files
+
+--
+
+&lt;br&gt;
+
+.code-size-16[
+```bash
+# Form container to host
+$ docker cp &lt;container-name&gt;:&lt;container-path&gt; &lt;host-path&gt;
+```
+
+&lt;br&gt;
+
+{{content}}
+]
+
+--
+
+```bash
+# Form host to container
+$ docker cp &lt;host-path&gt; &lt;container-name&gt;:&lt;container-path&gt; 
+```
+
+---
+
+# Data Storage
+
+.pull-left-50[
+#### Bind Mounts
+
+.li-small[
+{{content}}
+]
+]
+.pull-right-50[
+
+]
+
+--
+
+- `-v &lt;host-path&gt;:&lt;container-path&gt;`&lt;br&gt;Connect from host machine to container
+  - Paths are **absolute**
+  - If not existing is created on-demand
+  
+
+{{content}}
+--
+
+Limits
+
+- 🌵 Rely on the host machine specific file system 
+- 🌵 Security implications
+---
+
+# Data Storage
+
+.pull-left-50[
+#### Bind Mounts
+
+.li-small[
+- `-v &lt;host-path&gt;:&lt;container-path&gt;`&lt;br&gt;Connect from host machine to container
+  - Paths are **absolute**
+  - If not existing is created on-demand
+  
+
+Limits
+
+- 🌵 Rely on the host machine specific file system 
+- 🌵 Security implications
+]
+]
+.pull-right-50[
+#### Volumes
+
+.li-small[
+{{content}}
+]
+]
+
+--
+- `docker volume create &lt;name-volume&gt;`&lt;br&gt;Create a named volume
+- `docker volume ls`&lt;br&gt;List volumes
+- `docker volume rm &lt;name-volume&gt;`&lt;br&gt;Remove volume
+
+
+{{content}}
+
+--
+- `-v &lt;name-volume&gt;:&lt;container-path&gt;`&lt;br&gt;Mount a named volume
+  - Path is **absolute**
+
+
+{{content}}
+--
+- 🌵 Named vs anonymous volume
+
+---
+# Docker Extra
+
+--
+
+.pull-left-30[
+.move-down-110[
+- Docker Compose
+- Docker Hub
+- Docker GUI
+]
+]
+.pull-right-70[
+
+]
+
+---
+# Docker Extra
+
+.pull-left-30[
+.move-down-110[
+- Docker Compose
+- .alpha[Docker Hub]
+- .alpha[Docker GUI]
+]
+]
+.pull-right-70[
+.move-up-50[
+.code-small[
+{{content}}
+]
+]
+]
+
+--
+
+```yaml
+#----    docker-compose.yaml    ----#
+
+version: "3.9"
+   
+services:
+  db:        # First container
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  app:       # Second container
+    build: .
+    volumes:
+      - app_volume:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+  app_volume:
+```
+
+---
+# Docker Extra
+
+.pull-left-30[
+.move-down-110[
+- Docker Compose
+- .alpha[Docker Hub]
+- .alpha[Docker GUI]
+]
+]
+.pull-right-70[
+.move-up-50[
+.code-small[
+```yaml
+#----    docker-compose.yaml    ----#
+
+version: "3.9"
+   
+services:
+  db:        # First container
+    image: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  app:       # Second container
+    build: .
+    volumes:
+      - app_volume:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+  app_volume:
+```
+]
+]
+
+.font-14[
+`docker-compose up` and `docker-compose down` to start/top the service]
+]
+
+---
+# Docker Extra
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Docker Compose]
+- Docker Hub
+- .alpha[Docker GUI]
+]
+]
+.pull-right-70[
+
+.move-up-50[
+&lt;img src="images/12-docker/docker-hub-logo.png" width="40%" style="display: block; margin: auto;" /&gt;
+]
+
+.move-down-50[
+.code-size-12[
+.li-small[
+{{content}}
+]
+]
+]
+]
+
+--
+- `docker run [OPTIONS] &lt;DockerHub-Namespace&gt;/&lt;Repository&gt;:&lt;version&gt;`
+
+- `docker pull [OPTIONS] &lt;DockerHub-Namespace&gt;/&lt;Repository&gt;:&lt;version&gt;`
+
+{{content}}
+--
+#### Sharing Images
+
+{{content}}
+--
+1. Create Repository in Docker Hub
+1. `docker login --username=&lt;username&gt; --email=&lt;name@email.com&gt;`
+1. `docker tag &lt;image-id&gt; &lt;username&gt;/&lt;name-repo&gt;:&lt;tag&gt;`
+1. `docker push &lt;username&gt;/&lt;name-repo&gt;`
+
+---
+# Docker Extra
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Docker Compose]
+- .alpha[Docker Hub]
+- Docker GUI
+]
+]
+.pull-right-70[
+.pull-left-50[
+{{content}}
+]
+.pull-right-50[
+
+]
+]
+
+--
+#### Docker Desktop
+&lt;img src="images/12-docker/docker-desktop-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+# Docker Extra
+
+.pull-left-30[
+.move-down-110[
+- .alpha[Docker Compose]
+- .alpha[Docker Hub]
+- Docker GUI
+]
+]
+.pull-right-70[
+.pull-left-50[
+#### Docker Desktop
+&lt;img src="images/12-docker/docker-desktop-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+#### Visual Studio Code
+]
+.pull-right-50[
+&lt;img src="images/12-docker/VSC-docker.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+]
+---
+class: inverse, center, middle
+
+# Do not end up like Pinocchio!
+
+## Moving to the last step...
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
