@@ -106,7 +106,7 @@ class: center, middle, inverse
 *“Data and materials will be made available upon request”*
 
 <br>
-.emoji-large[
+.emoji-l[
 {{content}}
 ]
 ]
@@ -124,7 +124,7 @@ knitr::include_graphics(paste0(image_path,"osf.png"))
 ```
 
 .center[
-Open Science Framework (https://osf.io/)
+Open Science Framework - https://osf.io/
 ]
 ]
 
@@ -245,7 +245,7 @@ knitr::include_graphics(paste0(image_path,"osf-add-files.png"))
 ```
 
 ---
-# OSF: Documentation
+# OSF: Wiki
 
 Add a description of the project
 
@@ -266,6 +266,10 @@ knitr::include_graphics(paste0(image_path,"project-visibility.png"))
 ```
 ]
 .pull-right-40[
+{{content}}
+]
+
+--
 Create the DOI
 
 <br>
@@ -273,8 +277,6 @@ Create the DOI
 ```{r, out.width="90%"}
 knitr::include_graphics(paste0(image_path,"osf-doi.png"))
 ```
-]
-
 ---
 # OSF: Research Features
 .no-border[
@@ -296,15 +298,20 @@ knitr::include_graphics(paste0(image_path,"osf-link.png"))
 ```
 ]
 .pull-right-40[
+{{content}}
+]
+
+--
 ```{r, out.width="90%"}
 knitr::include_graphics(paste0(image_path,"anonymize-link.png"))
 ```
 
+{{content}}
+
+--
 ```{r, out.width="99%"}
 knitr::include_graphics(paste0(image_path,"anonymize-link-2.png"))
 ```
-]
-
 ---
 # OSF: Research Features
 .pull-left-50[
