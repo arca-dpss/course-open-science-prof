@@ -422,8 +422,10 @@ knitr::include_graphics(paste0(image_path, "collaborate.png"))
 
 <br>
 
+.move-up-15[
 .li-small[
 {{content}}
+]
 ]
 ]
 
@@ -594,6 +596,22 @@ $ git config --global user.name "<My Name>"
 $ git config --global user.email "<user@email.com>"
 ```
 ]
+]
+.pull-right-50[]
+
+---
+# Getting Started: Configure Settings
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "<My Name>"
+$ git config --global user.email "<user@email.com>"
+```
+]
 
 Configuration file
 
@@ -642,6 +660,42 @@ Current settings
 $ git config --list
 ```
 ]
+]
+
+---
+
+# Getting Started: Configure Settings
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "<My Name>"
+$ git config --global user.email "<user@email.com>"
+```
+]
+
+Configuration file
+
+.code-size-12[
+```
+#----    ~/.gitconfig    ----#
+[user]
+    name = My Name
+    email = user@email.com
+```
+]
+]
+.pull-right-50[
+Current settings
+
+.code-size-12[
+```
+$ git config --list
+```
+]
 
 .move-down-40[
 Settings levels
@@ -653,7 +707,6 @@ Settings levels
 - No flag, project level<br>Stored in `.git/config`
 ]
 ]
-
 ---
 
 # Getting Started: Initialize Repository
@@ -668,12 +721,14 @@ $ cd <path-to/project-directory>
 $ git init
 ```
 ]
-> Create an hidden folder `.git/`
+{{content}}
 
 ]
 
 .pull-right-50[]
 
+--
+> Create an hidden folder `.git/`
 ---
 
 # Getting Started: Initialize Repository
@@ -1449,7 +1504,7 @@ knitr::include_graphics(paste0(image_path, 'checkout.png'))
 
 .code-size-12[
 ```
-$ git checkout -b <branch-name>
+$ git checkout -b new-branch
 ```
 ]
 
@@ -2145,6 +2200,58 @@ Third text line
 #----    my-file.txt
 
 First text line
+Second text line
+Third text line
+```
+]
+]
+]
+
+<br>
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+]
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
 *Second text line
 Third text line
 ```
@@ -2184,7 +2291,6 @@ Third text line
 .pull-right-50[
 
 ]
-
 
 ---
 # Getting Started: Conflicts
@@ -2501,6 +2607,7 @@ $ git commit -m "Solve conflict"
 {{content}}
 
 --
+#### Undo Merge
 ```
 $ git merge --abort
 ```

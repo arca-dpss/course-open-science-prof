@@ -340,8 +340,10 @@ class: center, middle, inverse
 
 &lt;br&gt;
 
+.move-up-15[
 .li-small[
 {{content}}
+]
 ]
 ]
 
@@ -502,6 +504,22 @@ $ git config --global user.name "&lt;My Name&gt;"
 $ git config --global user.email "&lt;user@email.com&gt;"
 ```
 ]
+]
+.pull-right-50[]
+
+---
+# Getting Started: Configure Settings
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "&lt;My Name&gt;"
+$ git config --global user.email "&lt;user@email.com&gt;"
+```
+]
 
 Configuration file
 
@@ -550,6 +568,42 @@ Current settings
 $ git config --list
 ```
 ]
+]
+
+---
+
+# Getting Started: Configure Settings
+
+.pull-left-50[
+
+Add username and email
+
+.code-size-12[
+```
+$ git config --global user.name "&lt;My Name&gt;"
+$ git config --global user.email "&lt;user@email.com&gt;"
+```
+]
+
+Configuration file
+
+.code-size-12[
+```
+#----    ~/.gitconfig    ----#
+[user]
+    name = My Name
+    email = user@email.com
+```
+]
+]
+.pull-right-50[
+Current settings
+
+.code-size-12[
+```
+$ git config --list
+```
+]
 
 .move-down-40[
 Settings levels
@@ -561,7 +615,6 @@ Settings levels
 - No flag, project level&lt;br&gt;Stored in `.git/config`
 ]
 ]
-
 ---
 
 # Getting Started: Initialize Repository
@@ -576,12 +629,14 @@ $ cd &lt;path-to/project-directory&gt;
 $ git init
 ```
 ]
-&gt; Create an hidden folder `.git/`
+{{content}}
 
 ]
 
 .pull-right-50[]
 
+--
+&gt; Create an hidden folder `.git/`
 ---
 
 # Getting Started: Initialize Repository
@@ -1343,7 +1398,7 @@ In detached `HEAD`, changes will be lost!
 
 .code-size-12[
 ```
-$ git checkout -b &lt;branch-name&gt;
+$ git checkout -b new-branch
 ```
 ]
 
@@ -2011,6 +2066,58 @@ Third text line
 #----    my-file.txt
 
 First text line
+Second text line
+Third text line
+```
+]
+]
+]
+
+&lt;br&gt;
+
+.pull-left-50[
+
+#### Branch A
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
+Branch-A text line
+Third text line
+```
+]
+]
+.pull-right-50[
+
+#### Branch B
+.code-size-12[
+```
+#----    my-file.txt
+  
+First text line
+Branch-B text line
+Third text line
+```
+]
+]
+]
+.pull-right-50[
+
+]
+---
+# Getting Started: Conflicts
+
+.pull-left-50[
+
+.move-left-130[
+.my-code-block[
+#### Original
+.code-size-12[
+```
+#----    my-file.txt
+
+First text line
 *Second text line
 Third text line
 ```
@@ -2050,7 +2157,6 @@ Third text line
 .pull-right-50[
 
 ]
-
 
 ---
 # Getting Started: Conflicts
@@ -2367,6 +2473,7 @@ $ git commit -m "Solve conflict"
 {{content}}
 
 --
+#### Undo Merge
 ```
 $ git merge --abort
 ```
