@@ -3,7 +3,7 @@
   <head>
     <title>03-projects.knit</title>
     <meta charset="utf-8" />
-    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
@@ -556,6 +556,34 @@ Extra - Aaron Swartz [Story](https://en.wikipedia.org/wiki/Aaron_Swartz) (
     |-- documents/
     |-- src/
     |-- README
+*   |-- LICENSE
+```
+]
+.pull-right-70[
+
+## LICENSE
+
+.move-up-70[
+&lt;img src="images/03-projects/cc-piramid.png" width="40%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+&lt;br&gt;
+
+
+```r
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
     |-- LICENSE
 ```
 ]
@@ -954,11 +982,13 @@ class: inverse, middle, center
 &lt;img src="images/03-projects/new-proj-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right-50[
+{{content}}
+]
+
+--
 Create project options...
 
 &lt;img src="images/03-projects/new-proj-2.png" width="80%" style="display: block; margin: auto;" /&gt;
-]
-
 ---
 # RStudio Projects: New Project
 
@@ -968,15 +998,46 @@ Project templates
 &lt;img src="images/03-projects/new-proj-3.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right-50[
+{{content}}
+]
+
+--
 Project specifications
 
 &lt;img src="images/03-projects/new-proj-4.png" width="80%" style="display: block; margin: auto;" /&gt;
-]
 
 ---
 # RStudio Projects: Features
 
 --
+
+.pull-left-50[
+.li-small[
+- Working Directory and File Paths
+
+&lt;img src="images/03-projects/proj-wd.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+
+]
+]
+.pull-right-50[
+
+]
+
+--
+
+&gt; Always use forward slash `"/"`
+
+{{content}}
+
+--
+- `&lt;project-name&gt;.Rproj`
+
+&lt;img src="images/03-projects/rproj-file.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# RStudio Projects: Features
 
 .pull-left-50[
 .li-small[
@@ -999,7 +1060,6 @@ Project specifications
 &lt;img src="images/03-projects/proj-options.png" width="60%" style="display: block; margin: auto;" /&gt;
 ]
 ]
-
 ---
 # RStudio Projects: Features
 
@@ -1017,11 +1077,41 @@ Project specifications
 ]
 .pull-right-50[
 .li-small[
+{{content}}
+]
+]
+
+--
+
 - *“UTF-8”* encoding
 
 &lt;img src="images/03-projects/settings-UTF8.png" width="75%" style="display: block; margin: auto;" /&gt;
+---
+# RStudio Projects: Features
+
+.no-border[
+#### `.Rprofile`
 ]
+
+.pull-left-50[
+
+&lt;img src="images/03-projects/hidden-files.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
 ]
+.pull-right-50[
+
+]
+
+--
+
+&lt;img src="images/03-projects/rprofile.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+{{content}}
+
+--
+&lt;img src="images/03-projects/restart-session.png" width="75%" style="display: block; margin: auto;" /&gt;
+
 ---
 # RStudio Projects: Features
 

@@ -599,6 +599,35 @@ Extra - Aaron Swartz [Story](https://en.wikipedia.org/wiki/Aaron_Swartz) (
     |-- documents/
     |-- src/
     |-- README
+*   |-- LICENSE
+```
+]
+.pull-right-70[
+
+## LICENSE
+
+.move-up-70[
+```{r, out.width='40%'}
+knitr::include_graphics(paste0(image_path, 'cc-piramid.png'))
+```
+]
+]
+
+---
+# Project Structure
+
+.pull-left-30[
+
+<br>
+
+```{r, echo = TRUE, eval=FALSE}
+- my-project/
+    |
+    |-- data/
+    |-- analysis/
+    |-- documents/
+    |-- src/
+    |-- README
     |-- LICENSE
 ```
 ]
@@ -977,13 +1006,15 @@ knitr::include_graphics(paste0(image_path,"new-proj-1.png"))
 ```
 ]
 .pull-right-50[
+{{content}}
+]
+
+--
 Create project options...
 
 ```{r, out.width="80%"}
 knitr::include_graphics(paste0(image_path,"new-proj-2.png"))
 ```
-]
-
 ---
 # RStudio Projects: New Project
 
@@ -995,17 +1026,52 @@ knitr::include_graphics(paste0(image_path,"new-proj-3.png"))
 ```
 ]
 .pull-right-50[
+{{content}}
+]
+
+--
 Project specifications
 
 ```{r, out.width="80%"}
 knitr::include_graphics(paste0(image_path,"new-proj-4.png"))
 ```
-]
 
 ---
 # RStudio Projects: Features
 
 --
+
+.pull-left-50[
+.li-small[
+- Working Directory and File Paths
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"proj-wd.png"))
+```
+
+{{content}}
+
+]
+]
+.pull-right-50[
+
+]
+
+--
+
+> Always use forward slash `"/"`
+
+{{content}}
+
+--
+- `<project-name>.Rproj`
+
+```{r, out.width="80%"}
+knitr::include_graphics(paste0(image_path,"rproj-file.png"))
+```
+
+---
+# RStudio Projects: Features
 
 .pull-left-50[
 .li-small[
@@ -1034,7 +1100,6 @@ knitr::include_graphics(paste0(image_path,"proj-options.png"))
 ```
 ]
 ]
-
 ---
 # RStudio Projects: Features
 
@@ -1054,13 +1119,49 @@ knitr::include_graphics(paste0(image_path,"general-options.png"))
 ]
 .pull-right-50[
 .li-small[
+{{content}}
+]
+]
+
+--
+
 - *“UTF-8”* encoding
 
 ```{r, out.width="75%"}
 knitr::include_graphics(paste0(image_path,"settings-UTF8.png"))
 ```
+---
+# RStudio Projects: Features
+
+.no-border[
+#### `.Rprofile`
 ]
+
+.pull-left-50[
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"hidden-files.png"))
+```
+
+{{content}}
 ]
+.pull-right-50[
+
+]
+
+--
+
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"rprofile.png"))
+```
+
+{{content}}
+
+--
+```{r, out.width="75%"}
+knitr::include_graphics(paste0(image_path,"restart-session.png"))
+```
+
 ---
 # RStudio Projects: Features
 
