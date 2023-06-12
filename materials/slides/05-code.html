@@ -3,7 +3,7 @@
   <head>
     <title>05-code.knit</title>
     <meta charset="utf-8" />
-    <script src="libs/header-attrs-2.21/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
@@ -487,50 +487,6 @@ my.object.name  # snake.case (deprecated)
 - Line length (e.g, 80 characters)
 
 &lt;img src="images/05-code/rstudio-line.png" width="50%" style="display: block; margin: auto;" /&gt;
-]
-]
-
----
-# Coding Good Practices
-
-
-.pull-left-30[
-
-&lt;br&gt;
-
-&lt;br&gt;
-
-.li-small[
-- .alpha[Naming variables]
-- Spacing and indentation
-- .alpha[Comments]
-]
-]
-.pull-right-70[
-
-&lt;br&gt;
-
-.li-small[
-- Line length (e.g, 80 characters)
-- Alignment
-.bad-code[
-
-```r
-# too long
-my_very_long_list&lt;-list(first_argument="something-very-long",second_argument=c("many","objects"),third_argument=c(1,2,3,4,5))
-#
-```
-]
-.good-code[
-
-```r
-my_very_long_list &lt;- list(
-      first_argument = "something-very-long",
-      second_argument = c("many", "objects"),
-      third_argument = c(1, 2, 3, 4, 5)
-      )
-```
-]
 ]
 ]
 
@@ -1545,6 +1501,56 @@ format_perc &lt;- function(x, digits = 2){
 - .alpha[Knowing your Beast]
 - .alpha[Function Names]
 - .alpha[Handling Conditions]
+- No Hard-Coded Values
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.bad-code[
+
+```r
+format_perc &lt;- function(x){
+
+* perc_values &lt;- round(x * 100, digits = 2)
+  res &lt;- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+
+.good-code[
+
+```r
+format_perc &lt;- function(x, digits = 2){
+
+* perc_values &lt;- round(x * 100, digits = digits)
+  res &lt;- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+]
+
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
 - .alpha[No Hard-Coded Values]
 - Checking Inputs
 - .alpha[Be Explicit]
@@ -1595,6 +1601,54 @@ safe_division(x = 1, y = 0)
 - .alpha[Function Names]
 - .alpha[Handling Conditions]
 - .alpha[No Hard-Coded Values]
+- Checking Inputs
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+.bad-code[
+
+```r
+safe_division &lt;- function(x, y){
+  res &lt;- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## [1] Inf
+```
+]
+
+.good-code[
+
+```r
+safe_division &lt;- function(x, y){
+* if(y == 0) stop("you can not divide by zero")
+  
+  res &lt;- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## Error in safe_division(x = 1, y = 0): 
+## you can not divide by zero
+```
+]
+]
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
 - .alpha[Checking Inputs]
 - Be Explicit
 - .alpha[KISS]
@@ -1622,6 +1676,50 @@ get_mean &lt;- function(x){
   res &lt;- sum(x) / length(x)
 
   return(res)
+}
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+&lt;br&gt;
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- Be Explicit
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+&lt;br&gt;
+
+.bad-code[
+
+```r
+get_mean &lt;- function(x){
+  sum(x) / length(x)
+}
+```
+]
+
+.good-code[
+
+```r
+get_mean &lt;- function(x){
+
+  res &lt;- sum(x) / length(x)
+
+* return(res)
 }
 ```
 ]
@@ -2062,7 +2160,7 @@ class: inverse, center, middle
 
 .pull-left-50[
 
-&lt;br&gt;
+Project Template
 
 &lt;img src="images/05-code/create-pkg.png" width="85%" style="display: block; margin: auto;" /&gt;
 
@@ -2195,11 +2293,14 @@ Shortcuts
 &lt;img src="images/05-code/roxygen2.png" width="55%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right-70[
+{{content}}
+]
+
+--
 
 To activate Roxygen
 
 &lt;img src="images/05-code/settings-doc.png" width="65%" style="display: block; margin: auto;" /&gt;
-]
 
 ---
 # R Package Project
@@ -2213,7 +2314,7 @@ To activate Roxygen
 &lt;img src="images/05-code/roxygen2.png" width="55%" style="display: block; margin: auto;" /&gt;
 
 .li-small[
-- Insert Roxygen skeleton&lt;br&gt;`Ctrl+Alt+Shift+R`&lt;br&gt;macOS `Cmd+Option+Shift+R`
+{{content}}
 ]
 ]
 .pull-right-70[
@@ -2252,6 +2353,9 @@ format_perc &lt;- function(x, digits = 2){
 ]
 ]
 ]
+
+--
+- Insert Roxygen skeleton&lt;br&gt;`Ctrl+Alt+Shift+R`&lt;br&gt;macOS `Cmd+Option+Shift+R`
 ---
 # R Package Project
 
@@ -2273,6 +2377,16 @@ format_perc &lt;- function(x, digits = 2){
 ]
 ]
 
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Unit Tests
+]
+.pull-right-70[
+
+]
 ---
 # R Package Project
 

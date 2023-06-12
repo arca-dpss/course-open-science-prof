@@ -602,48 +602,6 @@ my_very_long_list <- list(
 .li-small[
 - Line length (e.g, 80 characters)
 - Alignment
-.bad-code[
-```{r, echo=TRUE, eval = FALSE}
-# too long
-my_very_long_list<-list(first_argument="something-very-long",second_argument=c("many","objects"),third_argument=c(1,2,3,4,5))
-#
-```
-]
-.good-code[
-```{r, echo=TRUE, eval = FALSE, tidy=FALSE}
-my_very_long_list <- list(
-      first_argument = "something-very-long",
-      second_argument = c("many", "objects"),
-      third_argument = c(1, 2, 3, 4, 5)
-      )
-```
-]
-]
-]
-
----
-# Coding Good Practices
-
-
-.pull-left-30[
-
-<br>
-
-<br>
-
-.li-small[
-- .alpha[Naming variables]
-- Spacing and indentation
-- .alpha[Comments]
-]
-]
-.pull-right-70[
-
-<br>
-
-.li-small[
-- Line length (e.g, 80 characters)
-- Alignment
 - Spacing and named arguments
 .bad-code[
 ```{r, echo=TRUE, eval = FALSE}
@@ -1559,6 +1517,54 @@ format_perc <- function(x, digits = 2){
 - .alpha[Knowing your Beast]
 - .alpha[Function Names]
 - .alpha[Handling Conditions]
+- No Hard-Coded Values
+- .alpha[Checking Inputs]
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+<br>
+
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+format_perc <- function(x){
+
+* perc_values <- round(x * 100, digits = 2)
+  res <- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+format_perc <- function(x, digits = 2){
+
+* perc_values <- round(x * 100, digits = digits)
+  res <- paste0(perc_values, "%")
+
+  return(res)
+}
+```
+]
+]
+
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
 - .alpha[No Hard-Coded Values]
 - Checking Inputs
 - .alpha[Be Explicit]
@@ -1607,6 +1613,52 @@ safe_division(x = 1, y = 0)
 - .alpha[Function Names]
 - .alpha[Handling Conditions]
 - .alpha[No Hard-Coded Values]
+- Checking Inputs
+- .alpha[Be Explicit]
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+safe_division <- function(x, y){
+  res <- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## [1] Inf
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+safe_division <- function(x, y){
+* if(y == 0) stop("you can not divide by zero")
+  
+  res <- x / y
+  return(res)
+}
+
+safe_division(x = 1, y = 0)
+## Error in safe_division(x = 1, y = 0): 
+## you can not divide by zero
+```
+]
+]
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
 - .alpha[Checking Inputs]
 - Be Explicit
 - .alpha[KISS]
@@ -1632,6 +1684,48 @@ get_mean <- function(x){
   res <- sum(x) / length(x)
 
   return(res)
+}
+```
+]
+]
+
+---
+# Function Good Practices
+
+.pull-left-30[
+
+<br>
+
+.li-small[
+- .alpha[Knowing your Beast]
+- .alpha[Function Names]
+- .alpha[Handling Conditions]
+- .alpha[No Hard-Coded Values]
+- .alpha[Checking Inputs]
+- Be Explicit
+- .alpha[KISS]
+- .alpha[WET]
+]
+]
+.pull-right-70[
+
+<br>
+
+.bad-code[
+```{r, echo=TRUE, eval=FALSE}
+get_mean <- function(x){
+  sum(x) / length(x)
+}
+```
+]
+
+.good-code[
+```{r, echo=TRUE, eval=FALSE}
+get_mean <- function(x){
+
+  res <- sum(x) / length(x)
+
+* return(res)
 }
 ```
 ]
@@ -2067,7 +2161,7 @@ class: inverse, center, middle
 
 .pull-left-50[
 
-<br>
+Project Template
 
 ```{r, out.width="85%"}
 knitr::include_graphics(paste0(image_path,"create-pkg.png"))
@@ -2208,13 +2302,16 @@ knitr::include_graphics(paste0(image_path,"roxygen2.png"))
 ```
 ]
 .pull-right-70[
+{{content}}
+]
+
+--
 
 To activate Roxygen
 
 ```{r, out.width="65%"}
 knitr::include_graphics(paste0(image_path,"settings-doc.png"))
 ```
-]
 
 ---
 # R Package Project
@@ -2230,7 +2327,7 @@ knitr::include_graphics(paste0(image_path,"roxygen2.png"))
 ```
 
 .li-small[
-- Insert Roxygen skeleton<br>`Ctrl+Alt+Shift+R`<br>macOS `Cmd+Option+Shift+R`
+{{content}}
 ]
 ]
 .pull-right-70[
@@ -2268,6 +2365,9 @@ format_perc <- function(x, digits = 2){
 ]
 ]
 ]
+
+--
+- Insert Roxygen skeleton<br>`Ctrl+Alt+Shift+R`<br>macOS `Cmd+Option+Shift+R`
 ---
 # R Package Project
 
@@ -2293,6 +2393,16 @@ knitr::include_graphics(paste0(image_path,"document-created.png"))
 ]
 ]
 
+---
+# R Package Project
+
+.pull-left-30[
+
+#### Unit Tests
+]
+.pull-right-70[
+
+]
 ---
 # R Package Project
 
