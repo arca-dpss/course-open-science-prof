@@ -430,6 +430,10 @@ blockquote {
   font-size: 18pt;
 }
 
+.font-12 p {
+  font-size: 14pt !important;
+}
+
 .font-14 p {
   font-size: 14pt !important;
 }
