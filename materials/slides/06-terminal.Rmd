@@ -222,6 +222,8 @@ kable(data_table, booktabs = TRUE,
 ---
 # Get Started
 
+--
+
 .pull-left-40[
 
 #### Prompt
@@ -326,6 +328,15 @@ docker build -t my-image:1.0.0 Desktop/my-project
 ]
 ]
 
+---
+# Get Started
+
+.pull-left-40[
+#### Navigating Directories
+]
+.pull-right-60[
+
+]
 ---
 # Get Started
 
@@ -755,7 +766,8 @@ README                Report.pdf
 ]
 ---
 # Terminal in RStudio
-
+--
+ 
 .pull-left-50[
 .move-up-30[
 Open a new Terminal window
@@ -772,14 +784,16 @@ knitr::include_graphics(paste0(image_path, 'terminal-panel.png'))
 ]
 .pull-right-50[
 .move-up-30[
-Select the default shell
+{{content}}
 ]
+]
+
+--
+Select the default shell
 
 ```{r, out.width='90%'}
 knitr::include_graphics(paste0(image_path, 'terminal-settings.png'))
 ```
-
-]
 
 ---
 class: inverse, center, middle
