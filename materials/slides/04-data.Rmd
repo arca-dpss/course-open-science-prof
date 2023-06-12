@@ -195,9 +195,29 @@ knitr::include_graphics(paste0(image_path,"sql-logo.png"))
 ```
 
 ---
+# Data Structures
+
+- **Join Operations**
+
+.move-up-15[
+```{r, out.width="60%"}
+knitr::include_graphics(paste0(image_path,"join.svg"))
+```
+]
+
+---
 # Data Documentation
 
 --
+
+.pull-left-50[
+.no-border[
+#### `README-data.md`
+]
+]
+
+---
+# Data Documentation
 
 .pull-left-50[
 .no-border[
@@ -378,9 +398,8 @@ knitr::include_graphics(paste0(image_path,"FAIR-data.jpeg"))
 ---
 # Data Sharing
 
---
 .pull-left-50[
-Legal Aspects:
+#### Legal Aspects:
 
 .li-small[
 - GDPR (😭)
@@ -396,7 +415,7 @@ Legal Aspects:
 # Data Sharing
 
 .pull-left-50[
-Legal Aspects:
+#### Legal Aspects:
 
 .li-small[
 - GDPR (😭)
@@ -404,7 +423,9 @@ Legal Aspects:
 - Geographical restrictions
 ]
 
-LICENSE - Open Data Commons:
+.move-down-50[
+#### LICENSE - Open Data Commons:
+]
 
 .li-small[
 - **ODC-BY.** Attribution License
@@ -423,7 +444,7 @@ LICENSE - Open Data Commons:
 # Data Sharing
 
 .pull-left-50[
-Legal Aspects:
+#### Legal Aspects:
 
 .li-small[
 - GDPR (😭)
@@ -431,7 +452,9 @@ Legal Aspects:
 - Geographical restrictions
 ]
 
-LICENSE - Open Data Commons:
+.move-down-50[
+#### LICENSE - Open Data Commons:
+]
 
 .li-small[
 - **ODC-BY.** Attribution License
@@ -443,7 +466,7 @@ LICENSE - Open Data Commons:
 .center[https://opendatacommons.org/]
 ]
 .pull-right-50[
-Where?
+#### Where?
 
 .li-small[
 - <img style="height:2em" src="`r paste0(image_path,"osf.png")`" class="inline-img"> (https://osf.io)
@@ -546,7 +569,7 @@ Documentation:
 <br>
 
 .center[
-*“Schema.org is a collaborative, community activity with a mission to create,<br>maintain, and promote schemas for structured data on the Internet, on web pages,<br>in email messages, and beyond.”*
+*“Schema.org is a collaborative, community activity with a mission to create,<br>maintain, and promote schemas for structured data on the Internet,<br>on web pages, in email messages, and beyond.”*
 ]
 
 --
