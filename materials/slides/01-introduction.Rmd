@@ -230,7 +230,7 @@ knitr::include_graphics(paste0(image_path, "organize.jpeg"))
 
 ---
 
-# Science as Amateur Software Development
+# The Open Science Manual
 
 --
 
@@ -250,7 +250,7 @@ knitr::include_graphics(paste0(image_path, "statistical-rethinking.jpeg"))
 
 ---
 
-# Science as Amateur Software Development
+# The Open Science Manual
 
 .pull-left-50[
 ```{r, out.width="70%"}
@@ -284,7 +284,21 @@ https://youtu.be/zwRdO9_GGhY
 ]
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
+--
+
+```{r, out.width="90%"}
+knitr::include_graphics(paste0(image_path, "book-home-page.png"))
+```
+
+.center[
+.font-14[
+https://arca-dpss.github.io/manual-open-science/
+]
+]
+
+---
+# The Open Science Manual
 
 --
 <br>
@@ -294,7 +308,7 @@ knitr::include_graphics(paste0(image_path, "icons-1.png"))
 ```
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
 
 <br>
 
@@ -303,7 +317,7 @@ knitr::include_graphics(paste0(image_path, "icons-2.png"))
 ```
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
 
 <br>
 
@@ -312,7 +326,7 @@ knitr::include_graphics(paste0(image_path, "icons-3.png"))
 ```
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
 
 <br>
 
@@ -321,7 +335,7 @@ knitr::include_graphics(paste0(image_path, "icons-4.png"))
 ```
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
 
 <br>
 
@@ -330,7 +344,7 @@ knitr::include_graphics(paste0(image_path, "icons-5.png"))
 ```
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
 
 <br>
 
@@ -339,7 +353,7 @@ knitr::include_graphics(paste0(image_path, "icons-6.png"))
 ```
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
 
 <br>
 
@@ -348,7 +362,7 @@ knitr::include_graphics(paste0(image_path, "icons-7.png"))
 ```
 
 ---
-# Science as Amateur Software Development
+# The Open Science Manual
 
 <br>
 
