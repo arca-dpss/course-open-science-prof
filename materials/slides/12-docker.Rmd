@@ -496,43 +496,7 @@ CMD python /app/app.py
 {{content}}
 --
 - `VOLUME ["/path-to-volume"]`<br>create directories for persistent data storage
----
-## `Dockerfile`
 
-.pull-left-30[
-.move-down-110[
-.code-size-12[
-```
-#----    Dockerfile    ----
-FROM ubuntu:18.04
-
-# Install packages
-RUN apt-get update \
-    && apt-get install -y curl
-
-# Get and run my app
-COPY . /app
-RUN make /app
-CMD python /app/app.py
-```
-]
-]
-]
-.pull-right-70[
-.move-down-50[
-.li-small[
-- `ADD <src> <image-path>` allow tar extraction and URLs
-- `LABEL <key>=<value>` adds metadata to an image
-  - email, license, etc.
-- `ENV <key>=<value>` environment variables used in instructions
-  - Available also at run time
-- `WORKDIR <path-wd>` set working directory
-- `EXPOSE <port>` specify network ports available at run time
-- `SHELL ["executable", "parameters"]`<br>define the default shell used (`["/bin/sh", "-c"]`)
-- `VOLUME ["/path-to-volume"]`<br>create directories for persistent data storage
-]
-]
-]
 ---
 ## `Dockerfile`
 
