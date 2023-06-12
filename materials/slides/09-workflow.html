@@ -662,6 +662,55 @@ Rely only on code declared explicitly&lt;br&gt;in the analysis script
 ...
 
 # Commands only for interactive sessions
+if(interactive()){
+  # Load custom functions
+  devtools::load_all()
+  
+  # Load packages
+  library("tidyverse")
+  library("lme4")
+
+  # Settings ggplot
+  theme_set(theme_bw())
+  }
+```
+]
+
+---
+
+## `.Rprofile`
+
+.pull-left-50[
+
+```r
+#----    .Rprofile    ----#
+
+# Load custom functions
+devtools::load_all()
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Settings ggplot
+theme_set(theme_bw())
+```
+
+.center[
+.font-18[
+Rely only on code declared explicitly&lt;br&gt;in the analysis script
+]
+]
+]
+.pull-right-50[
+
+```r
+#----    .Rprofile    ----#
+
+# Commands for interactive and non-interactive sessions
+...
+
+# Commands only for interactive sessions
 *if(interactive()){
   # Load custom functions
   devtools::load_all()
@@ -1114,7 +1163,7 @@ options(tidyverse.quiet = TRUE)
 #----    Workflow    ----
 
 *list(
-*  # list of targets
+* # list of targets
 *)
 ```
 ]
@@ -1297,9 +1346,9 @@ list(
 #### Details
 ]
 .li-small[
-- automatically created
+- Automatically created
 - `.gitignore` automatically added
-- `_targets/meta/meta` is important
+- Only `_targets/meta/meta` is important
 ]
 ]
 ---
@@ -2240,11 +2289,41 @@ list(
 )
 ```
 
+
 {{content}}
 
 --
 
 &lt;img src="images/09-workflow/pipeline-report.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# R Markdown as Target
+
+.pull-left-50[
+
+`documents/report.Rmd`
+
+&lt;img src="images/09-workflow/report-analysis.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right-50[
+.code-size-12[
+
+```r
+#----    Targets-workflow.R    ----#
+
+list(
+  ...
+  
+* tarchetypes::tar_render(
+    report, "documents/report.Rmd"
+  ),
+)
+```
+
+&lt;img src="images/09-workflow/pipeline-report.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+]
+]
 
 ---
 # R Markdown as Target
@@ -2435,6 +2514,95 @@ tar_load_all &lt;- function(store = targets::tar_config_get("store")){
   return(cat("Tartgets loaded!\n"))
 }
 ```
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- Load All Targets
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#----    R/Targets-utils.R    ----#
+
+*#----    load_glob_env    ----
+
+# Load targets in the global environment
+load_glob_env &lt;- function(..., 
+                          store = targets::tar_config_get("store")){
+  targets::tar_load(..., envir = globalenv(), store = store)
+}
+
+#----    tar_load_all    ----
+
+# Load listed targets
+tar_load_all &lt;- function(store = targets::tar_config_get("store")){
+  targets &lt;- c("my_data", "lm_fit", "plot_obs", 
+               "&lt;other-targets&gt;", "...")
+
+  # load
+  sapply(targets, load_glob_env, store = store)
+
+  return(cat("Tartgets loaded!\n"))
+}
+```
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- Load All Targets
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+
+```r
+#----    R/Targets-utils.R    ----#
+
+#----    load_glob_env    ----
+
+# Load targets in the global environment
+load_glob_env &lt;- function(..., 
+                          store = targets::tar_config_get("store")){
+  targets::tar_load(..., envir = globalenv(), store = store)
+}
+
+*#----    tar_load_all    ----
+
+# Load listed targets
+tar_load_all &lt;- function(store = targets::tar_config_get("store")){
+  targets &lt;- c("my_data", "lm_fit", "plot_obs", 
+               "&lt;other-targets&gt;", "...")
+
+  # load
+  sapply(targets, load_glob_env, store = store)
+
+  return(cat("Tartgets loaded!\n"))
+}
+```
+]
+]
+
 ---
 ## `targets` Advanced Features
 
@@ -2479,7 +2647,7 @@ if(interactive()){
 ---
 class: inverse, center, middle
 
-# Aim st the Target!
+# Aim at the Target!
 
 ## Moving to the next step...
     </textarea>

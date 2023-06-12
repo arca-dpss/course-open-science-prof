@@ -723,6 +723,53 @@ Rely only on code declared explicitly<br>in the analysis script
 ...
 
 # Commands only for interactive sessions
+if(interactive()){
+  # Load custom functions
+  devtools::load_all()
+  
+  # Load packages
+  library("tidyverse")
+  library("lme4")
+
+  # Settings ggplot
+  theme_set(theme_bw())
+  }
+```
+]
+
+---
+
+## `.Rprofile`
+
+.pull-left-50[
+```{r, echo=TRUE, eval=FALSE}
+#----    .Rprofile    ----#
+
+# Load custom functions
+devtools::load_all()
+
+# Load packages
+library("tidyverse")
+library("lme4")
+
+# Settings ggplot
+theme_set(theme_bw())
+```
+
+.center[
+.font-18[
+Rely only on code declared explicitly<br>in the analysis script
+]
+]
+]
+.pull-right-50[
+```{r, echo=TRUE, eval=FALSE}
+#----    .Rprofile    ----#
+
+# Commands for interactive and non-interactive sessions
+...
+
+# Commands only for interactive sessions
 *if(interactive()){
   # Load custom functions
   devtools::load_all()
@@ -1182,7 +1229,7 @@ options(tidyverse.quiet = TRUE)
 #----    Workflow    ----
 
 *list(
-*  # list of targets
+* # list of targets
 *)
 ```
 ]
@@ -1363,9 +1410,9 @@ list(
 #### Details
 ]
 .li-small[
-- automatically created
+- Automatically created
 - `.gitignore` automatically added
-- `_targets/meta/meta` is important
+- Only `_targets/meta/meta` is important
 ]
 ]
 ---
@@ -2304,6 +2351,7 @@ list(
 )
 ```
 
+
 {{content}}
 
 --
@@ -2311,6 +2359,38 @@ list(
 ```{r, out.width='90%'}
 knitr::include_graphics(paste0(image_path, 'pipeline-report.png'))
 ```
+
+---
+# R Markdown as Target
+
+.pull-left-50[
+
+`documents/report.Rmd`
+
+```{r, out.width='80%'}
+knitr::include_graphics(paste0(image_path, 'report-analysis.png'))
+```
+]
+.pull-right-50[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+#----    Targets-workflow.R    ----#
+
+list(
+  ...
+  
+* tarchetypes::tar_render(
+    report, "documents/report.Rmd"
+  ),
+)
+```
+
+```{r, out.width='90%'}
+knitr::include_graphics(paste0(image_path, 'pipeline-report.png'))
+```
+
+]
+]
 
 ---
 # R Markdown as Target
@@ -2506,6 +2586,93 @@ tar_load_all <- function(store = targets::tar_config_get("store")){
   return(cat("Tartgets loaded!\n"))
 }
 ```
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- Load All Targets
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+#----    R/Targets-utils.R    ----#
+
+*#----    load_glob_env    ----
+
+# Load targets in the global environment
+load_glob_env <- function(..., 
+                          store = targets::tar_config_get("store")){
+  targets::tar_load(..., envir = globalenv(), store = store)
+}
+
+#----    tar_load_all    ----
+
+# Load listed targets
+tar_load_all <- function(store = targets::tar_config_get("store")){
+  targets <- c("my_data", "lm_fit", "plot_obs", 
+               "<other-targets>", "...")
+
+  # load
+  sapply(targets, load_glob_env, store = store)
+
+  return(cat("Tartgets loaded!\n"))
+}
+```
+]
+]
+
+---
+## `targets` Advanced Features
+
+.pull-left-30[
+.move-down-110[
+.li-small[
+- .alpha[My Proj Structure]
+- .alpha[R Markdown]
+- .alpha[Reproducibility]
+- .alpha[Branching]
+- Load All Targets
+]
+]
+]
+.pull-right-70[
+.code-size-12[
+```{r, echo=TRUE, eval=FALSE}
+#----    R/Targets-utils.R    ----#
+
+#----    load_glob_env    ----
+
+# Load targets in the global environment
+load_glob_env <- function(..., 
+                          store = targets::tar_config_get("store")){
+  targets::tar_load(..., envir = globalenv(), store = store)
+}
+
+*#----    tar_load_all    ----
+
+# Load listed targets
+tar_load_all <- function(store = targets::tar_config_get("store")){
+  targets <- c("my_data", "lm_fit", "plot_obs", 
+               "<other-targets>", "...")
+
+  # load
+  sapply(targets, load_glob_env, store = store)
+
+  return(cat("Tartgets loaded!\n"))
+}
+```
+]
+]
+
 ---
 ## `targets` Advanced Features
 
