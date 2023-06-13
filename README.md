@@ -34,3 +34,11 @@ organised by the Department of Developmental Psychology and
 Socialisation at the University of Padua. At the link
 [dpss.unipd.it/arca](https://www.dpss.unipd.it/arca) you can get
 detailed information on all active courses.
+
+## License
+
+<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This
+work is licensed under a
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
+Commons Attribution-NonCommercial-ShareAlike 4.0 International
+License</a>.
