@@ -1,0 +1,35 @@
+Package: Example
+Type: Package
+Title: Example toy analysis
+Version: 1.0.1
+Authors@R: 
+  c(person(given = "Claudio",
+           family = "Zandonella Callegher",
+           role = c("aut", "cre"),
+           email = "claudiozandonella@gmail.com",
+           comment = c(ORCID = "0000-0001-7721-6318")),
+    person(given = "Davide",
+           family = "Massidda",
+           role = c("aut")))
+Maintainer: Claudio Zandonella Callegher <claudiozandonella@gmail.com>
+Description: The aim of the present project is to...
+License: CC-BY-NC-SA
+Date:2023-01-02
+Depends:
+    devtools,
+Imports:
+    bookdown,
+    kableExtra,
+    renv,
+    rmarkdown,
+    roxygen2,
+    tarchetypes,
+    targets,
+    testthat,
+    tidyverse,
+    trackdown,
+    visNetwork
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
