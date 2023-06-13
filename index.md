@@ -90,6 +90,7 @@ Please install the following software in advance.
 
 ## Exercises
 
+- <a href="materials/slides/exercises.html" target="_blank">Exercises</a>
 
 ## Code
 
@@ -100,6 +101,8 @@ Please install the following software in advance.
 
 - *“The Open Science Manual: Make Your Scientific Research Accessible and Reproducible”* by Claudio Zandonella and Davide Massidda
  ([Link](https://arca-dpss.github.io/manual-open-science/) web version and [PDF](https://arca-dpss.github.io/manual-open-science/manual-open-science.pdf) version)
+
+- *“Building reproducible analytical pipelines with R”* by Bruno Rodrigues [link](https://raps-with-r.dev/9
 
 <!-- - Questionario valutazione [link](https://forms.gle/YKESLW64jWTtA7vi7) -->
 

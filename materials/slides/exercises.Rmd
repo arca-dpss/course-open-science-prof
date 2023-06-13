@@ -1,0 +1,473 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [
+      "assets/custom-presentation.css", 
+      "default-fonts", 
+      "default"
+      ]
+    lib_dir: libs
+    seal: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: '16:9'
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+# bibliography: "../"
+# csl: "../apa.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+# library("tidyverse")
+# library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+# ## ggplot settings
+# theme_set(theme_bw()+
+#             theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+image_path <- 'images/exercises/'
+# tryCatch(
+#     devtools::load_all("../../"),
+#     error = function(x){
+#       devtools::load_all()
+#       })
+
+
+#----    load targets    ----
+# targets::tar_config_set(store = "../../analysis/_targets/")
+# tar_load_all()
+```
+
+class: title-slide
+count: false
+
+.title[
+  # Exercises
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella & Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+## Attchment Study
+
+.pull-left-50[
+#### Aim
+
+.font-14[
+Evaluate the relationship between attachment towards the mother and social emotional problems in children in the 3rd and 4th year of primary school.
+]
+
+.move-down-50[
+#### Data
+]
+
+.li-size-14[
+- `id`: Children id code
+- `grade`: Children school grade (`3` and `4`)
+- `gender`: Children gender<br>(`0` = Male; `1` = Female)
+- `ssm*` (from 1 to 15): Mother Security Scale (SS) items
+- `sdq*` (from 1 to 25): Strength and Difficulties Questionnaire items
+]
+]
+.pull-right-50[
+
+####  Mother Security Scale (SS)
+
+.li-size-14[
+- 15 items on a 4-point likert scale (1-2-3-4)
+- Total given by the **average**
+- **Invert scores items 1, 3, 4, 9, 10, 13, and 15**
+]
+
+
+#### Strength and Difficulties Questionnaire (SDQ)
+
+.li-size-14[
+- 25 items on a 3-point likert scale (0-1-2)
+- Total given by the **sum** 
+- **Invert scores items s 7, 11, 14, 21, 25**
+]
+
+.move-up-15[
+.pull-left-60[
+.font-14[
+Subscales:
+]
+.li-size-14[
+- **Emotion**	=	3, 8, 13, 16, 24
+- **Conduct**	=	5, 7, 12, 18, 22
+- **Hyper**	=	2, 10, 15, 21, 25
+- **Peer**	=	6, 11, 14, 19, 23
+- **Prosoc**	=	1, 4, 9, 17, 20
+]
+]
+.pull-right-40[
+.font-14[
+Summary scores:
+]
+.li-size-14[
+- **Internalizing** = emotion + peer
+- **Externalizing** = hyper + conduct
+]
+]
+]
+]
+
+---
+## Step I: Sharing Materials
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Create your Profile in OSF
+1. Create a new project
+1. Fill in summary information and WiKi section
+1. Upload the project files
+1. Get the DOI
+1. Add contributors to the project
+1. Share an anonymized link
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Explore the OSF Preprint service
+1. Explore the OSF Registries service
+1. Explore the SF Add-on section
+1. Is an anonymized link really anonymous?
+]
+]
+
+---
+## Step II: Project Structure
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Create a RStudio Project
+1. Use a proper project structure
+1. Add a `README.md` file
+1. Add a `LICENSE`
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Set recommended global options
+1. Use the `.Rprofile` to load libraries
+1. Use the `.Rprofile` to set ggplot default theme
+1. Create a second project and see what happens when you switch between them
+]
+]
+
+---
+## Step III: Sharing Data
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Use an appropriate data format (and encoding)
+1. Write a `README.md` for the data
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Pivot data from wide to long format
+1. Create multiple table in a relational structure
+1. Use join operations
+1. Create a `CITATION.cff` file
+]
+]
+
+---
+## Step IV: Coding [with] Style
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Reframe code following good practices
+1. Define custom functions to be DRY
+1. Wrap analysis steps into functions
+1. Provide minimal documentation
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Provide full documentation
+1. Write Unit tests
+1. Use R-package project structure
+]
+]
+
+---
+## Step V: Terminal
+
+```
+$ docker run -it --rm claudiozandonella/my-ubuntu:1.0.0
+```
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Explore the `arca` folder 
+1. Create a new directory
+1. Create a new file
+1. Copy a file
+1. Move a file
+1. Remove a file
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Rename a file
+1. Write inside a file
+1. Use Nano text editor
+1. Copy a directory and its content
+1. Move a directory and its content
+1. Remove a directory and its content
+]
+]
+
+---
+## Step VI: Versioning
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Use git to track project development
+1. Create commits
+1. Move to a previous commit
+1. Create an experimental branch
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Do everything from command line
+1. Experiment with different undoing commits commands
+1. Merge two branches
+1. Create a conflict
+]
+]
+
+---
+## Step VII: GitHub
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Create an **empty** remote repository
+1. Push changes to the remote
+1. Collaborate on a colleague repository
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Open an Issue
+1. Create a Pull Request
+1. Get a DOI with Zenodo
+1. Ignore all files in a sub folder except one
+]
+]
+
+---
+## Step VIII: Workflows
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Divide code into `src` and `analysis` scripts
+1. Use `targets` to run the analysis 
+1. Document the analysis workflow
+1. Create a report using `targets` results
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Use `targets` with custom `script` and `store` paths
+1. Load all targets in the `.Rprofile`
+1. Read branching documentation
+1. Which random seed is used by `targets`?
+]
+]
+
+---
+## Step IX: Literate Programming
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Move from RMarkdown to Quarto
+1. Try `trackdown` (CRAN version)
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Try `trackdown` (GitHub version)
+]
+]
+
+---
+## Step X: Requirements
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Use `renv` to track package versions
+1. Write documentation on ho to install the required dependencies
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Use `.renvignore` to avoid tracking *old/experimental* scripts
+1. Use `DESCRIPTION` field to force tracking packages
+]
+]
+
+---
+## Step XI: Containerization
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Run the `claudiozandonella/my-ubuntu` container
+1. Access the terminal of the container
+1. Stop/restart the container 
+1. Remove the container
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. Do everything using the command line
+1. Create a `Dockerfile` copying new files into the container
+1. Attach a bind-mount 
+1. Attach a named-volume
+]
+]
+
+---
+## Step XII: Rocker
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+.li-small[
+1. Crete a container for the analysis
+1. Document how to run the container and the analysis
+1. Run the analysis from the container
+]
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+.li-small[
+1. The container should also include all the required dependencies
+1. The container should also run the analysis at build
+1. Publish the Docker in Docker Hub
+]
+]
+
+---
+class: inverse, center
+# God Progammer Mode Achieved!
+
+```{r, out.width='40%'}
+knitr::include_graphics(paste0(image_path, 'stallman.png'))
+```
+

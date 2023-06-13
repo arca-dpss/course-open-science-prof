@@ -101,6 +101,20 @@ p {
   display: none;
 }
 
+/* black */
+.black {
+    background-color: #000;
+    color: #e8e5e5;
+    text-shadow: 0 0 20px #333;
+}
+
+.black h1, .black h2, .black h3 {
+    color: #f3f3f3;
+}
+
+.black .remark-slide-number{
+  display: none;
+}
 
 /*----    list    ----*/
 
