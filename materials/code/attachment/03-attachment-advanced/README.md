@@ -1,0 +1,140 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# Attachment Analysis
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+In this repository we collect all the materials of the study *“My Nobel
+Prize-Winning article”*. The aim of the study is to assess the
+relationship between attachment towards the mother and social emotional
+problems in children in the 3rd and 4th year of primary school.
+
+The pre-print version of the article is available at \[TODO: add link\].
+
+## Project Structure
+
+The project structure is based on the traditional R-package project
+structure, but the repository is not meant to be installed as a package
+(see Section [Reproducibility](#reproducibility) on how to run the
+analyses). R-package project structure, however, allows us to get
+advantage of some functionalities:
+
+-   `DESCRIPTION` file is used to track project metadata and manage
+    project dependencies (note that we also used `renv` for package
+    dependencies, see Section below)
+-   `devtools::load_all()` allows to easily load all functions defined
+    to run the analysis (note that we followed the *functional style*,
+    see Section below)
+
+Moreover, the analysis workflow is managed using `targets` (see Section
+below) and include other (*non-standard*) folders to organize the
+scripts for the analysis and for the produced outputs (i.e., Report).
+
+The repository is organized in the following directories:
+
+The actual repository folder structure is:
+
+-   `analysis/`that includes the files
+    -   `targets-workflow.R` the workflow of the analysis
+    -   `targets-analysis.R` script to run the analysis with `targets`
+-   `data/` includes the data `data.csv` used in the analysis and a
+    description of the data.
+-   `Documents/` includes the report `report.Rmd` with the description
+    of the analysis and discussion of the results.
+-   `R/` includes all the `.R` scripts with the functions used in the
+    analyses
+    -   `targets-utils.R` functions used to load results of the analysis
+-   `renv/` - utility folder used by `renv`
+
+## Reproducibility
+
+To guarantee the reproducibility of the results, the R-package`targets`
+is used to manage the analysis workflow and to enhance the readability
+and transparency of the analysis. To know more about `targets` consider
+the [official Git-hub page](https://github.com/ropensci/targets) or the
+[user manual](https://books.ropensci.org/targets/). Summarizing, using
+`targets` the user defines the plan of the analysis where each step in
+the analysis is defined through functions. Functions can be
+appropriately defined to obtain desired targets (i.e., R-output with
+results of interests) and they are declared in the file
+`targets-workflow.R`. Subsequently, `targets` manages the whole analysis
+recognizing the dependency structure of the different targets. When any
+change is made to the code `targets` evaluates the analysis and updates
+the results. Following the *functional style* (i.e., defining functions
+for each step of the analysis) allows us to avoid “*coping and paste*”
+in the code, makes debugging easier, and facilitates the reading of the
+code.
+
+Moreover, the R-package `renv` is used to manage the dependencies of the
+R-packages used in the analysis. The `renv` package allows to create an
+isolated, portable, and reproducible environment where the analyses are
+run. To know more about `renv` consider the [official
+documentation](https://rstudio.github.io/renv/articles/renv.html).
+However, `renv` is limited as it can not handle different R versions.
+
+To overcome this issue, we also provide a `Dockerfile` to build a Docker
+image with R version 4.1.2. To know more about Docker see [official
+documentation](https://www.docker.com/) or [rOpenSci Labs
+tutorial](https://jsta.github.io/r-docker-tutorial/).
+
+### Run the Analysis
+
+To reproduce the analysis:
+
+1.  Download the the repository on your local machine
+
+    ``` bash
+    git clone [TODO: add link repo]
+    ```
+
+2.  Open the R project by double-clicking the file `attachment.Rproj`
+    you can find in the project main directory. A new R-studio session
+    will open.
+
+3.  Run `renv::restore()` to install project’s dependencies (have a
+    coffee, it takes some time).
+
+4.  Now the required packages are installed. Restart the R session
+    (`command`/`ctrl` + `shift` + `0`) so `devtools::load_all()` is
+    automatically run to load all functions used in the analysis defined
+    in the `R/` folder and required packages are loaded (according to
+    `.Rprofile`) .
+
+    > Note that also `source("analysis/targets-utils.R")` is
+    > automatically run to load `targets` utilities functions (functions
+    > to load analysis results). You can also use the shortcut
+    > `Ctrl/Cmd + Shift + L` to run `devtools::load_all()`.
+
+5.  Open `analysis/targets-analysis.R` and run each line (one by one) to
+    run the analysis using `targets`. First, the analysis plan is
+    checked (available at `analysis/targets-workflow.R`). Next, the
+    analysis targets are computed. Finally, the analysis results are
+    loaded and briefly presented.
+
+    > Note that you can access the analysis targets using the functions
+    > `targets::tar_load(<name_target>)`, or load all the results with
+    > `tar_load_all()`.
+
+6.  To compile the report, open `documents/Report.Rmd` and compile the
+    file using `knitr`.
+
+#### Docker
+
+To run the analysis in a Docker container, build the image according to
+the `Dockerfile` present in the project main directory, using
+
+``` bash
+docker build -t <name-image> .
+```
+
+> It is important too build the image before to run the analysis Next,
+> you can run the container using
+
+``` bash
+docker run --rm -p 8787:8787 -e PASSWORD="<your-PW>" <name-image>
+```
+
+Now, open the folder `attachment/` and run the analysis following the
+instructions above from step 2.

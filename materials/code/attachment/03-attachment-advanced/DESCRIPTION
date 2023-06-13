@@ -1,0 +1,32 @@
+Package: attachment
+Type: Package
+Title: My Nobel Prize-Winning article
+Version: 0.1.0
+Author: c(person(given = "My-name",
+           family = "My-surname",
+           role = c("aut", "cre"),
+           email = "myself@email.com",
+           comment = c(ORCID = "my-orcid")),
+          person(given = "colleague-name",
+           family = "colleague-surname",
+           role = c("aut"),
+           email = "colleague@email.com",
+           comment = c(ORCID = "colleague-orcid")))
+Maintainer: The package maintainer <myself@somewhere.net>
+Description: In this repository we collect all the materials of the study 
+  *“My Nobel Prize-Winning article”*. The aim of the study is to assess the relationship 
+  between attachment towards the mother and   social emotional problems in children in the 
+  3rd and 4th year of primary school.
+License: What license is it under?
+Depends:
+    devtools,
+    tidyverse
+Imports:
+    emmeans,
+    targets,
+    visNetwork
+Encoding: UTF-8
+LazyData: true
+URL: link to my repo
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2

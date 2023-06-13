@@ -94,7 +94,7 @@ Please install the following software in advance.
 
 ## Code
 
-- [Attachment Rproj](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-open-science-prof/tree/main/materials/code-example/attachment)
+- [Attachment Rproj](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-open-science-prof/tree/main/materials/code/attachment)
 
 
 ## Books

@@ -1,0 +1,99 @@
+---
+title: "Report"
+author: "ARCA"
+date: "4/14/2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(emmeans)
+
+# Knitr settings
+knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
+
+# ggplot settings
+theme_set(theme_bw())
+
+# Load custom functions
+devtools::load_all("../DESCRIPTION")
+
+# Load cached objects
+targets::tar_config_set(store = "../analysis/_targets/")
+tar_load_report()
+```
+
+# Introduction
+
+The aim of the study is to assess the relationship between attachment towards the mother and   social emotional problems in children in the 3rd and 4th year of primary school.
+
+# Descriptive Statistics
+
+Data structure.
+
+```{r, echo=TRUE}
+str(my_data)
+```
+
+Variables summary.
+
+```{r, echo=TRUE}
+summary(my_data)
+```
+
+Number of children according to gender and grade.
+
+```{r}
+table(my_data$gender, my_data$grade)
+```
+
+Externalizing problems distribution.
+
+```{r}
+plot_bar(my_data, var = ext_tot)
+```
+
+Externalizing problems according to gender and grade.
+```{r, echo = TRUE}
+get_group_summary(my_data, var = ext_tot, group_by = c("gender", "grade"))
+```
+
+```{r}
+plot_bar(my_data, var = ext_tot) +
+  facet_grid(grade~gender)
+```
+
+Relation between externalizing problems and mother attachment according to gender and grade.
+
+```{r}
+plot_scatter(my_data, x = ssm_tot, y = ext_tot) +
+  facet_grid(grade~gender)
+```
+
+# Statistical Analysis
+
+Three-way interaction linear model.
+
+```{r, echo=TRUE}
+summary(fit)
+```
+
+Model effects.
+
+```{r, echo=TRUE}
+car::Anova(fit)
+```
+
+Post hoc tests.
+
+```{r, echo=TRUE}
+ext_emmeans
+```
+
+
+```{r}
+plot_effect_interaction(fit)
+```
+

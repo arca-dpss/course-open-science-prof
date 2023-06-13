@@ -1,0 +1,9 @@
+# R auxiliary files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# R-package files
+.Rbuildignore
+NAMESPACE
