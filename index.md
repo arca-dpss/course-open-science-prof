@@ -91,7 +91,7 @@ Please install the following software in advance.
 ## Exercises
 
 - <a href="materials/slides/exercises.html" target="_blank">Exercises</a>
-- <a href="materials/slides/chatsheets.html" target="_blank">Cheatsheets</a>
+- <a href="materials/slides/cheatsheets.html" target="_blank">Cheatsheets</a>
 
 ## Code
 
