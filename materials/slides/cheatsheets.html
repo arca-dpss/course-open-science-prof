@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>cheatsheets.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.22/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide
+count: false
+
+.title[
+  # Cheat Sheets
+]
+.subtitle[
+  ## Open Science Tools
+]
+
+.author[
+  ### Claudio Zandonella &amp; Davide Massidda
+]
+
+.institute[
+
+]
+
+---
+## RStudio Keyboard Shortcuts
+
+.pull-left-50[
+&lt;table class="table" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Command &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Windows &amp;amp; Linux &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; MacOS &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="4"&gt;&lt;td colspan="3" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Basic&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Run current line &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Enter &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Return &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Jump to Word &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Left/Right &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Option+Left/Right &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Jump to Start/End &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Home/End &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Home/End &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Delete Line &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+D &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="8"&gt;&lt;td colspan="3" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Life Hack&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Insert assignment operator &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Alt+- &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Option+- &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Insert pipe operator &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+M &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+M &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Comment/uncomment &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+C &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Reflow Comment &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+/ &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+/ &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Reformat Selection &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+A &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Find in Files &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+F &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+F &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Show help for function at cursor &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Check Spelling &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; F7 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+.pull-right-50[
+&lt;table class="table" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Command &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Windows &amp;amp; Linux &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; MacOS &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="4"&gt;&lt;td colspan="3" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Pro Tricks&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Move Lines Up/Down &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Alt+Up/Down &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Option+Up/Down &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Copy Lines Up/Down &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Shift+Alt+Up/Down &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Option+Up/Down &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Add Cursor Above/below &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Alt+Up/Down &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Option+Up/Down &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Add Cursor Selection &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Alt+mouse selction &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Option+mouse selction &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="3" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;RMarkdown&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Knit Document &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+K &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+K &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Insert R chunk &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Alt+I &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Command+Option+I &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="4"&gt;&lt;td colspan="3" style="border-bottom: 1px solid;"&gt;&lt;strong&gt;Devtools&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Load All &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+L &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+L &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Test Package &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+T &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+T &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Document Package &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Shift+D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Shift+D &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;padding-left: 2em;" indentlevel="1"&gt; Insert Roxygen Skeleton &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ctrl+Alt+Shift+R &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cmd+Option+Shift+R &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+
+---
+## Bash Cheatsheet
+
+.pull-left-70[
+.code-size-12[
+```bash
+#----    Navigating    ----#
+
+pwd                       # Print working directory
+cd      &lt;directory&gt;       # Change directory
+ls      &lt;directory&gt;       # List files
+    -l   # Long list with details
+    -a   # List also hidden files and directories
+    -h   # Return file size in readable units
+
+#----    Modifying    ----#
+
+mkdir   &lt;directory&gt;       # Create directory
+touch   &lt;file&gt;            # Create file
+mv      &lt;source&gt;&lt;dest&gt;    # Move (or rename) file or directory
+cp      &lt;source&gt;&lt;dest&gt;    # Copy file 
+    -r   # For directories
+rm      &lt;file&gt;            # Remove file
+rmdir   &lt;directory&gt;       # Remove directory
+
+#-----   Other    -----#
+
+echo    &lt;message&gt;         # Print message in console
+cat     &lt;file&gt;            # Print file in console
+less    &lt;file&gt;            # Open file in a screen
+```
+]
+]
+
+---
+## Git Cheatsheet
+
+.move-up-30[
+.pull-left-50[
+.code-small[
+```bash
+#----    Configure Settings    ----#
+
+git config --list         # Check configuration settings 
+
+git config --global user.name "&lt;My Name&gt;"          # Configure username
+git config --global user.email "&lt;user@email.com&gt;"  # Configure email
+git config --global merge.conflictstyle diff3      # Configure conflict style
+
+#----    Initialize Git Repo    ----#
+
+git init &lt;path&gt;             # Initialize local repository
+git clone &lt;repository-URL&gt;  # Clone remote repository
+
+#----    Tracking Files    ----#
+
+git status               # Check repository status
+
+# Staging
+git add &lt;files&gt;          # Add selected files to staging area
+git add --all            # Add all files to staging area 
+
+git rm --cached &lt;file&gt;   # Remove selected files from staging area
+git reset                # Remove all files from staging area
+
+# Commit
+git commit               # Create commit
+    # Options
+    -a               # Commit all changes of tracked files
+    -m "&lt;message&gt;"   # Inline commit message
+
+git log                  # Get commit history
+git log --oneline        # Get commit history (compact)
+```
+]
+]
+.pull-right-50[
+.code-small[
+```bash
+git diff                              # Changes since the last commit
+git diff &lt;commit-ID&gt;                  # Changes since a specified commit
+git diff &lt;commit-ID-A&gt; &lt;commit-ID-B&gt;  # Changes from commit-A to commit-B.
+
+git checkout &lt;commit-ID&gt;  # Point HEAD to specific commit/branch
+git revert &lt;commit-ID&gt;    # Undo commit (forward-way)
+git reset &lt;commit-ID&gt;     # Undo commit (disruptive-way)
+
+#----    Collaboration    ----#
+
+git remote -v                # List remote (verbose)
+git remote add &lt;name&gt; &lt;url&gt;  # Add remote
+
+git pull &lt;remote-name&gt; &lt;branch-name&gt;  # Pull commits from remote
+git push &lt;remote-name&gt; &lt;branch-name&gt;  # Push commit to remote
+         -u       # Set upstream remote branch 
+
+
+git branch --set-upstream-to="&lt;remote/branch&gt;"  # Set  upstream remote branch 
+
+#----    Branching    ----#
+
+git branch          # List branches
+git branch -vv      # List branches (verbose)
+git branch -vvr       # List remote branches (verbose)
+    
+git branch &lt;branch-name&gt;           # Create new branch
+git checkout -b &lt;new-branch-name&gt;  # Create and move to new branch
+    
+git merge &lt;branch-name&gt;            # Merge target branch
+git merge --abort                  # Abort merge
+
+git branch -d &lt;branch-name&gt;                    # Delete local Branch
+git push &lt;remote-name&gt; --delete &lt;branch-name&gt;  # Delete remote Branch
+
+```
+]
+]
+]
+
+---
+.pull-left-50[
+## `targets` Cheatsheet
+
+.code-size-12[
+
+```r
+
+# Define targets
+tar_target(&lt;target_name&gt;, &lt;expression&gt;)
+tar_target(&lt;target_name&gt;, &lt;path-to-file&gt;, format = "file")
+tarchetypes::tar_render(
+  &lt;target_name&gt;, &lt;path-to-document&gt;
+  )
+
+# Check pipeline
+tar_manifest()
+tar_visnetwork()
+
+# Run analysis
+tar_make()
+
+# Load Results
+tar_read()
+tar_load()
+```
+]
+]
+.pull-right-50[
+## `renv` Cheatsheet
+
+.code-size-12[
+
+```r
+# Initialize project
+init()
+
+# Install package
+install.packages()
+
+# Capture dependencies
+snapshot()
+
+# Restore dependencies
+restore()
+```
+]
+]
+---
+## Docker Cheatsheet
+
+.pull-left-50[
+.code-small[
+```bash
+#----    Images    ----#
+
+docker build -t &lt;name-image&gt;:&lt;tag&gt; .   # Build an image from Dockerfile
+
+docker images                          # List all images
+docker image ls                        # List all images
+docker image rm &lt;id-image&gt;             # Remove Image
+
+#----    Container    ----#
+
+docker run --name &lt;container-name&gt; &lt;image&gt;:&lt;tag&gt; # Run a container from an Image
+           # Other flags and options
+           --rm     # Remove at exit      
+           -it      # Interactive terminal
+           -d       # Detached mode
+           -v &lt;host-path&gt;:&lt;container-path&gt;  # Attach a volume or bind mount
+           -e &lt;name&gt;=&lt;value&gt;                # Define environment variable
+           -p &lt;host-port&gt;:&lt;container-port&gt;  # Map port
+
+docker ps -a              # List all containers
+docker container ls  -a     # List all containers
+
+docker stop &lt;container-name&gt;    # Stop container
+docker start &lt;container-name&gt;   # Start container
+docker rm &lt;container-name&gt;        # Remove container
+
+docker cp &lt;container-name&gt;:&lt;path&gt; &lt;host-path&gt; # Copy from container to host
+docker cp &lt;host-path&gt; &lt;container-name&gt;:&lt;path&gt; # Copy from host to container
+docker exec -it &lt;name-container&gt; bin/bash     # Connect to container bin/bash
+
+```
+
+]
+]
+.pull-right-50[
+.code-small[
+```bash
+#----    Volumes    ----#
+
+docker volume create &lt;name-volume&gt;  # Create named volume
+docker volume ls                    # List all volumes
+docker volume rm &lt;volume id&gt;        # Remove volume
+
+#----   Docker Compose    ----#
+docker-compose up    # Start service
+docker-compose down  # Stop service
+
+#----    Docker Hub    ----#
+
+docker pull  &lt;username&gt;/&lt;name-repo&gt;:&lt;tag&gt;   # Pull image
+docker push  &lt;username&gt;/&lt;name-repo&gt;         # Push image
+
+docker login --username=&lt;username&gt; --email=&lt;email@com&gt;  # Login  
+docker tag &lt;image-id&gt; &lt;username&gt;/&lt;name-repo&gt;:&lt;tag&gt; # Tag image for repository
+```
+]
+]
+---
+class: inverse, center
+# God Progammer Mode Achieved!
+
+&lt;img src="images/exercises/stallman.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+},
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
