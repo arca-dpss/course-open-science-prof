@@ -232,9 +232,11 @@ kable(data_table, booktabs = TRUE,
 knitr::include_graphics(paste0(image_path, 'terminal.png'))
 ```
 
-```
+.code-size-12[
+```bash
 HOST_NAME:CURRENT_DIRECTORY USER_NAME$
 ```
+]
 ]
 .pull-right-60[
 
@@ -250,15 +252,17 @@ HOST_NAME:CURRENT_DIRECTORY USER_NAME$
 knitr::include_graphics(paste0(image_path, 'terminal.png'))
 ```
 
-```
+.code-size-12[
+```bash
 HOST_NAME:CURRENT_DIRECTORY USER_NAME$
 ```
+]
 ]
 .pull-right-60[
 #### Commands
 
 .code-size-12[
-```
+```bash
 Command [Options] Argument1 Argument2 ...
 
 # Examples
@@ -289,15 +293,17 @@ cp -r ~/Desktop/my-project/ ~/Document/my-project/
 knitr::include_graphics(paste0(image_path, 'terminal.png'))
 ```
 
-```
+.code-size-12[
+```bash
 HOST_NAME:CURRENT_DIRECTORY USER_NAME$
 ```
+]
 ]
 .pull-right-60[
 #### Commands
 
 .code-size-12[
-```
+```bash
 Command [Options] Argument1 Argument2 ...
 
 # Examples
@@ -318,7 +324,7 @@ cp -r ~/Desktop/my-project/ ~/Document/my-project/
 ]
 
 .code-size-12[
-```
+```bash
 Software Command [Options] Argument1 Argument2 ...
 
 # Example
@@ -352,7 +358,7 @@ docker build -t my-image:1.0.0 Desktop/my-project
 #### &nbsp;
 
 .code-size-12[
-```
+```bash
 $ pwd
 /Users/myname
 ```
@@ -378,13 +384,13 @@ $ pwd
 
 .move-down-60[
 .code-size-12[
-```
+```bash
 $ ls
 Applications               Documents                 Library
 Desktop                    Downloads  
 ```
 
-```
+```bash
 $ ls -l Desktop/
 drwxr-xr-x@ 17 claudio  staff    23544 Dec 17 17:09 Courses
 drwxr-xr-x@ 17 claudio  staff    14590 Dec 17 17:09 Presentations
@@ -414,13 +420,13 @@ drwxr-xr-x@ 17 claudio  staff    14590 Dec 17 17:09 Presentations
 
 .move-down-170[
 .code-size-12[
-```
+```bash
 $ cd Desktop/Courses/Open-Science
 $ pwd 
 /Users/myname/Desktop/Courses/Open-Science
 ```
 
-```
+```bash
 $ cd ../../
 $ pwd 
 /Users/myname/Desktop
@@ -475,7 +481,7 @@ $ pwd
 #### &nbsp;
 
 .code-size-12[
-```
+```bash
 $ mkdir my-project
 $ cd my-project 
 $ pwd
@@ -501,7 +507,7 @@ $ pwd
 
 .move-down-80[
 .code-size-12[
-```
+```bash
 $ touch README
 $ ls
 README
@@ -528,7 +534,7 @@ README
 
 .move-down-140[
 .code-size-12[
-```
+```bash
 $ cat README
 $
 ```
@@ -555,7 +561,7 @@ $
 
 .move-down-270[
 .code-size-12[
-```
+```bash
 $ echo "Hello World!"
 Hello World!
 ```
@@ -589,13 +595,13 @@ Hello World!
 
 .move-down-270[
 .code-size-12[
-```
+```bash
 $ echo "Hello World!"
 Hello World!
 $ echo "Hello World!" >> README
 ```
 
-```
+```bash
 $ cat README
 Hello World!
 ```
@@ -634,7 +640,7 @@ Hello World!
 ]
 
 .code-size-12[
-```
+```bash
 $ mv ../Report.pdf .
 $ ls
 README                Report.pdf
@@ -675,7 +681,7 @@ README                Report.pdf
 ]
 
 .code-size-12[
-```
+```bash
 $ cp Report.pdf Report-copy.pdf
 $ ls
 README                Report-copy.pdf          Report.pdf
@@ -717,7 +723,7 @@ README                Report-copy.pdf          Report.pdf
 ]
 
 .code-size-12[
-```
+```bash
 $ rm Report-copy.pdf
 $ ls
 README                Report.pdf

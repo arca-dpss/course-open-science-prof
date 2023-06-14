@@ -262,7 +262,7 @@ Summary scores:
 ---
 ## Step V: Terminal
 
-```
+```bash
 $ docker run -it --rm claudiozandonella/my-ubuntu:1.0.0
 ```
 

@@ -183,6 +183,10 @@ li, img {
   font-size:12pt;
 }
 
+.code-size-14 code, .code-size-14 remark-code, .code-size-14 remark-code-line {
+  font-size:14pt;
+}
+
 .code-size-16 code, .code-size-16 remark-code, .code-size-16 remark-code-line {
   font-size:16pt;
 }

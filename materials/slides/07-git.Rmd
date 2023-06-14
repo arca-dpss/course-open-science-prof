@@ -591,7 +591,7 @@ class: inverse, center, middle
 Add username and email
 
 .code-size-12[
-```
+```bash
 $ git config --global user.name "<My Name>"
 $ git config --global user.email "<user@email.com>"
 ```
@@ -607,7 +607,7 @@ $ git config --global user.email "<user@email.com>"
 Add username and email
 
 .code-size-12[
-```
+```bash
 $ git config --global user.name "<My Name>"
 $ git config --global user.email "<user@email.com>"
 ```
@@ -616,7 +616,7 @@ $ git config --global user.email "<user@email.com>"
 Configuration file
 
 .code-size-12[
-```
+```bash
 #----    ~/.gitconfig    ----#
 [user]
     name = My Name
@@ -635,7 +635,7 @@ Configuration file
 Add username and email
 
 .code-size-12[
-```
+```bash
 $ git config --global user.name "<My Name>"
 $ git config --global user.email "<user@email.com>"
 ```
@@ -644,7 +644,7 @@ $ git config --global user.email "<user@email.com>"
 Configuration file
 
 .code-size-12[
-```
+```bash
 #----    ~/.gitconfig    ----#
 [user]
     name = My Name
@@ -656,7 +656,7 @@ Configuration file
 Current settings
 
 .code-size-12[
-```
+```bash
 $ git config --list
 ```
 ]
@@ -671,7 +671,7 @@ $ git config --list
 Add username and email
 
 .code-size-12[
-```
+```bash
 $ git config --global user.name "<My Name>"
 $ git config --global user.email "<user@email.com>"
 ```
@@ -680,7 +680,7 @@ $ git config --global user.email "<user@email.com>"
 Configuration file
 
 .code-size-12[
-```
+```bash
 #----    ~/.gitconfig    ----#
 [user]
     name = My Name
@@ -692,7 +692,7 @@ Configuration file
 Current settings
 
 .code-size-12[
-```
+```bash
 $ git config --list
 ```
 ]
@@ -716,7 +716,7 @@ Settings levels
 .pull-left-50[
 - Already existing directory
 .code-size-12[
-```
+```bash
 $ cd <path-to/project-directory>
 $ git init
 ```
@@ -736,7 +736,7 @@ $ git init
 .pull-left-50[
 - Already existing directory
 .code-size-12[
-```
+```bash
 $ cd <path-to/project-directory>
 $ git init
 ```
@@ -746,7 +746,7 @@ $ git init
 
 - Get remote repository
 .code-size-12[
-```
+```bash
 $ git clone <repository-URL>
 ```
 ]
@@ -817,7 +817,7 @@ my-project/
     |     |-- my-functions-2
 ```
 
-```
+```bash
 $ git status
 On branch master
 
@@ -864,7 +864,7 @@ my-project/
     |     |-- my-functions-2
 ```
 
-```
+```bash
 $ git status
 On branch master
 
@@ -920,7 +920,7 @@ my-project/
 Git do not track empty directories<br>Create and hidden empty file to track them
 
 .code-size-12[
-```
+```bash
 $ touch <path-to-empty-dir>/.git-track
 ```
 ]
@@ -954,7 +954,7 @@ my-project/
     |     |-- my-functions-2
 ```
 
-```
+```bash
 $ git add README <other-files>
 ```
 ]
@@ -991,11 +991,11 @@ my-project/
     |     |-- my-functions-2
 ```
 
-```
+```bash
 $ git add README <other-files>
 ```
 
-```
+```bash
 $ git add --all
 $ git status
 On branch master
@@ -1044,7 +1044,7 @@ my-project/
     |     |-- my-functions-2
 ```
 
-```
+```bash
 $ git rm --cached data/raw-data.csv
 ```
 
@@ -1055,7 +1055,7 @@ $ git rm --cached data/raw-data.csv
 
 --
 
-```
+```bash
 $ git status
 On branch master
 
@@ -1161,7 +1161,7 @@ Patterns according to `.gitignore` position
 
 --
 
-```
+```bash
 $ git commit
 ```
 
@@ -1183,11 +1183,11 @@ $ git commit
 .pull-right-60[
 .move-down-80[
 .code-size-12[
-```
+```bash
 $ git commit
 ```
 
-```
+```bash
 #---- commit messagge -----
 Init Repo
     
@@ -1233,11 +1233,11 @@ Commit Messages:
 
 .move-down-80[
 .code-size-12[
-```
+```bash
 $ git commit
 ```
 
-```
+```bash
 #---- commit messagge -----
 Init Repo
     
@@ -1245,7 +1245,7 @@ Init Repo
 - add README
 ```
 
-```
+```bash
 $ git commit -am "Update README"  
 ```
 ]
@@ -1274,7 +1274,7 @@ $ git commit -am "Update README"
 .pull-right-60[
 .move-down-80[
 .code-size-12[
-```
+```bash
 $ git log
 commit ec15cb085c2e5aa463778bbef3239b06b9ac4010 (HEAD -> master)
 Author: username <user@email.com>
@@ -1318,7 +1318,7 @@ Date:   Tue Feb 15 09:26:13 2022 +0100
 .pull-right-60[
 .code-size-12[
 .move-down-80[
-```
+```bash
 $ git diff
 diff --git a/README b/README
 index 64772c2..e994379 100644
@@ -1357,7 +1357,7 @@ index 64772c2..e994379 100644
 .pull-right-60[
 .code-size-12[
 .move-down-80[
-```
+```bash
 $ git diff
 diff --git a/README b/README
 index 64772c2..e994379 100644
@@ -1411,7 +1411,7 @@ knitr::include_graphics(paste0(image_path, 'history.png'))
 ```
 
 .code-size-12[
-```
+```bash
 $ git checkout 60e117d7
 ```
 ]
@@ -1444,7 +1444,7 @@ knitr::include_graphics(paste0(image_path, 'history.png'))
 ```
 
 .code-size-12[
-```
+```bash
 $ git checkout 60e117d7
 ```
 ]
@@ -1503,7 +1503,7 @@ knitr::include_graphics(paste0(image_path, 'checkout.png'))
 ```
 
 .code-size-12[
-```
+```bash
 $ git checkout -b new-branch
 ```
 ]
@@ -1555,7 +1555,7 @@ knitr::include_graphics(paste0(image_path, 'history.png'))
 ```
 
 .code-size-12[
-```
+```bash
 $ git revert 7bf97593
 $ git revert 9d109cfe
 ```
@@ -1591,7 +1591,7 @@ knitr::include_graphics(paste0(image_path, 'history.png'))
 ```
 
 .code-size-12[
-```
+```bash
 $ git revert 7bf97593
 $ git revert 9d109cfe
 ```
@@ -1628,7 +1628,7 @@ knitr::include_graphics(paste0(image_path, 'history.png'))
 ```
 
 .code-size-12[
-```
+```bash
 $ git revert 7bf97593
 $ git revert 9d109cfe
 ```
@@ -1666,7 +1666,7 @@ knitr::include_graphics(paste0(image_path, 'reset.png'))
 
 .move-down-90[
 .code-size-12[
-```
+```bash
 $ git remote add origin https://github.com/username/my-project.git
 ```
 ]
@@ -1697,7 +1697,7 @@ $ git remote add origin https://github.com/username/my-project.git
 
 .move-down-90[
 .code-size-12[
-```
+```bash
 $ git remote add origin https://github.com/username/my-project.git
 ```
 ]
@@ -1706,7 +1706,7 @@ $ git remote add origin https://github.com/username/my-project.git
 > `origin` no special meaning per se!
 
 .code-size-12[
-```
+```bash
 $ git remote -v
 origin  https://github.com/username/my-project.git (fetch)
 origin  https://github.com/username/my-project.git (push)
@@ -1734,7 +1734,7 @@ origin  https://github.com/username/my-project.git (push)
 
 .move-up-30[
 .code-size-12[
-```
+```bash
 $ git pull origin master
 ```
 ]
@@ -1774,7 +1774,7 @@ knitr::include_graphics(paste0(image_path, 'pull.png'))
 
 .move-up-30[
 .code-size-12[
-```
+```bash
 $ git push origin master
 ```
 ]
@@ -1809,7 +1809,7 @@ knitr::include_graphics(paste0(image_path, 'push.png'))
 #### 🌵 Warning: Always `pull` First
 
 .code-small[
-```
+```bash
 $ git push
 To https://github.com/username/my-project.git
  ! [rejected]        master -> master (fetch first)
@@ -1845,7 +1845,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 #### 🌵 Warning: Always `pull` First
 
 .code-small[
-```
+```bash
 $ git push
 To https://github.com/username/my-project.git
  ! [rejected]        master -> master (fetch first)
@@ -1863,7 +1863,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ]
 
 .code-size-12[
-```
+```bash
 $ git push -u origin master
 
 # or 
@@ -1889,7 +1889,7 @@ $ git branch --set-upstream-to="<remote/branch>"
 
 .move-down-50[
 .code-size-12[
-```
+```bash
 $ git branch my-branch
 ```
 ]
@@ -1920,7 +1920,7 @@ knitr::include_graphics(paste0(image_path, 'branch-extra-1.png'))
 .pull-right-60[
 .move-down-50[
 .code-size-12[
-```
+```bash
 $ git branch my-branch
 ```
 ]
@@ -1941,7 +1941,7 @@ knitr::include_graphics(paste0(image_path, 'branch-extra-2.png'))
 
 Remote branch created on `push`
 
-```
+```bash
 $ git push -u origin my-branch
 ```
 
@@ -1961,7 +1961,7 @@ $ git push -u origin my-branch
 
 .move-down-110[
 .code-size-12[
-```
+```bash
 $ git checkout my-branch
 ```
 ]
@@ -1985,12 +1985,12 @@ $ git checkout my-branch
 
 .code-size-12[
 .move-down-110[
-```
+```bash
 $ git checkout my-branch
 ```
 ]
 
-```
+```bash
 $ git checkout -b my-branch
 ```
 
@@ -2015,7 +2015,7 @@ $ git checkout -b my-branch
 
 .code-size-12[
 .move-down-210[
-```
+```bash
 $ git branch 
  * master
    my-branch
@@ -2046,13 +2046,13 @@ $ git branch
 
 .move-down-210[
 .code-size-12[
-```
+```bash
 $ git branch 
  * master
    my-branch
 ```
 
-```
+```bash
 $ git branch -vv
  * master    00ab7a8 [origin/master] Update master
    my-branch 702b800 [origin/my-branch] Create my-branch
@@ -2078,7 +2078,7 @@ origin/my-branch 702b800 Create my-branch
 .pull-right-60[
 
 .code-size-12[
-```
+```bash
 $ git checkout master
 ```
 ]
@@ -2105,7 +2105,7 @@ knitr::include_graphics(paste0(image_path, 'merge-extra-1.png'))
 .pull-right-60[
 
 .code-size-12[
-```
+```bash
 $ git checkout master
 $ git merge my-branch
 ```
@@ -2140,7 +2140,7 @@ knitr::include_graphics(paste0(image_path, 'merge-extra-2.png'))
 .pull-right-60[
 
 .code-size-12[
-```
+```bash
 $ git checkout master
 $ git merge my-branch
 ```
@@ -2148,7 +2148,7 @@ $ git merge my-branch
 
 .move-down-44[
 .code-size-12[
-```
+```bash
 # Remove local branch
 $ git branch -d my-branch
 
@@ -2171,7 +2171,7 @@ $ git push origin --delete my-branch
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2196,7 +2196,7 @@ Third text line
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2213,7 +2213,7 @@ Third text line
 
 #### Branch A
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2226,7 +2226,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2248,7 +2248,7 @@ Third text line
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2265,7 +2265,7 @@ Third text line
 
 #### Branch A
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2278,7 +2278,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2301,7 +2301,7 @@ Third text line
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2319,7 +2319,7 @@ Third text line
 #### Branch A
 .code-size-12[
 
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2333,7 +2333,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2346,7 +2346,7 @@ Third text line
 .pull-right-50[
 
 .code-size-12[
-```
+```bash
 $ git checkout branch-A
 $ git merge branch-B
 ```
@@ -2364,7 +2364,7 @@ $ git merge branch-B
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2381,7 +2381,7 @@ Third text line
 
 #### Branch A
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2394,7 +2394,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2407,7 +2407,7 @@ Third text line
 .pull-right-50[
 
 .code-size-12[
-```
+```bash
 $ git checkout branch-A
 $ git merge branch-B
 Auto-merging my-file.txt
@@ -2424,7 +2424,7 @@ commit the result.
 
 --
 
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2450,7 +2450,7 @@ Third text line
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2467,7 +2467,7 @@ Third text line
 
 #### Branch A
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2480,7 +2480,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2493,7 +2493,7 @@ Third text line
 .pull-right-50[
 
 .code-size-12[
-```
+```bash
 $ git checkout branch-A
 $ git merge branch-B
 Auto-merging my-file.txt
@@ -2504,7 +2504,7 @@ commit the result.
 ]
 
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2531,7 +2531,7 @@ Third text line
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2548,7 +2548,7 @@ Third text line
 
 #### Branch A
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2561,7 +2561,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2574,7 +2574,7 @@ Third text line
 .pull-right-50[
 
 .code-size-12[
-```
+```bash
 $ git checkout branch-A
 $ git merge branch-B
 Auto-merging my-file.txt
@@ -2585,7 +2585,7 @@ commit the result.
 ]
 
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2601,14 +2601,14 @@ Third text line
 
 --
 
-```
+```bash
 $ git commit -m "Solve conflict"
 ```
 {{content}}
 
 --
 #### Undo Merge
-```
+```bash
 $ git merge --abort
 ```
 
@@ -2622,7 +2622,7 @@ $ git merge --abort
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2639,7 +2639,7 @@ Third text line
 
 #### Branch A
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2652,7 +2652,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2672,14 +2672,14 @@ Third text line
 ]
 --
 
-```
+```bash
 $ git config --global merge.conflictstyle diff3
 ```
 {{content}}
 
 --
 
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2709,7 +2709,7 @@ Third text line
 .my-code-block[
 #### Original
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2726,7 +2726,7 @@ Third text line
 
 #### Branch A
 .code-size-12[
-```
+```bash
 #----    my-file.txt
 
 First text line
@@ -2739,7 +2739,7 @@ Third text line
 
 #### Branch B
 .code-size-12[
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -2754,11 +2754,11 @@ Third text line
 #### Conflict Style Diff3
 
 .code-size-12[
-```
+```bash
 $ git config --global merge.conflictstyle diff3
 ```
 
-```
+```bash
 #----    my-file.txt
   
 First text line
@@ -3043,7 +3043,7 @@ knitr::include_graphics(paste0(image_path, 'panel-history.png'))
 #### &nbsp;
 
 .code-small-12[
-```
+```bash
 $ git remote add <remote-name> <remote-URL>
 ```
 ]
