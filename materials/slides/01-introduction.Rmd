@@ -230,7 +230,7 @@ knitr::include_graphics(paste0(image_path, "organize.jpeg"))
 
 ---
 
-# The Open Science Manual
+# Science as Amateur Software Development
 
 --
 
@@ -250,7 +250,7 @@ knitr::include_graphics(paste0(image_path, "statistical-rethinking.jpeg"))
 
 ---
 
-# The Open Science Manual
+# Science as Amateur Software Development
 
 .pull-left-50[
 ```{r, out.width="70%"}
