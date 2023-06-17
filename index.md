@@ -105,7 +105,9 @@ Please install the following software in advance.
 
 - *“Building reproducible analytical pipelines with R”* by Bruno Rodrigues [link](https://raps-with-r.dev/)
 
-<!-- - Questionario valutazione [link](https://forms.gle/YKESLW64jWTtA7vi7) -->
+## Course Survey
+
+- Course Survey [link](https://forms.gle/YKESLW64jWTtA7vi7)
 
 
 
